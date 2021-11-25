@@ -6,7 +6,7 @@ const runMyFunction = function(callback) {
   return callback('Monkey Fuzz!');
 };
 
-// console.log(runMyFunction(sayHello));
+console.log(runMyFunction(sayHello));
 
 // advantages of arrow functions
 // 1. no need for the "function" word
@@ -15,8 +15,8 @@ const runMyFunction = function(callback) {
 
 // runMyFunction( arg1 => console.log('arg1',arg1) );
 
+// runMyFunction( function(arg1){console.log('arg1',arg1)} ); // 
 
-// arg1 => console.log('arg1',arg1)
 
 // 4. arrow functions without curly braces automatically return whatever is to the right of the arrow
 // this is sort of like ... // if (true) console.log('hello');

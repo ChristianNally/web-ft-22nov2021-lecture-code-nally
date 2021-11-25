@@ -15,15 +15,13 @@ const sayHello = function(name) {
 function processor(arg1, callback){
   // does some stuff
   const newValue = arg1 + 5;
-  callback(newValue);
+  callback();
 }
 
 
 processor(1,sayHello);
 
-processor(5, function(parameter){
-  console.log("Say Goodbye:",parameter);
-});
+
 
 
 

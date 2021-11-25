@@ -17,6 +17,7 @@ const animalNoises = ['Oink', 'Moo', 'Meow', 'Bark', 'Oof', 'Nehhhh', 'Boww', 'H
 
 const mappedArray = ourMap(animalNoises, animalNoise => `only the best animals say ${animalNoise}`);
 
+
 console.log('animalNoises:',animalNoises);
 console.log('mappedArray:',mappedArray);
 

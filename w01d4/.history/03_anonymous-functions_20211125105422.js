@@ -29,6 +29,8 @@ runDatabaseQuery(sayHello);
 // let returnvalue = product(5,9); // 45
 
 
+
+
 runDatabaseQuery( name => console.log('Hola Amiga! ',name) );
 
 

@@ -38,11 +38,10 @@ const myFuncs = [ addTwo, sayHello ];
 // // thisIsAnArray.forEach(function(){ console.log("blah"); });
 
 const result = myFuncs[0](5);
-const result2 = myFuncs[1]("mickey mouse");
 console.log('result:', result);
-console.log('result2:', result2);
 
-console.log('sayHello.toString():',sayHello.toString());
+// console.log('sayHello:',sayHello.toString());
+
 
 // // // // console.log('whatever it gave us back:', myOtherVar.toString());
 // // // // myOtherVar('Carol');

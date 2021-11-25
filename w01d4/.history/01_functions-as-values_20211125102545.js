@@ -16,14 +16,15 @@ const sayHello = function(string) {
   return output;
 };
 
-// const putTheReturnValueInHere = sayHello(' to my little friend.');
-// console.log("putTheReturnValueInHere",putTheReturnValueInHere);
+const putTheReturnValueInHere = sayHello(' to my little friend.');
+console.log("putTheReturnValueInHere",putTheReturnValueInHere);
 
-// const myOtherVar = sayHello;
-// myOtherVar.something = 'something else';
+const myOtherVar = sayHello;
+myOtherVar.something = 'something else';
 
-// console.log("myOtherVar", myOtherVar );
-// console.log('myOtherVar("monkey fuzz!")', myOtherVar('monkey fuzz!'));
+console.log("myOtherVar", myOtherVar );
+
+console.log('myOtherVar("monkey fuzz!")', myOtherVar('monkey fuzz!'));
 
 const addTwo = function(num) {
   console.log('sum:',num + 2);
@@ -37,12 +38,11 @@ const myFuncs = [ addTwo, sayHello ];
 
 // // thisIsAnArray.forEach(function(){ console.log("blah"); });
 
-const result = myFuncs[0](5);
-const result2 = myFuncs[1]("mickey mouse");
-console.log('result:', result);
-console.log('result2:', result2);
+// const result = myFuncs[0](5);
+// console.log('result:', result);
 
-console.log('sayHello.toString():',sayHello.toString());
+// console.log('sayHello:',sayHello.toString());
+
 
 // // // // console.log('whatever it gave us back:', myOtherVar.toString());
 // // // // myOtherVar('Carol');

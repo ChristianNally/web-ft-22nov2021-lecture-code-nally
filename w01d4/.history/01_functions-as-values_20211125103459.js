@@ -44,6 +44,7 @@ console.log('result2:', result2);
 
 console.log('sayHello.toString():',sayHello.toString());
 
+
 // // // // console.log('whatever it gave us back:', myOtherVar.toString());
 // // // // myOtherVar('Carol');
 

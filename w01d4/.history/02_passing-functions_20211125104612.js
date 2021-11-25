@@ -21,9 +21,12 @@ function processor(arg1, callback){
 
 processor(1,sayHello);
 
-processor(5, function(parameter){
-  console.log("Say Goodbye:",parameter);
-});
+processor(5,  function(parameter){
+  console.log("Say Goodbye:",parameter)
+}
+ );
+
+
 
 
 

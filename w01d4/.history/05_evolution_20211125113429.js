@@ -15,9 +15,9 @@ const thingToDo = animalNoise => console.log(`the animal says "${animalNoise}"`)
 
 forEach(animalNoises, thingToDo);
 
-forEach(animalNoises, function(thing){
-  console.log('Monkey Fuzz!',thing);
-} );
+// forEach(animalNoises, function(thing){
+//   console.log('Monkey Fuzz!',thing);
+// } );
 
 
 

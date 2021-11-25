@@ -15,8 +15,13 @@ const runMyFunction = function(callback) {
 
 // runMyFunction( arg1 => console.log('arg1',arg1) );
 
+runMyFunction( arg1 => {
+  for(let counter = 0; counter < arg1; counter++){
+    console.log('ccc');
+  }
+  console.log('arg1',arg1);
+});
 
-// arg1 => console.log('arg1',arg1)
 
 // 4. arrow functions without curly braces automatically return whatever is to the right of the arrow
 // this is sort of like ... // if (true) console.log('hello');

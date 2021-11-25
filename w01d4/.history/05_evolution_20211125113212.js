@@ -11,9 +11,9 @@ const forEach = (arr, action) => {
 //   console.log(`the animal says "${animalNoise}"`);
 // });
 
-const thingToDo = animalNoise => console.log(`the animal says "${animalNoise}"`);
+// const thingToDo = animalNoise => console.log(`the animal says "${animalNoise}"`);
 
-forEach(animalNoises, thingToDo);
+// forEach(animalNoises, thingToDo);
 
 forEach(animalNoises, function(thing){
   console.log('Monkey Fuzz!',thing);
@@ -32,25 +32,32 @@ forEach(animalNoises, function(thing){
 
 
 
-// const arrayOfFunctions = [func1, func2, func3];
+const arrayOfFunctions = [func1, func2, func3];
 
 
 
-// function processor(listOfActions, data){
+function processor(listOfActions, data){
 
 
-//  listOfActions.forEach( (eachFunction)=>{  eachFunction(data)  } );
+ listOfActions.forEach( (eachFunction)=>{  eachFunction(data)  } );
 
 
-// //
+//
 
 
-//   for (let ii = 0; ii < arrayOfFunctions.length; ii++){
-//     listOfActions[ii](data);
-//   }
+  for (let ii = 0; ii < arrayOfFunctions.length; ii++){
+    listOfActions[ii](data);
+  }
 
 
 
 
 
-// }
+}
+
+
+
+
+
+
+

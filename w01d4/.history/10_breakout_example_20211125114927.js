@@ -7,7 +7,7 @@ const supernova = (max, processTheSize)=>{
   return output;
 };
 
-// supernova(100, ()=>42 );
+supernova(100, ()=>42 );
 
 // supernova(1000, function(theSize){
 //   if (300 > theSize){
@@ -19,12 +19,12 @@ const supernova = (max, processTheSize)=>{
 //   }
 // });
 
-const bigProcessor = function(aSize){
-  if (aSize < 7000){
-    return 'not quite supermassive!';
-  }
-};
-supernova(10000, bigProcessor);
+// const bigProcessor = function(aSize){
+//   if (aSize < 7000){
+//     return 'not quite supermassive!';
+//   }
+// };
+// supernova(10000, bigProcessor);
 
 
 
