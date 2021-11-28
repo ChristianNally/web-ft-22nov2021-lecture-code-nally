@@ -1,4 +1,11 @@
 
+// Compare the following two lines. See how there is a value on the right hand side of the assignment operator?
+
+const value = 5.5;
+const funct = function(parameter){ return parameter*2; };
+
+// In the first line, the value is a real number. In the second line above the value is a function definition.
+
 // function sayHello(name) {
 //   let x = name;
 //   const output = `hello there ${name}`;
