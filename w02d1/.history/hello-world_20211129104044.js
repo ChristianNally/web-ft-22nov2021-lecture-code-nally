@@ -4,7 +4,10 @@ const sayHello = (name) => {
   return `Hello, ${name}`;
 };
 
+// show some test code here at first, and then factor it out later
+
+const returnValue = sayHel
+
+console.log("returnValue:", returnValue);
+
 // make the functions exportable
-module.exports = {
-  sayHello: sayHello
-};

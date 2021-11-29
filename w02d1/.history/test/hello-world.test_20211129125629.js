@@ -15,9 +15,9 @@ describe("This is a group of tests", ()=>{
     const expected = "Hello, MonkeyFuzz";
     assert.equal(actual, expected);
   });
-
+  
   it("says hello to World", () => {
     assert.equal(testFunctions.sayHello("World"), "Hello, World");
-  });
+  });  
 
 });

@@ -11,13 +11,11 @@ const testFunctions = require('../hello-world');
 describe("This is a group of tests", ()=>{
 
   it("says hello to Monkey Fuzz", () => {
-    const actual = testFunctions.sayHello("MonkeyFuzz");
-    const expected = "Hello, MonkeyFuzz";
-    assert.equal(actual, expected);
+    assert.equal(testFunctions.sayHello("MonkeyFuzz"), "Hello, MonkeyFuzz");
   });
-
+  
   it("says hello to World", () => {
     assert.equal(testFunctions.sayHello("World"), "Hello, World");
-  });
+  });  
 
 });

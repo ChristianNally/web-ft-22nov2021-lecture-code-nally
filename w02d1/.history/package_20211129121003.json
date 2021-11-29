@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "TDD",

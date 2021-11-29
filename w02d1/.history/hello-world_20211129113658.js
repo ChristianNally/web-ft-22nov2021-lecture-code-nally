@@ -4,7 +4,10 @@ const sayHello = (name) => {
   return `Hello, ${name}`;
 };
 
+console.log(sayHello("World"));
+
 // make the functions exportable
 module.exports = {
-  sayHello: sayHello
+  sayHello: sayHello,
+  answer: 42
 };
