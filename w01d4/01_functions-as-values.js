@@ -1,10 +1,38 @@
-
-// Compare the following two lines. See how there is a value on the right hand side of the assignment operator?
+// FUNCTION DEFINITIONS CAN BE VALUES TOO
+// Compare the following three lines. See how there is a value on 
+// the right hand side of the assignment operator?
 
 const value = 5.5;
-const funct = function(parameter){ return parameter*2; };
+const text = "Hello, World";
+const funct = function(parameter){ process.stdout.write(parameter*2 + " "); };
 
-// In the first line, the value is a real number. In the second line above the value is a function definition.
+// In the first line, the value is a real number. 
+// In the second line above the value is a string.
+// In the third line above the value is a string.
+
+// PARAMETERS ARE PLACEHOLDERS FOR VALUES NOT KNOWN DURING WRITING
+
+// An example where the parameter is a placeholder for a number
+function addTen(number){
+  output = number + 10;
+  console.log(`The output is ${output}`);
+}
+console.log('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n'); addTen(value);
+
+// An example where the parameter is a placeholder for some text
+function appendBlah(string){
+  const output = string + " blah";
+  console.log(`The output is "${output}"`);
+}
+console.log('\n\n\n\n'); appendBlah(text);
+
+// An example where the parameter is a placeholder for a function
+function doActionFourTimes(action){  // <--- action is a 'callback'
+  for (let ii = 0; ii < 4; ii++){
+    action(ii);
+  }
+}
+console.log('\n\n\n\n\n'); doActionFourTimes(funct);
 
 // function sayHello(name) {
 //   let x = name;
@@ -17,11 +45,11 @@ const funct = function(parameter){ return parameter*2; };
 
 // const age = 50;
 
-const sayHello = function(string) {
-  const output = `hello there ${string}`;
-//  console.log('output:',output);
-  return output;
-};
+// const sayHello = function(string) {
+//   const output = `hello there ${string}`;
+// //  console.log('output:',output);
+//   return output;
+// };
 
 // const putTheReturnValueInHere = sayHello(' to my little friend.');
 // console.log("putTheReturnValueInHere",putTheReturnValueInHere);
@@ -32,24 +60,24 @@ const sayHello = function(string) {
 // console.log("myOtherVar", myOtherVar );
 // console.log('myOtherVar("monkey fuzz!")', myOtherVar('monkey fuzz!'));
 
-const addTwo = function(num) {
-  console.log('sum:',num + 2);
-  return num + 2;
-};
+// const addTwo = function(num) {
+//   console.log('sum:',num + 2);
+//   return num + 2;
+// };
 
-const myFuncs = [ addTwo, sayHello ];
+// const myFuncs = [ addTwo, sayHello ];
 
 // // const thisIsAnObject = {first: 'a', second: 'b'};
 // // const thisIsAnArray = ['all','manner',544,TRUE];
 
 // // thisIsAnArray.forEach(function(){ console.log("blah"); });
 
-const result = myFuncs[0](5);
-const result2 = myFuncs[1]("mickey mouse");
-console.log('result:', result);
-console.log('result2:', result2);
+// const result = myFuncs[0](5);
+// const result2 = myFuncs[1]("mickey mouse");
+// console.log('result:', result);
+// console.log('result2:', result2);
 
-console.log('sayHello.toString():',sayHello.toString());
+// console.log('sayHello.toString():',sayHello.toString());
 
 // // // // console.log('whatever it gave us back:', myOtherVar.toString());
 // // // // myOtherVar('Carol');
