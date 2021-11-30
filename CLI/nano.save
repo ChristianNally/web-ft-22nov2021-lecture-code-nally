@@ -1,0 +1,59 @@
+Question 1:
+
+0
+undefined
+false
+null
+nan
+''
+
+
+truthy: everything else.
+
+
+Question 2:
+
+== : it will give a value 
+
+'5' == 5 so this coersion happens because this will be evaluated as 'true' because will be changed 
+
+if we do === it will be false, because the types are different.
+
+We should use === because our code can avoid future bugs.
+
+
+
+
+
+question 3:
+
+
+
+
+  A B C D E F G H I J
+1 . . . . . . . . . .
+2 . . . . . . . . . .
+3 . . . . . . . . . .
+4 . . . M . . . . . .
+5 . . . . . . . . . .
+6 . . . . . . . . . .
+7 . . . . . . H . . .
+8 . . . . . . H . . .
+9 . . . . . . M . . .
+0 . . . . . . . . . .
+
+
+
+. . . . . . . . . S
+. . . . . . . . . S
+. S S S . . . . . .
+. . . . . . . . . .
+. . . . . . . . . .
+. . . . . . . . . .
+. . . . S S S S S .
+. . . . . . . . . .
+. . . . . . . . . .
+. . . . . . . . . .
+
+
+
