@@ -1,0 +1,2891 @@
+WEBVTT
+
+00:00:14.000 --> 00:00:22.000
+Yes, the internet. You may have heard of it.
+
+00:00:22.000 --> 00:00:26.000
+Actually, while we're on the topic.
+
+00:00:26.000 --> 00:00:34.000
+What is the difference between the Internet, and the web,
+
+00:00:34.000 --> 00:00:39.000
+feel free to type a description into the chat, this morning.
+
+00:00:39.000 --> 00:00:43.000
+And we will
+
+00:00:43.000 --> 00:00:53.000
+discuss the differences and similarities there spelled differently. It's true. They are spelled differently.
+
+00:00:53.000 --> 00:00:58.000
+Anything else from anyone.
+
+00:00:58.000 --> 00:01:02.000
+The web is a connected network, it's true.
+
+00:01:02.000 --> 00:01:08.000
+The internet is also a connected network.
+
+00:01:08.000 --> 00:01:21.000
+The internet is far older than the web. What do I mean by that, what any guesses as to the year that the internet was born.
+
+00:01:21.000 --> 00:01:31.000
+And any guesses on the year that the web was born.
+
+00:01:31.000 --> 00:01:41.000
+Nothing.
+
+00:01:41.000 --> 00:01:46.000
+The internet is the network of connected computers. Yes.
+
+00:01:46.000 --> 00:01:50.000
+Yeah.
+
+00:01:50.000 --> 00:01:59.000
+Is the is the web the content on the network, it's some of the content on the network, 1960, good guess.
+
+00:01:59.000 --> 00:02:08.000
+Early 2000s for the birth of which the internet or the web. Right.
+
+00:02:08.000 --> 00:02:18.000
+The web 95 pretty close. Yeah. Alright, so I'll let you know, sort of, what I'm on about with all this stuff.
+
+00:02:18.000 --> 00:02:28.000
+And I hope that from today forward, you're going to use the words in context with a little bit more precision. Because certainly you know I found it on the internet.
+
+00:02:28.000 --> 00:02:36.000
+True, say, I found it on the web, means something very much more specific.
+
+00:02:36.000 --> 00:02:48.000
+The internet is a network of networks, which is kind of the key to how the whole thing holds together.
+
+00:02:48.000 --> 00:03:08.000
+TCP IP is a protocol that allows you to build hardware that matches certain specification, where you can make any kind of network you want to make.
+
+00:03:08.000 --> 00:03:21.000
+And from that network, given that you build in some TCP IP into it, you can then connect your network to the internet.
+
+00:03:21.000 --> 00:03:25.000
+Right, so that the internet is a network of networks.
+
+00:03:25.000 --> 00:03:33.000
+It was born in 1969. Any guesses as to how many computers were on the internet.
+
+00:03:33.000 --> 00:03:43.000
+By the end of 1969, just after the Summer of Love.
+
+00:03:43.000 --> 00:03:49.000
+1099 2000, all good guests more than one, it's true.
+
+00:03:49.000 --> 00:03:56.000
+Three very close, it's for four computers attached to the internet.
+
+00:03:56.000 --> 00:04:14.000
+In the year and I, at the end of the year, 1969, universities, the internet, this network of networks, was designed for a particular purpose.
+
+00:04:14.000 --> 00:04:29.000
+The structure of the internet was designed for with a particular purpose in mind. Anybody have any ideas as to what was the guiding principle for the design of the structure of the internet,
+
+00:04:29.000 --> 00:04:39.000
+The engineers in the house are people who are willing to put on an engineering hat path, go ahead. I have it somewhere, they design the internet for the World War.
+
+00:04:39.000 --> 00:04:46.000
+During the war, they for the internal communication so they can communicate with each other fast.
+
+00:04:46.000 --> 00:04:48.000
+That's absolutely true.
+
+00:04:48.000 --> 00:05:01.000
+Yeah, that the design principle behind the way that the internet is structured is so that it is able to withstand a nuclear attack.
+
+00:05:01.000 --> 00:05:14.000
+We're going to get into a few of the details as to why it's structured that way for that particular purpose but basically, if Chicago is completely evaporated.
+
+00:05:14.000 --> 00:05:18.000
+The Internet will still work.
+
+00:05:18.000 --> 00:05:31.000
+Yeah mountains onto the onto the key points here that it. There's, because it's distributed. There's no central single central point of failure, basically.
+
+00:05:31.000 --> 00:05:44.000
+So, it yeah pretty grim. Right, I don't mean to depress you all in the morning but, you know, here we have this very very robust network left to us now.
+
+00:05:44.000 --> 00:05:49.000
+And,
+
+00:05:49.000 --> 00:06:00.000
+right, we're going to talk about the details about how that is even possible. How can you make a network that's built to survive a nuclear attack.
+
+00:06:00.000 --> 00:06:05.000
+We're going to talk also about the web.
+
+00:06:05.000 --> 00:06:08.000
+So what is the web.
+
+00:06:08.000 --> 00:06:12.000
+Right now that we've talked a little bit about the internet.
+
+00:06:12.000 --> 00:06:20.000
+This is after all the boot camp about how to do programming, we should know precisely what it is, right,
+
+00:06:20.000 --> 00:06:26.000
+the web. So if the internet was born in 1969.
+
+00:06:26.000 --> 00:06:43.000
+The web is something different here so here's a bunch of technologies that came before the web. And yet, use the internet. All right, email.
+
+00:06:43.000 --> 00:06:52.000
+Email was around a long time before the web was
+
+00:06:52.000 --> 00:07:02.000
+FTP File Transfer Protocol, that's another thing that existed for a long time before the web.
+
+00:07:02.000 --> 00:07:08.000
+Yeah so email is an SMB protocol. Yes, it's true.
+
+00:07:08.000 --> 00:07:15.000
+My dog is just coming to say hello to me this morning.
+
+00:07:15.000 --> 00:07:18.000
+There is.
+
+00:07:18.000 --> 00:07:33.000
+There is a thing called gopher, which maybe nobody here would remember gopher was a text only version of the web in a way where you went from text menu to text menu.
+
+00:07:33.000 --> 00:07:40.000
+And so you'd have things like go for servers, and that would serve up a text menu of options to you and so on.
+
+00:07:40.000 --> 00:07:43.000
+So,
+
+00:07:43.000 --> 00:07:50.000
+as I say the late 80s, the internet was a thing, right, you could check your email.
+
+00:07:50.000 --> 00:07:57.000
+You could go on to go for servers, you could do File Transfer Protocol stuff to get files transferred around and so on.
+
+00:07:57.000 --> 00:07:59.000
+But there was no web yet, right.
+
+00:07:59.000 --> 00:08:10.000
+So the web. And that's the thing that we're here to learn and this entire boot camp was born in a physics lab at CERN.
+
+00:08:10.000 --> 00:08:23.000
+And what it is is a client server pair specification, where you have a web clients known today as a browser
+
+00:08:23.000 --> 00:08:28.000
+and web servers that serve up, web pages.
+
+00:08:28.000 --> 00:08:31.000
+say, or a web application.
+
+00:08:31.000 --> 00:08:34.000
+Something like that.
+
+00:08:34.000 --> 00:08:38.000
+So,
+
+00:08:38.000 --> 00:08:42.000
+in the diagram that I'm sharing with you at the moment.
+
+00:08:42.000 --> 00:08:53.000
+This is an infographic about how the web works, how the web works.
+
+00:08:53.000 --> 00:08:57.000
+This computer here is the browser.
+
+00:08:57.000 --> 00:09:03.000
+The browser sends a request to a web server.
+
+00:09:03.000 --> 00:09:16.000
+The web server accepts that request builds a response in the form of HTML and sends that HTML back to the browser for rendering.
+
+00:09:16.000 --> 00:09:27.000
+So that's how the web works in a nutshell, but let's take a step back from that and talk a bit more about the internet.
+
+00:09:27.000 --> 00:09:32.000
+In general,
+
+00:09:32.000 --> 00:09:42.000
+I would like to talk about the underlying structure of the hardware that runs the internet itself.
+
+00:09:42.000 --> 00:09:52.000
+client server still exists in the internet these days. Absolutely. And we'll get more into, into the details of that as we go.
+
+00:09:52.000 --> 00:09:56.000
+So yeah, here's a diagram of the internet.
+
+00:09:56.000 --> 00:10:05.000
+And I'd like to talk a little bit more about how it was structured, in order that it would be able to survive a nuclear attack.
+
+00:10:05.000 --> 00:10:16.000
+So, the way that the internet works. Overall, it's a lot like the Postal Service, if I'm going to send a physical letter.
+
+00:10:16.000 --> 00:10:23.000
+Right. I'll write out a message on a piece of paper. Hold it up, put it in an envelope.
+
+00:10:23.000 --> 00:10:33.000
+Right, the destination address and in fact the address of where it came from outside on the outside of that envelope, drop it in the mail slot and off it goes right so what happens next.
+
+00:10:33.000 --> 00:10:58.000
+Well, the letters are gathered from the post office boxes, they're brought to a nearby central processing system where that destination address on the envelope is red, and the mail is sorted into sections into collections rather where that mail is then
+
+00:10:58.000 --> 00:11:05.000
+physically moved on to a processing center that's nearer to the destination.
+
+00:11:05.000 --> 00:11:07.000
+Yeah.
+
+00:11:07.000 --> 00:11:12.000
+So the internet works very much the same way.
+
+00:11:12.000 --> 00:11:15.000
+except for the following key point.
+
+00:11:15.000 --> 00:11:25.000
+Imagine when you're writing a physical letter and dropping it into an envelope that instead of putting the whole message into the envelope.
+
+00:11:25.000 --> 00:11:28.000
+The message is chopped up into little parts.
+
+00:11:28.000 --> 00:11:33.000
+So, If I have
+
+00:11:33.000 --> 00:11:41.000
+an email, for example, that email might be chopped up into 100 pieces.
+
+00:11:41.000 --> 00:11:56.000
+For a very long email anyway. Each one of those individual pieces is going to be put in its own digital envelope, if you will, where that is going to have the address of the destination.
+
+00:11:56.000 --> 00:12:06.000
+Right. And so one email right you're going to send that out, and it's going to go out to a single destination, you're going to send it to the recipient.
+
+00:12:06.000 --> 00:12:07.000
+Right.
+
+00:12:07.000 --> 00:12:11.000
+But it's going to, It's going to go there.
+
+00:12:11.000 --> 00:12:16.000
+In maybe 100 parts, instead of just one part. Right.
+
+00:12:16.000 --> 00:12:34.000
+And there's actually no guarantee that any given part of that message is going to take the same path to get to its destination can see here this like diagram of what the internet looks like say, and it's a bunch of nodes.
+
+00:12:34.000 --> 00:12:42.000
+So you can imagine that P five, so the P. One p two p three.
+
+00:12:42.000 --> 00:12:49.000
+Excuse me up to p five, those are the packets, right, so let's say we have a message that's been chopped up into five parts.
+
+00:12:49.000 --> 00:13:00.000
+The blue dots are the nodes on the internet, different computers effectively connected by usually pretty fast communication cables.
+
+00:13:00.000 --> 00:13:11.000
+Although any one of these lines might correspond to something like an undersea cable or a hop to orbit, and back.
+
+00:13:11.000 --> 00:13:19.000
+Often in the past this hop into space has been to, like, a geosynchronous satellite.
+
+00:13:19.000 --> 00:13:26.000
+But more and more these days this is happening over low Earth orbit satellites, you get the idea is that there could be any different.
+
+00:13:26.000 --> 00:13:35.000
+Any, any number of a variety of different kinds of hardware that can carry traffic on the internet.
+
+00:13:35.000 --> 00:13:48.000
+So, that information is carved up into a bunch of different packets, each packet can take any route that it's able to take to get to its destination.
+
+00:13:48.000 --> 00:13:58.000
+Notice that the packets were chopped up with labels, 12345, these packets can be sorted. Right.
+
+00:13:58.000 --> 00:14:07.000
+Because if the packets are taking different routes to get to it's destinations. There's no guarantee that they're going to arrive in order. Right.
+
+00:14:07.000 --> 00:14:11.000
+But by the time it gets to the destination.
+
+00:14:11.000 --> 00:14:31.000
+The receiving computer can take those packets and say, Oh, I have different ID numbers on these packets as they're arriving, I'm going to sort them through some sorting algorithm and reattach all the packets back into the original message.
+
+00:14:31.000 --> 00:14:38.000
+And in particular, let's say you know partway through the sending of this message.
+
+00:14:38.000 --> 00:14:43.000
+One of the nodes goes down.
+
+00:14:43.000 --> 00:14:51.000
+For example, because a new cut dropped on it and it liquidated the city that had that node in it. Right.
+
+00:14:51.000 --> 00:15:02.000
+The destination can send messages back to the source saying hey wait a minute. There were packets that were dropped in this transmission. Can you please resend packet three.
+
+00:15:02.000 --> 00:15:13.000
+And so packet three would be recent, but it would only go down whatever route that it's capable of, of actually are arriving.
+
+00:15:13.000 --> 00:15:20.000
+And then the message and its entirety, can be assembled, and so on.
+
+00:15:20.000 --> 00:15:34.000
+And so that's basically why a network of nodes like this is a super extra robust kind of a transportation network for messages.
+
+00:15:34.000 --> 00:15:41.000
+Any questions about any of that.
+
+00:15:41.000 --> 00:15:44.000
+Will it find the shortest possible route.
+
+00:15:44.000 --> 00:15:51.000
+I'm not necessarily the shortest possible.
+
+00:15:51.000 --> 00:15:57.000
+And in fact what counts is shortest can depend on things like load.
+
+00:15:57.000 --> 00:16:02.000
+So if traffic is light, maybe it's going to go around one way.
+
+00:16:02.000 --> 00:16:16.000
+Each of the routers that are on this network of nodes are going to be communicating with each other a little bit from time to time saying hey wait a minute, I'm totally slammed I have a bunch of processing I need to do.
+
+00:16:16.000 --> 00:16:29.000
+Yeah, so, to bring down the internet you need to bring down all the nodes. Well, I mean, it's really really hard to bring the whole thing down all in one go.
+
+00:16:29.000 --> 00:16:32.000
+But you can bring sections of it down easily enough.
+
+00:16:32.000 --> 00:16:38.000
+I mean, today it's super windy outside here on little Galliano Island.
+
+00:16:38.000 --> 00:16:50.000
+And my internet arrives to me via radio waves through the trees to an antenna up a tree outside the house here, right. Pretty easy for my own internet to be cut off.
+
+00:16:50.000 --> 00:16:57.000
+Because there's only one path between my house and the network. Further up.
+
+00:16:57.000 --> 00:17:02.000
+We're lucky enough to have our own homegrown Internet Service Provider here.
+
+00:17:02.000 --> 00:17:08.000
+That works by connecting to multiple providers.
+
+00:17:08.000 --> 00:17:15.000
+And if one of those providers goes down then the other provider kicks in, and we can still have our connection.
+
+00:17:15.000 --> 00:17:20.000
+We've got Shah and tell us connections that are blended, if you will, right.
+
+00:17:20.000 --> 00:17:35.000
+So it's actually, I mean beyond this little antenna up the tree here at my place. It's gotten harder to disconnect us from the internet because of how well it's been set up here.
+
+00:17:35.000 --> 00:17:38.000
+Um, yeah.
+
+00:17:38.000 --> 00:17:43.000
+So, all of everything that I was just describing TCP IP.
+
+00:17:43.000 --> 00:17:52.000
+That is the internet. Right, that's the hardware that's carrying the underlying messages
+
+00:17:52.000 --> 00:18:03.000
+here here's Cassie with a question Ken packet split between two providers, or just use one each packet has a single path through.
+
+00:18:03.000 --> 00:18:12.000
+When you're talking about the two providers You mean the two that we have here know each packet would take one or the other of the routes.
+
+00:18:12.000 --> 00:18:22.000
+But for one message that's been carved up into many packets. There's no guarantee that that message is going to go over one or the other of the two providers.
+
+00:18:22.000 --> 00:18:33.000
+In practice, they likely all go over one at any given time. But that, but again this is about the guarantees of such things.
+
+00:18:33.000 --> 00:18:38.000
+Okay, so
+
+00:18:38.000 --> 00:18:52.000
+next up, let's take a look at a typical bit of communication between client and server right now.
+
+00:18:52.000 --> 00:19:08.000
+Things like email FTP go for that you know that I referred to like this predecessor of the web. Right. They all existed before. 1991.
+
+00:19:08.000 --> 00:19:14.000
+And they were all based on client server architectures.
+
+00:19:14.000 --> 00:19:18.000
+So let's have a look at at client server communication.
+
+00:19:18.000 --> 00:19:33.000
+On the left hand side we've got the client Bumble right and then there's this arrow that says hello. That's the client saying hello server, I would like to get a response from you, right, and so that message goes over here.
+
+00:19:33.000 --> 00:19:38.000
+And then the server responds with whatever response it's going to have.
+
+00:19:38.000 --> 00:19:42.000
+Right. So this model.
+
+00:19:42.000 --> 00:19:47.000
+It's how email works. It's how File Transfer Protocol works.
+
+00:19:47.000 --> 00:19:53.000
+It's also how HTTP works.
+
+00:19:53.000 --> 00:20:07.000
+Anyone want to type into the chat. What HTTP stands for
+
+00:20:07.000 --> 00:20:31.000
+hypertext something yep Cassie got half of that hypertext transfer protocol. right yeah, that's right. And hypertext transfer protocol HTTP.
+
+00:20:31.000 --> 00:20:35.000
+When I speak of the web.
+
+00:20:35.000 --> 00:20:41.000
+I'm specifically speaking of hypertext transfer protocol client server pairs.
+
+00:20:41.000 --> 00:20:50.000
+And this entire boot camp is about writing those. Right, it's about writing your own web server,
+
+00:20:50.000 --> 00:20:54.000
+such that when that program runs.
+
+00:20:54.000 --> 00:21:01.000
+It's available to listen to requests that are made of it by clients.
+
+00:21:01.000 --> 00:21:08.000
+And this your server program is going to return HTML, to a web browser.
+
+00:21:08.000 --> 00:21:25.000
+Now, it just so happens that while you're learning all this stuff in boot camp, you're also learning the kinds of things that you would need to write any kind of server.
+
+00:21:25.000 --> 00:21:27.000
+Kathy has a quick question.
+
+00:21:27.000 --> 00:21:35.000
+Is HTTP and HTTPS full name necessary to remember.
+
+00:21:35.000 --> 00:21:38.000
+No, but you just will.
+
+00:21:38.000 --> 00:22:03.000
+Like, if you think of it and use it enough, it'll become, you know, just a part of the thing that you need that you that you have off the top of your head.
+
+00:22:03.000 --> 00:22:14.000
+Next up, what we're going to do is actually write our own client server pair.
+
+00:22:14.000 --> 00:22:20.000
+But it's not going to be a web server, just yet.
+
+00:22:20.000 --> 00:22:26.000
+Instead what we're going to do is write our own chat client system.
+
+00:22:26.000 --> 00:22:33.000
+So we're going to write code, where you can have a chat room.
+
+00:22:33.000 --> 00:22:35.000
+And we're going to write it from scratch.
+
+00:22:35.000 --> 00:22:43.000
+And we're going to use node, Node. js, to build our own chat system.
+
+00:22:43.000 --> 00:22:49.000
+So, yeah, let's dive in.
+
+00:22:49.000 --> 00:23:00.000
+I'm. In fact, here's some code, and basically what we're going to do is
+
+00:23:00.000 --> 00:23:03.000
+go through it line by line.
+
+00:23:03.000 --> 00:23:13.000
+And slowly build up what we need in order to be able to run.
+
+00:23:13.000 --> 00:23:17.000
+one of these systems, let's just see here.
+
+00:23:17.000 --> 00:23:23.000
+Yeah, we'll go with the one that's that's already pre baked here.
+
+00:23:23.000 --> 00:23:29.000
+And I'm going to comment everything out to start with.
+
+00:23:29.000 --> 00:23:32.000
+And then reveal it line by line as we go.
+
+00:23:32.000 --> 00:23:40.000
+That seems to be the best way to go forward with this.
+
+00:23:40.000 --> 00:23:43.000
+Okay.
+
+00:23:43.000 --> 00:23:50.000
+So, we're going to deal mainly with two files
+
+00:23:50.000 --> 00:23:54.000
+client and server.
+
+00:23:54.000 --> 00:23:59.000
+and let's start with the server side.
+
+00:23:59.000 --> 00:24:03.000
+Joey.
+
+00:24:03.000 --> 00:24:06.000
+Okay.
+
+00:24:06.000 --> 00:24:22.000
+So, as with.
+
+00:24:22.000 --> 00:24:27.000
+But that's what's going on with this very first line of code.
+
+00:24:27.000 --> 00:24:31.000
+Comcast net equals require.
+
+00:24:31.000 --> 00:24:33.000
+net.
+
+00:24:33.000 --> 00:24:45.000
+So this is clearly a node application. It's being written for the back end. Right. When we talk about back end programming we're talking about programming, the server.
+
+00:24:45.000 --> 00:24:51.000
+We've got console net equals require net.
+
+00:24:51.000 --> 00:24:56.000
+This brings in a bunch of functionality into node.
+
+00:24:56.000 --> 00:24:59.000
+That wouldn't be available otherwise.
+
+00:24:59.000 --> 00:25:09.000
+Right. It's that we're saying yeah, we need to have all of the internet related code for our use.
+
+00:25:09.000 --> 00:25:13.000
+The next line is bringing in.
+
+00:25:13.000 --> 00:25:17.000
+It's just a variable being set to an integer.
+
+00:25:17.000 --> 00:25:23.000
+It is the port of port number.
+
+00:25:23.000 --> 00:25:29.000
+So, this port number is 8008.
+
+00:25:29.000 --> 00:25:35.000
+You may have seen, 8080, or even at.
+
+00:25:35.000 --> 00:25:42.000
+These are port numbers and they have meanings
+
+00:25:42.000 --> 00:25:52.000
+port number at is the port number four HTTP.
+
+00:25:52.000 --> 00:26:14.000
+That is for unencrypted web traffic is typically listened for on port 80 anything higher than 1024 is a temporary server that's being hosted by a system
+
+00:26:14.000 --> 00:26:24.000
+where you don't have to have administrator rights on the computer that you're running to launch a port, above 1024.
+
+00:26:24.000 --> 00:26:40.000
+So, when you see ports like 8080, that's actually just trying to be reminiscent of Port 80, but because it's above 1024. You don't need special permissions on the computer you're running in order to run that.
+
+00:26:40.000 --> 00:26:43.000
+Yeah, compass example uses 3000.
+
+00:26:43.000 --> 00:26:58.000
+So what that means is that the server that's running to listen to that port can be just any old user on the computer that's hosting that server
+
+00:26:58.000 --> 00:27:09.000
+ephemeral, to the extent that you're, you're deciding to take a server down or relaunching it or whatever right there.
+
+00:27:09.000 --> 00:27:26.000
+Any given web server on the internet is only as ephemeral as it as the people who are running it choose for it to be right there, connected to the internet for as much as they can be say,
+
+00:27:26.000 --> 00:27:33.000
+Okay, So, let's proceed, let's write some more code to get this thing started.
+
+00:27:33.000 --> 00:27:38.000
+The next slide, I want to show is this one.
+
+00:27:38.000 --> 00:27:41.000
+contest server equals.
+
+00:27:41.000 --> 00:27:46.000
+net dot create server.
+
+00:27:46.000 --> 00:27:50.000
+Okay, looks innocent enough, right.
+
+00:27:50.000 --> 00:28:02.000
+Notice the net variable is holding whatever thing, this require returned.
+
+00:28:02.000 --> 00:28:07.000
+And if you remember from earlier this week.
+
+00:28:07.000 --> 00:28:22.000
+How module exports was set inside this code, right, whatever object module that exports was set to inside this becomes the return value of the require function call.
+
+00:28:22.000 --> 00:28:40.000
+And so, it has returned to us an object, where that object has this factory function defined on it, I call it a factory function. It's just a function that makes a thing.
+
+00:28:40.000 --> 00:28:47.000
+So, net create server returns to us.
+
+00:28:47.000 --> 00:28:49.000
+An object.
+
+00:28:49.000 --> 00:29:00.000
+And that object is going to be the thing, where we are able to run functions to specify how our server should behave.
+
+00:29:00.000 --> 00:29:06.000
+But the basics of TCP IP are already written into that thing.
+
+00:29:06.000 --> 00:29:15.000
+And so a lot of the hard programming of of interacting with the TCP IP protocol is already finished actually.
+
+00:29:15.000 --> 00:29:25.000
+So, I'd like to skip ahead and go down to the bottom of this file and uncommon, the following line.
+
+00:29:25.000 --> 00:29:30.000
+Here we have server dot.
+
+00:29:30.000 --> 00:29:31.000
+Listen.
+
+00:29:31.000 --> 00:29:35.000
+And then we have
+
+00:29:35.000 --> 00:29:46.000
+these bits of code. Now I don't know if you've heard me give this song and dance before but this is where I like to play the game What is this right so I highlight a piece of text in the editor.
+
+00:29:46.000 --> 00:29:54.000
+And I asked myself, What is this, well it's a comma separated list of parameters to the listen function call. Right.
+
+00:29:54.000 --> 00:30:11.000
+I can cut that part out. And I can see what's left over is a syntactically correct function call the function execution of the listen function. The listen function that's defined on the server object.
+
+00:30:11.000 --> 00:30:13.000
+Yeah.
+
+00:30:13.000 --> 00:30:19.000
+So let me bring that stuff back you can see what's actually going on here is I have to parameters.
+
+00:30:19.000 --> 00:30:22.000
+The first is the port.
+
+00:30:22.000 --> 00:30:28.000
+And you can see the editors telling me that's just the port that I defined from up above, with its value of at.
+
+00:30:28.000 --> 00:30:28.000
+Sorry, 8008.
+
+00:30:28.000 --> 00:30:42.000
+Sorry, 8008. The second parameter, and let me highlight this very carefully. I'm going to go right out to the end of the curly brace here, if I cut that you can see.
+
+00:30:42.000 --> 00:30:45.000
+Yeah, that thing that I just cut out.
+
+00:30:45.000 --> 00:30:51.000
+That was the second parameter to this function call. It's a call back.
+
+00:30:51.000 --> 00:30:53.000
+That's right.
+
+00:30:53.000 --> 00:31:09.000
+That callback function is in and of itself, a value that is being handed in as the second parameter to this function call. So I'll bring it back right see that it's just a function definition.
+
+00:31:09.000 --> 00:31:25.000
+And that callback will be executed when our server is alive and listening to the port that it needs to listen to write the port we chose was 1008.
+
+00:31:25.000 --> 00:31:27.000
+So I'll save that.
+
+00:31:27.000 --> 00:31:34.000
+And so that's the only four lines of code that are uncommon in this thing.
+
+00:31:34.000 --> 00:31:40.000
+Make a server and have it listened to Port 8008. Yes.
+
+00:31:40.000 --> 00:31:43.000
+So let me bring up the terminal.
+
+00:31:43.000 --> 00:31:58.000
+Like this. Let's go into the solution directory because that's where this is, I can look at the server file here, right, there it is, are three lines at the top, a bunch of commented out stuff and then finally the server got listen file line at the bottom.
+
+00:31:58.000 --> 00:32:01.000
+So let's run it, node server. js.
+
+00:32:01.000 --> 00:32:07.000
+And sure enough it fires up a server. And now the server is listening on port.
+
+00:32:07.000 --> 00:32:11.000
+8008. Just like that.
+
+00:32:11.000 --> 00:32:15.000
+And that's all the code that it took to do that.
+
+00:32:15.000 --> 00:32:19.000
+Not a very interesting server, my youth.
+
+00:32:19.000 --> 00:32:22.000
+Right. All it does is just listen.
+
+00:32:22.000 --> 00:32:26.000
+Right. It doesn't even do anything if you connect to it yet.
+
+00:32:26.000 --> 00:32:31.000
+But, let's do that step next.
+
+00:32:31.000 --> 00:32:34.000
+So,
+
+00:32:34.000 --> 00:32:36.000
+back up here.
+
+00:32:36.000 --> 00:32:43.000
+The next piece of code that I want to bring into being.
+
+00:32:43.000 --> 00:32:53.000
+Is this one where we have
+
+00:32:53.000 --> 00:32:57.000
+server.on.
+
+00:32:57.000 --> 00:33:01.000
+And we're going to talk about that in a little bit of detail.
+
+00:33:01.000 --> 00:33:05.000
+What I want to do is comment out
+
+00:33:05.000 --> 00:33:10.000
+a lot of the rest of what you're seeing here and bring it in.
+
+00:33:10.000 --> 00:33:13.000
+As we need it.
+
+00:33:13.000 --> 00:33:26.000
+So, what we have here is server.on connection.
+
+00:33:26.000 --> 00:33:36.000
+In fact, this on. That's a function call that function is defined on the server object.
+
+00:33:36.000 --> 00:33:47.000
+Right. You can tell by the syntax it's using the dot syntax for objects right server is an object on is a function call. How do I know that it's executing a function because of the parentheses, right.
+
+00:33:47.000 --> 00:33:54.000
+For example, if I carefully use the cursor to slice and dice my code down to this part here.
+
+00:33:54.000 --> 00:33:57.000
+If I cut that part out.
+
+00:33:57.000 --> 00:34:01.000
+Right. I can see syntactically correct function call.
+
+00:34:01.000 --> 00:34:06.000
+where it's executing this function that's called on.
+
+00:34:06.000 --> 00:34:08.000
+Alright, so I'll bring back what was inside there.
+
+00:34:08.000 --> 00:34:11.000
+I have two parameters.
+
+00:34:11.000 --> 00:34:14.000
+The first parameter is a string literal.
+
+00:34:14.000 --> 00:34:25.000
+Right, it's just a string that string value is the string connection.
+
+00:34:25.000 --> 00:34:36.000
+What it is, is it is it's the name of an event that this server is going to listen for.
+
+00:34:36.000 --> 00:34:41.000
+So, events are things that can happen to a server.
+
+00:34:41.000 --> 00:34:46.000
+One of them is a connection.
+
+00:34:46.000 --> 00:34:52.000
+In the case that connection event occurs.
+
+00:34:52.000 --> 00:35:05.000
+This callback will be run. And so there you go, that's the second parameter to this function call. The on function. And I'm going to highlight right down to the end, purple, curly brace there, right.
+
+00:35:05.000 --> 00:35:12.000
+Notice what I've highlighted is a function definition. That's a callback.
+
+00:35:12.000 --> 00:35:19.000
+That callback will be run. Whenever a connection event occurs on the server.
+
+00:35:19.000 --> 00:35:33.000
+It's great again I can play the What is this game I have highlighted a callback if I cut it out. You can see I have a syntactically correct function call execution, with a missing second parameter here right I'll paste that thing back in there, that is
+
+00:35:33.000 --> 00:35:37.000
+the function definition. This function will be executed.
+
+00:35:37.000 --> 00:35:41.000
+When a connection event occurs.
+
+00:35:41.000 --> 00:35:43.000
+Fine.
+
+00:35:43.000 --> 00:35:50.000
+Notice that that callback takes a parameter called clients.
+
+00:35:50.000 --> 00:35:58.000
+We've been talking about client server pairs, and a client making a connection to a server.
+
+00:35:58.000 --> 00:36:09.000
+When that client connects to this server, this callback is called, and an object is passed to it.
+
+00:36:09.000 --> 00:36:15.000
+That parameter is going to be initialized.
+
+00:36:15.000 --> 00:36:27.000
+As an object that represents the particular client that connected with this event.
+
+00:36:27.000 --> 00:36:38.000
+So the guy asks, What dot o function is doing. Do you mean.on back here.
+
+00:36:38.000 --> 00:36:48.000
+Yes, okay. The on function call is setting up what we call an event listener.
+
+00:36:48.000 --> 00:36:56.000
+Right. I said that the connection was the kind of event that we were listening for
+
+00:36:56.000 --> 00:37:06.000
+it sets up a listener, such that the associated callback gets called whenever such an event occurs.
+
+00:37:06.000 --> 00:37:16.000
+In fact, you could say the word on speaking it out like English right on connection, do this.
+
+00:37:16.000 --> 00:37:28.000
+You might have also named that function upon if you wanted to use older English right upon connection do the following. Right, that's sort of the the spirit in which that function is named.
+
+00:37:28.000 --> 00:37:33.000
+Note that that makes a bit more sense that way.
+
+00:37:33.000 --> 00:37:38.000
+Okay, Great. So we've set up an event listener.
+
+00:37:38.000 --> 00:37:44.000
+right, this callback is going to run, when a connection is made.
+
+00:37:44.000 --> 00:37:48.000
+Cool.
+
+00:37:48.000 --> 00:37:51.000
+What are we going to do.
+
+00:37:51.000 --> 00:38:02.000
+When that connection is made. Well, we're going to have this callback run. And right now, this callback is doing two things.
+
+00:38:02.000 --> 00:38:09.000
+One is console dot log client is connected.
+
+00:38:09.000 --> 00:38:16.000
+Right, it's going to run that piece of code, and we're going to see on the servers console now.
+
+00:38:16.000 --> 00:38:23.000
+We're going to see the phrase client is connected to
+
+00:38:23.000 --> 00:38:32.000
+the second line that's going to get executed, is we're going to use this client object that was passed into this call back.
+
+00:38:32.000 --> 00:38:34.000
+So I see a few questions.
+
+00:38:34.000 --> 00:38:50.000
+Robert asks, so is on an event listener just like standard in on on isn't the event listener itself on is a function that we use to set up an event listener.
+
+00:38:50.000 --> 00:38:53.000
+I would call this call back.
+
+00:38:53.000 --> 00:39:02.000
+The event listener, it's the it's the thing that gets executed when the when the connection happens.
+
+00:39:02.000 --> 00:39:08.000
+We'll have it asks, do we need in garage installed in order to try these server functions.
+
+00:39:08.000 --> 00:39:14.000
+No, because you can actually connect to a client, from the very same machine itself.
+
+00:39:14.000 --> 00:39:21.000
+But I actually am going to power up and rock, so that I can send you all the client code.
+
+00:39:21.000 --> 00:39:36.000
+And that you can run your client code and then connect to our chat server that we're writing this morning. So yeah, and rock is extract is extremely useful if you want to make tunnels to the servers that you're putting up on your own particular machine,
+
+00:39:36.000 --> 00:39:39.000
+and will actually do that today,
+
+00:39:39.000 --> 00:39:42.000
+which is kind of fun.
+
+00:39:42.000 --> 00:40:02.000
+And then I've asked Can I please go over the client parameter again. Sure, so the client parameter is the name that we gave to the parameter for the callback that I'm passing in as the event listener, right, this is the callback that's going to get executed
+
+00:40:02.000 --> 00:40:06.000
+when a connection is made.
+
+00:40:06.000 --> 00:40:08.000
+We're not executing this call back.
+
+00:40:08.000 --> 00:40:22.000
+The server code is the server is listening for a connection. When that event occurs, then this callback gets run the server passes in a value to this callback.
+
+00:40:22.000 --> 00:40:29.000
+Turns out it's the value of a client object.
+
+00:40:29.000 --> 00:40:36.000
+Don't worry, we'll have it. You don't need to install and drop. I've got it installed on my system
+
+00:40:36.000 --> 00:40:39.000
+for today.
+
+00:40:39.000 --> 00:40:41.000
+Okay, good.
+
+00:40:41.000 --> 00:40:49.000
+So, server not on connection function clients callback client is connected whatever a client does connect.
+
+00:40:49.000 --> 00:40:53.000
+And then here's an interesting line.
+
+00:40:53.000 --> 00:41:00.000
+Using the client objects right client dot right.
+
+00:41:00.000 --> 00:41:08.000
+Welcome to my awesome server. So this is a message in text that's going to get sent back to the client.
+
+00:41:08.000 --> 00:41:14.000
+Just after a connection is made.
+
+00:41:14.000 --> 00:41:16.000
+Cool.
+
+00:41:16.000 --> 00:41:21.000
+That's the server, let's rerun it.
+
+00:41:21.000 --> 00:41:23.000
+So it was listening.
+
+00:41:23.000 --> 00:41:28.000
+We don't have anything to connect to it.
+
+00:41:28.000 --> 00:41:39.000
+So, we'll stop it for now. Go back here. Now, let's write our client.
+
+00:41:39.000 --> 00:41:47.000
+So, with regard to lines that we need to bring in on our client side.
+
+00:41:47.000 --> 00:41:48.000
+This one should look familiar.
+
+00:41:48.000 --> 00:42:03.000
+Constant net equal require net. Right. Basically this is just bringing in functionality into our node program that allows us to leverage the Internet TCP IP stack stuff.
+
+00:42:03.000 --> 00:42:20.000
+Similarly, we need to have a port number that the client is going to send out to the server and say, there's a particular port on the server that I would like to connect to it just so happens to be 1008.
+
+00:42:20.000 --> 00:42:30.000
+Right. We've agreed between the client and the server that that's the port number that's going to be used on the server.
+
+00:42:30.000 --> 00:42:32.000
+Okay.
+
+00:42:32.000 --> 00:42:36.000
+Next up,
+
+00:42:36.000 --> 00:42:41.000
+with our net object.
+
+00:42:41.000 --> 00:42:49.000
+We're going to create a client object within this program.
+
+00:42:49.000 --> 00:42:52.000
+In fact, this whole program is the client.
+
+00:42:52.000 --> 00:42:53.000
+Right.
+
+00:42:53.000 --> 00:42:58.000
+And so when we say that that this is what we mean we're building a client.
+
+00:42:58.000 --> 00:43:03.000
+From the net object that we've pulled in here.
+
+00:43:03.000 --> 00:43:10.000
+We've got net dot create connection this time.
+
+00:43:10.000 --> 00:43:15.000
+So when we run this create connection. That's a factory function.
+
+00:43:15.000 --> 00:43:27.000
+And let's take a look at what this factory function is going to produce for us, here's the one parameter to the Create connection function call.
+
+00:43:27.000 --> 00:43:38.000
+If I cut that part out I see that I have a syntactically correct function call to the Create connection function that is defined on the net object, right, it takes one parameter.
+
+00:43:38.000 --> 00:43:50.000
+I'll paste that parameter back in that one parameter is an object
+
+00:43:50.000 --> 00:44:00.000
+of it asks, Are sorry going back to the question when server back on will be true.
+
+00:44:00.000 --> 00:44:09.000
+When will serve it on be executed. So this is a question about the server code server on
+
+00:44:09.000 --> 00:44:11.000
+in this file.
+
+00:44:11.000 --> 00:44:17.000
+Right. Every line is executed in order.
+
+00:44:17.000 --> 00:44:19.000
+The net object is.
+
+00:44:19.000 --> 00:44:34.000
+It is initialized the port variable is initialized the server runs a net creates server this line runs brings back to us a server object right server.on runs right away there.
+
+00:44:34.000 --> 00:44:36.000
+Right.
+
+00:44:36.000 --> 00:44:41.000
+What this does is it sets up a.
+
+00:44:41.000 --> 00:44:52.000
+This is a function that sets up an event listener right it has a synchronous implications, this line of code. Right.
+
+00:44:52.000 --> 00:45:05.000
+Basically what it's saying is, the event loop should run and continuously listen for connections, when that connection is made, that's when the callback is called, but this line line 18 run straight away.
+
+00:45:05.000 --> 00:45:20.000
+Right. And then finally, like, by the way, none of this callback code gets run right away, right, there's only gets run it when a connection is made, but as the file is being gone through the first time line 18 runs and it sets up the event listener,
+
+00:45:20.000 --> 00:45:23.000
+that's the important part of that. Right.
+
+00:45:23.000 --> 00:45:41.000
+Similarly down here, server dot Listen, this is setting up the thing listening to the connections at all. Yeah. Okay, so that's how the server works similar sort of thing is going on with the client code, by the way,
+
+00:45:41.000 --> 00:45:49.000
+I think. Our next question is going to be answered by the following description.
+
+00:45:49.000 --> 00:45:53.000
+I'm writing, two different pieces of software here.
+
+00:45:53.000 --> 00:46:00.000
+Both are going to be running simultaneously. Right. server.js contains the back end server.
+
+00:46:00.000 --> 00:46:06.000
+Right, we run it, it sits there and listens for connections.
+
+00:46:06.000 --> 00:46:13.000
+Separately, in a different file. I'm going to run another program.
+
+00:46:13.000 --> 00:46:24.000
+I'm going to be typing node and then their respective file names twice in separate terminals. Right. Both are going to be running on my machine to start with.
+
+00:46:24.000 --> 00:46:27.000
+So when I run client.js.
+
+00:46:27.000 --> 00:46:37.000
+Right. I get the require net, one that runs, I get the 8008 port number, being set up.
+
+00:46:37.000 --> 00:46:41.000
+Then I run this function create connection.
+
+00:46:41.000 --> 00:46:50.000
+net dot create connection. Yes, it this create connection function is defined inside the net object.
+
+00:46:50.000 --> 00:47:02.000
+So dynamic asks, Are factory functions built into JavaScript. I would say that this particular function create connection is defined within load.
+
+00:47:02.000 --> 00:47:06.000
+Because the net package is built into node.
+
+00:47:06.000 --> 00:47:09.000
+So when you're using node.
+
+00:47:09.000 --> 00:47:13.000
+You get the net package, and the net package.
+
+00:47:13.000 --> 00:47:19.000
+You know, builds us this object. This object has create connection to find on it.
+
+00:47:19.000 --> 00:47:30.000
+Let's look at that function, by the way, I'm only calling it a factory function. That's just like a, like a kind of name that you can have for this kind of a function.
+
+00:47:30.000 --> 00:47:37.000
+In general, it's not a particularly technical phrase. It just means it's a function that's building a thing for us.
+
+00:47:37.000 --> 00:47:41.000
+The same way that a factory would build a widget for us right.
+
+00:47:41.000 --> 00:47:45.000
+So, with this create connection function.
+
+00:47:45.000 --> 00:47:48.000
+Notice the parameter that it takes is an object.
+
+00:47:48.000 --> 00:47:49.000
+Right.
+
+00:47:49.000 --> 00:47:54.000
+And inside that object we find some properties.
+
+00:47:54.000 --> 00:48:01.000
+The property. here is the port number and the host.
+
+00:48:01.000 --> 00:48:08.000
+The host happens to be a very special host name, local host.
+
+00:48:08.000 --> 00:48:22.000
+So, local host is the agreed upon name for this very computer that the system is running on.
+
+00:48:22.000 --> 00:48:28.000
+Right. If I use the name local host, it means me.
+
+00:48:28.000 --> 00:48:35.000
+If I send this code to you and have you run it on your end.
+
+00:48:35.000 --> 00:48:45.000
+Then, when you say local host over there, it means your computer, not mine.
+
+00:48:45.000 --> 00:49:01.000
+Cassius, will we always use node in the industry. Are there any other jazz programs we may run into node is JavaScript for the back end.
+
+00:49:01.000 --> 00:49:05.000
+So we're writing code that's running on the back end here.
+
+00:49:05.000 --> 00:49:16.000
+Um. That's what node is, is it's the ability to use JavaScript on your local computer.
+
+00:49:16.000 --> 00:49:23.000
+That's to be contrasted with JavaScript that runs in a browser.
+
+00:49:23.000 --> 00:49:27.000
+The web browser has its own version of JavaScript.
+
+00:49:27.000 --> 00:49:33.000
+Right. And we're going to learn both throughout this boot camp.
+
+00:49:33.000 --> 00:49:35.000
+Good.
+
+00:49:35.000 --> 00:49:43.000
+So that's our line of code so far right we've got the requirement package. We've got the 8008 port number.
+
+00:49:43.000 --> 00:49:54.000
+We've got client objects that are being created from net create connection, we're connecting to a certain part number on a certain computer.
+
+00:49:54.000 --> 00:50:04.000
+Right, just so happens that we're naming that computer. We're, we're identifying the particular computer that we want to connect to, as local host.
+
+00:50:04.000 --> 00:50:14.000
+In the future, you could change this thing to be something like example, calm, and instead of connecting to your own computer.
+
+00:50:14.000 --> 00:50:17.000
+It's going to connect to some other computer out on the internet.
+
+00:50:17.000 --> 00:50:27.000
+Right. And the only change that you will have needed to have made to your code is to just change the destination computer name here.
+
+00:50:27.000 --> 00:50:34.000
+And then everything else is going to be functional.
+
+00:50:34.000 --> 00:50:45.000
+That's how coding on the internet works, right, like, where I specify local hosts now that's just because I'm testing it on one computer.
+
+00:50:45.000 --> 00:50:57.000
+But by changing this one name. I can now write code that can connect any system on the internet and will will actually do that today.
+
+00:50:57.000 --> 00:50:59.000
+It's pretty cool.
+
+00:50:59.000 --> 00:51:12.000
+OK, so our client will come to life, our client will get created, it will make a connection to Port 8008 on local host.
+
+00:51:12.000 --> 00:51:17.000
+And
+
+00:51:17.000 --> 00:51:21.000
+you know what let's leave it at that. Just for now.
+
+00:51:21.000 --> 00:51:25.000
+And what I'm going to do is bring up my terminal.
+
+00:51:25.000 --> 00:51:32.000
+Right. Here's my server servers listening on port. 8008.
+
+00:51:32.000 --> 00:51:42.000
+I'm going to hit command tab bring up a second terminal window right you see the second tab is opened over here. You know how you do that in your web browser you can bring up a second tab.
+
+00:51:42.000 --> 00:51:45.000
+The same thing works on your terminal program, usually.
+
+00:51:45.000 --> 00:51:52.000
+Here I am on the server tab. Now I brought up a second terminal over here.
+
+00:51:52.000 --> 00:52:01.000
+And in this side, I'm going to go node client thought jazz and run that second file as a separate program now. Right.
+
+00:52:01.000 --> 00:52:09.000
+So no client. js, sorry node space clients I've just to run that thing. I execute the code.
+
+00:52:09.000 --> 00:52:12.000
+Now this one is running the client is running.
+
+00:52:12.000 --> 00:52:15.000
+If I go back to my server terminal.
+
+00:52:15.000 --> 00:52:20.000
+Notice the message that I got client is connected.
+
+00:52:20.000 --> 00:52:25.000
+Right. That was the message that we see console log.
+
+00:52:25.000 --> 00:52:33.000
+Whenever a connection event occurred because we set up an event listener here.
+
+00:52:33.000 --> 00:52:42.000
+Right there it is, there's our event listener for when the connection event occurs. And it console logs client is connected.
+
+00:52:42.000 --> 00:52:51.000
+Just as soon as that event has happened. And so that's why you're seeing this text here as output.
+
+00:52:51.000 --> 00:52:52.000
+Okay.
+
+00:52:52.000 --> 00:52:59.000
+You know, that's a lot to consumed in the last hour, right, we learned how the internet works.
+
+00:52:59.000 --> 00:53:02.000
+We learned about client and server pairs.
+
+00:53:02.000 --> 00:53:08.000
+And we wrote one from scratch using node right we've got two separate programs.
+
+00:53:08.000 --> 00:53:12.000
+the server here, and the client here.
+
+00:53:12.000 --> 00:53:21.000
+Not very interesting servers and clients, except that it's like the completely fundamental thing just grown from scratch like that.
+
+00:53:21.000 --> 00:53:22.000
+Right.
+
+00:53:22.000 --> 00:53:40.000
+So what we're going to do is take a break for 10 minutes, and when we come back, we're going to keep coding and flesh out this server client pair, so that it does the stuff that we want it to do a chat system.
+
+00:53:40.000 --> 00:53:51.000
+Jeffrey asks a question. So if we change connection to something else, it wouldn't print. That's true. You wouldn't be listening to the connection.
+
+00:53:51.000 --> 00:53:55.000
+Events anymore. Right. And so when I fire up the client server would not respond to the client Connect.
+
+00:53:55.000 --> 00:54:08.000
+The server would not respond to the client Connect. Good. All right, I'm going to bring up our 10 minute counter.
+
+00:54:08.000 --> 00:54:22.000
+Since it's the middle of the week, I'm like, in a bit of a non mood. So this will be 10 minutes of non being baked up on a frying pan for you to watch while we watch this 10 minute counter countdown.
+
+00:54:22.000 --> 00:54:30.000
+And yeah, let's reconvene here in when those 10 minutes are up.
+
+00:54:30.000 --> 00:55:00.000
+See you all soon.
+
+00:57:01.000 --> 00:57:06.000
+I don't know if people can see what I'm up to at the moment but I'm just walking back to my other cabin.
+
+00:57:06.000 --> 00:57:08.000
+I can show you my internet connection here.
+
+00:57:08.000 --> 00:57:11.000
+Yeah, there you go.
+
+00:57:11.000 --> 00:57:15.000
+The coaxial cable, like that.
+
+00:57:15.000 --> 00:57:27.000
+That goes through the air up the tree right there.
+
+00:57:27.000 --> 00:57:41.000
+And then it goes way up to the top of that tree where there's an antenna, way up at the top, connect to the internet.
+
+00:57:41.000 --> 00:57:47.000
+Yeah, there is. That tree right there.
+
+00:57:47.000 --> 00:57:51.000
+Why
+
+00:57:51.000 --> 00:57:57.000
+I'm just changing venues because we have one less dog over in this little cabin here instead.
+
+00:57:57.000 --> 00:58:06.000
+I'll get set up and see you and when the break is done.
+
+00:58:06.000 --> 00:58:36.000
+I'm pretty sure it's not a contest Russell here.
+
+01:00:46.000 --> 01:00:51.000
+So I'm going to come back just a little bit early.
+
+01:00:51.000 --> 01:00:56.000
+Yeah, Russell no problem of course it's a joke or something a little bit of fun here this morning right.
+
+01:00:56.000 --> 01:01:03.000
+Robert, I see your hand. Raise Do you have a question.
+
+01:01:03.000 --> 01:01:06.000
+So I was just typing I must have accidentally.
+
+01:01:06.000 --> 01:01:08.000
+No problem at all.
+
+01:01:08.000 --> 01:01:16.000
+Yeah. Today's kind of a pivotal day right I mean, we're learning so many fundamentals about how the internet works and client and server pairs and stuff like that.
+
+01:01:16.000 --> 01:01:27.000
+Homes I see the comment that you're a bit lost in the code. Not to worry, We're going to do a bit of a review of what we've done so far.
+
+01:01:27.000 --> 01:01:43.000
+And then I would encourage you to to really understand what we've got going on here because you know, much like everything else in the boot camp Up to now, right, we're dealing with fundamentals and if you can get these fundamentals down.
+
+01:01:43.000 --> 01:01:48.000
+Then the things that come next are going to be that much easier. Yeah.
+
+01:01:48.000 --> 01:01:57.000
+Will there be another breakout class, I don't believe that there will be no, I think this today this is it, it's going to be a lot of compass today.
+
+01:01:57.000 --> 01:02:11.000
+And, yeah, I mean, we could talk a bit about strategies for how to learn this amount of material this quickly.
+
+01:02:11.000 --> 01:02:15.000
+Yeah mentors are fine. Right.
+
+01:02:15.000 --> 01:02:22.000
+but I will do a bit of a review here, just as we kick back in.
+
+01:02:22.000 --> 01:02:28.000
+Yeah, I mean, having very recently learned about a synchronous code.
+
+01:02:28.000 --> 01:02:49.000
+Right. This is now an application of asynchronous code you're, you're seeing why you were learning about how a secret is code works.
+
+01:02:49.000 --> 01:03:12.000
+Yeah. Sleep, sleep helps if you can get it.
+
+01:03:12.000 --> 01:03:19.000
+You know, Russell I'd be interested to hear why, why do you think this class in particular, I guess, because it's so pivotal.
+
+01:03:19.000 --> 01:03:27.000
+Yeah, we'll have to I mean I'm happy to do an impromptu chat, at some point, if we want to do this.
+
+01:03:27.000 --> 01:03:42.000
+Just to review how the code is holding together, you know I do appreciate the comments and questions and attention, you know, it really helps for us to know where you're at, where is this stuff land and I think you'll find that a lot of it comes together,
+
+01:03:42.000 --> 01:03:54.000
+as you write your own right, like, as you make your own code and as you make your own bugs and fix your own bugs and whatever that's obviously a big part of of learning this stuff.
+
+01:03:54.000 --> 01:03:57.000
+Yeah.
+
+01:03:57.000 --> 01:04:03.000
+Okay, I have switched venues, you may notice, this one is got one less dog in it.
+
+01:04:03.000 --> 01:04:06.000
+And
+
+01:04:06.000 --> 01:04:22.000
+let's proceed, let's jump back in, please. Now is a good time to turn on your video cameras, so that I'm not talking to a wall of black.
+
+01:04:22.000 --> 01:04:29.000
+Thank you for that. It allows me to do things like you know the thumbs up, thumbs down polls. Right.
+
+01:04:29.000 --> 01:04:31.000
+Okay.
+
+01:04:31.000 --> 01:04:40.000
+So, back to the code. Let's do a review, shall we have what we've achieved.
+
+01:04:40.000 --> 01:05:01.000
+We haven't written very many lines of code but these lines of code certainly pack a wall up. Yeah, we've got this line of code, by the way, let's just take one step back, we're writing, two different files, one file for server.js.
+
+01:05:01.000 --> 01:05:04.000
+And the other file client. js.
+
+01:05:04.000 --> 01:05:20.000
+Because, as you heard this morning, so much about the internet, and the software that runs on the internet that uses the internet as its communication medium is built as client server pairs.
+
+01:05:20.000 --> 01:05:26.000
+We could have been writing an email exchange client server pair.
+
+01:05:26.000 --> 01:05:30.000
+We could have been writing a File Transfer Protocol client server pair.
+
+01:05:30.000 --> 01:05:37.000
+Right. We could have been writing a gopher client server pair. This is like a predecessor of the web.
+
+01:05:37.000 --> 01:05:42.000
+Before 1991.
+
+01:05:42.000 --> 01:05:47.000
+We're actually going to write a chat server client server pair.
+
+01:05:47.000 --> 01:05:50.000
+Right. We're not even writing a web server yet.
+
+01:05:50.000 --> 01:06:01.000
+We're just showing how messages are getting handed back and forth between client and server, and so we need to separate files, one to be the server, the other one to be the client.
+
+01:06:01.000 --> 01:06:06.000
+Here's the server. Here's the client.
+
+01:06:06.000 --> 01:06:18.000
+When it comes to actually running this software, right, I'm gonna bring my terminal up, I have two separate terminal tabs open here. Right. One is the server, I hit control see to end it.
+
+01:06:18.000 --> 01:06:24.000
+Here's the client that one ended when the server ended.
+
+01:06:24.000 --> 01:06:30.000
+So here we have the two ready to go.
+
+01:06:30.000 --> 01:06:44.000
+Alright, let's review what happens when we run server.js, right, first up we require the net package, which brings in a bunch of net functionality.
+
+01:06:44.000 --> 01:06:48.000
+A bunch of internet code that we can leverage.
+
+01:06:48.000 --> 01:06:53.000
+The second line is we establish a port number. This is actually just an integer being assigned to a variable.
+
+01:06:53.000 --> 01:06:56.000
+Pretty straightforward. Yeah.
+
+01:06:56.000 --> 01:07:10.000
+Okay. Next up, there's a lot of magic that goes on in this next line. We are taking that net objects that we brought in from before. And there's a function that's defined on it called create server.
+
+01:07:10.000 --> 01:07:12.000
+Fine.
+
+01:07:12.000 --> 01:07:19.000
+We run that, and we take whatever object is returned from that process and put it into our own variable called server.
+
+01:07:19.000 --> 01:07:20.000
+Right.
+
+01:07:20.000 --> 01:07:23.000
+That is an object.
+
+01:07:23.000 --> 01:07:36.000
+Right, I can tell it's an object because of how it's used down here, server.on, the dot syntax is something that I do with objects, right.
+
+01:07:36.000 --> 01:07:43.000
+So, server on on is a function that's defined on that object
+
+01:07:43.000 --> 01:07:48.000
+that function takes two parameters
+
+01:07:48.000 --> 01:08:05.000
+and event type connection in this case, and a callback that will be executed, if that event occurs.
+
+01:08:05.000 --> 01:08:11.000
+What is going to happen when a connection event happens well it's going to run this callback.
+
+01:08:11.000 --> 01:08:16.000
+What would that callback do at that time.
+
+01:08:16.000 --> 01:08:18.000
+Right now, it's doing.
+
+01:08:18.000 --> 01:08:29.000
+Just two things. It's going to console log that the connection happened. That's kind of useful for debugging, right, just to know that it occurred. It's informational.
+
+01:08:29.000 --> 01:08:44.000
+And then the next thing is it's going to write a message to the client. Welcome to my awesome server, we have not yet seen this happen, because our client has not been written to receive that message, we're going to do that next.
+
+01:08:44.000 --> 01:08:48.000
+And then finally, the server actually needs to be set up to listen.
+
+01:08:48.000 --> 01:09:01.000
+And so that's the last slide of our code server dot listen. The port is the first parameter and a call back that's run when the listening is up successfully.
+
+01:09:01.000 --> 01:09:07.000
+That gets run whenever the listening has started.
+
+01:09:07.000 --> 01:09:21.000
+So sure, let's run this right when I run the server here I am on the server side of things, right, I'm going to go node server. js and run it, and sure enough, server is listening.
+
+01:09:21.000 --> 01:09:27.000
+Now we also have that event handler, the connection event handler is also there.
+
+01:09:27.000 --> 01:09:30.000
+It just hasn't fired yet because no connections been made yet.
+
+01:09:30.000 --> 01:09:36.000
+Right, it's just sitting there listening, listening, listening, no connection connection connection connection.
+
+01:09:36.000 --> 01:09:44.000
+Okay, now let's go back and look at the client code
+
+01:09:44.000 --> 01:09:47.000
+on the client side of things.
+
+01:09:47.000 --> 01:09:55.000
+We've got the require the net package because yeah, we're going to be leveraging a lot of internet style code.
+
+01:09:55.000 --> 01:09:59.000
+We've got the port number being stored in a variable.
+
+01:09:59.000 --> 01:10:01.000
+We're going to use that.
+
+01:10:01.000 --> 01:10:16.000
+And then, Now, we have net dot create connection. This is a different kind of a function that we're executing it takes a config object as a parameter,
+
+01:10:16.000 --> 01:10:35.000
+where we specify the particular kind of connection that we're making here i that is, to which port, are we connecting on which computer. Are we connecting with those two things specified as part of this connection object we pass that into this function
+
+01:10:35.000 --> 01:10:37.000
+here.
+
+01:10:37.000 --> 01:10:42.000
+And we get back a client object.
+
+01:10:42.000 --> 01:10:45.000
+Right.
+
+01:10:45.000 --> 01:10:50.000
+The very next thing that I want to do
+
+01:10:50.000 --> 01:10:57.000
+is start adding some more event listeners to the client.
+
+01:10:57.000 --> 01:11:06.000
+So here's one client.on Connect.
+
+01:11:06.000 --> 01:11:16.000
+Here is the callback that gets called when the Connect event fires.
+
+01:11:16.000 --> 01:11:21.000
+Now, This event, it's different from connection.
+
+01:11:21.000 --> 01:11:26.000
+Right. This is connect, and it's a different word.
+
+01:11:26.000 --> 01:11:32.000
+This on function is defined on our client object.
+
+01:11:32.000 --> 01:11:48.000
+The client objects came back from a net create connection function call. This is different than what was going on over here on the server side on the server side we said, create server.
+
+01:11:48.000 --> 01:11:59.000
+And so the object that came back, had a different set of events that it's listening for servers, listen, listen for server side of it.
+
+01:11:59.000 --> 01:12:12.000
+Clients list, listen for client side connects and on the client side, there's this event called connect that we have access to.
+
+01:12:12.000 --> 01:12:17.000
+So, client.on Connect run this call back.
+
+01:12:17.000 --> 01:12:22.000
+That's what this line of code sets up for us.
+
+01:12:22.000 --> 01:12:28.000
+And so now we have a function that's going to console log client is connected to server.
+
+01:12:28.000 --> 01:12:35.000
+If it's successfully managed to make the connection, this is going to happen.
+
+01:12:35.000 --> 01:12:37.000
+Okay.
+
+01:12:37.000 --> 01:12:44.000
+Let's bring in another event listener on the client side.
+
+01:12:44.000 --> 01:12:51.000
+client.on data.
+
+01:12:51.000 --> 01:13:13.000
+If there's a data event on the client side, then run this call back, but you can see the pattern here right it's like client.on event name callback that gets executed when that event occurs.
+
+01:13:13.000 --> 01:13:18.000
+Yeah. So, this callback takes a parameter called message.
+
+01:13:18.000 --> 01:13:26.000
+And so we have console dot log server sent a message.
+
+01:13:26.000 --> 01:13:35.000
+This is how our client receives messages from the server.
+
+01:13:35.000 --> 01:13:40.000
+A data event will fire.
+
+01:13:40.000 --> 01:13:48.000
+And therefore, run this call back.
+
+01:13:48.000 --> 01:14:01.000
+Okay, you know what, with those two event listeners on our chat client, written in. Now, let's run the code again and see what happens. Our servers already running.
+
+01:14:01.000 --> 01:14:02.000
+Right.
+
+01:14:02.000 --> 01:14:08.000
+So we'll go to the client side note, client.js, run it.
+
+01:14:08.000 --> 01:14:11.000
+Haha.
+
+01:14:11.000 --> 01:14:20.000
+Now we're seeing some stuff fire on the client side, We have client is connected to server.
+
+01:14:20.000 --> 01:14:29.000
+Okay, hold on, let me celebrate that.
+
+01:14:29.000 --> 01:14:36.000
+I wanted to do one of these reactions can you guys celebrate it for me I need a little party reaction.
+
+01:14:36.000 --> 01:14:38.000
+Okay. Two thumbs up works for me.
+
+01:14:38.000 --> 01:14:40.000
+There we go, Cassie found it.
+
+01:14:40.000 --> 01:14:50.000
+Let me can found it. I found it. Cool. Thank you, all of those of you who don't have your webcam on for celebrating along with us, we've we have heard from you now.
+
+01:14:50.000 --> 01:15:03.000
+Good. So client is connected to server yeah right we made our connection, we can see So, because in the code. This ran this callback ran.
+
+01:15:03.000 --> 01:15:05.000
+When the connection was made.
+
+01:15:05.000 --> 01:15:11.000
+Furthermore, on the server side. And when the connection was made.
+
+01:15:11.000 --> 01:15:16.000
+We saw
+
+01:15:16.000 --> 01:15:19.000
+client is connected.
+
+01:15:19.000 --> 01:15:24.000
+That was this line here that ran on the server side.
+
+01:15:24.000 --> 01:15:37.000
+And then you can see the very next line that's going to execute. Is this one client dot right. Welcome to my awesome server. This was a message that was sent.
+
+01:15:37.000 --> 01:15:40.000
+Okay,
+
+01:15:40.000 --> 01:15:43.000
+on the client side.
+
+01:15:43.000 --> 01:15:49.000
+That, in turn, triggered this data event.
+
+01:15:49.000 --> 01:15:55.000
+Because if we look at the output on the clients console.
+
+01:15:55.000 --> 01:16:04.000
+It picks up this callback server sent such and such.
+
+01:16:04.000 --> 01:16:17.000
+So, let's look on the client side server sent buffer 5765 six see 60 right these are the.
+
+01:16:17.000 --> 01:16:22.000
+This is the message that came back, it's looking a little bit encoded.
+
+01:16:22.000 --> 01:16:23.000
+At this point, isn't it.
+
+01:16:23.000 --> 01:16:25.000
+Right.
+
+01:16:25.000 --> 01:16:30.000
+It's not, it's not been decoded very well.
+
+01:16:30.000 --> 01:16:39.000
+We do have one line that we need to add in order to make this decode a bit better. So let's do that. I'm going to kill the client and server programs.
+
+01:16:39.000 --> 01:16:42.000
+I'm going to go back to the code.
+
+01:16:42.000 --> 01:16:45.000
+And on the client side.
+
+01:16:45.000 --> 01:16:50.000
+I want to run this line as part of this program.
+
+01:16:50.000 --> 01:17:01.000
+Remember client is the objects that came back to us when we ran net create connection, and it was configured with this config object.
+
+01:17:01.000 --> 01:17:14.000
+What you can do is run a line of code that says client dot set encoding to UCF eight.
+
+01:17:14.000 --> 01:17:26.000
+So UT if he has anyone heard of ASCII ask is another much older character encoding.
+
+01:17:26.000 --> 01:17:38.000
+Let's just see here, UCF eight is two bytes per character whereas ASCII is one bite per character UTF eight is actually an encoding.
+
+01:17:38.000 --> 01:17:45.000
+That allows you to put emoticons into your text.
+
+01:17:45.000 --> 01:17:49.000
+It's a variable with character encoding used for electronic communication.
+
+01:17:49.000 --> 01:17:56.000
+It's a way of storing letters as bites.
+
+01:17:56.000 --> 01:18:02.000
+And so when a bite comes across that bite might mean the letter A.
+
+01:18:02.000 --> 01:18:05.000
+It might mean the digit one.
+
+01:18:05.000 --> 01:18:08.000
+It might mean, who emoji.
+
+01:18:08.000 --> 01:18:09.000
+Right.
+
+01:18:09.000 --> 01:18:20.000
+Like, it actually UTV has all the international languages that are encoded into the internet available.
+
+01:18:20.000 --> 01:18:35.000
+All of the letters with accents and whatever else. So if you have ut f8 encoding, you're well on your way in order to be able to build systems that can function with, with most of the human languages.
+
+01:18:35.000 --> 01:18:36.000
+Right.
+
+01:18:36.000 --> 01:18:40.000
+Which is excellent.
+
+01:18:40.000 --> 01:18:56.000
+I once had a chance to write a website that worked in a knock to tuck, which was awesome, right, that would happen to not be built into the system and we had to import the character sets and whatnot, but UTA to the rescue we were able to build a website
+
+01:18:56.000 --> 01:19:05.000
+that had native and knock to tuck characters in the website itself. Wicked.
+
+01:19:05.000 --> 01:19:09.000
+Okay, back to the code
+
+01:19:09.000 --> 01:19:13.000
+UTFH encoding. Okay, now let's restart our systems.
+
+01:19:13.000 --> 01:19:18.000
+I'm going to start the server first.
+
+01:19:18.000 --> 01:19:24.000
+Then I'm going to go back and start up the client.
+
+01:19:24.000 --> 01:19:27.000
+That's better.
+
+01:19:27.000 --> 01:19:36.000
+Now because it's using UCF eight encoding, now that it knows it's using YouTube eight encoder
+
+01:19:36.000 --> 01:19:40.000
+server sent. Welcome to my awesome server.
+
+01:19:40.000 --> 01:19:55.000
+Right. Oh, goodness, I'm getting power bumps, because of the wind, I don't know if you guys are experiencing, I'm out on the West Coast we're in the middle of a windstorm if all this comes tumbling down, you'll know what happened, it probably wasn't the
+
+01:19:55.000 --> 01:20:02.000
+tree falling over but the power going out. I promise to pick up the pace from wherever we left off.
+
+01:20:02.000 --> 01:20:05.000
+And I will send out the sample code as soon as I'm able.
+
+01:20:05.000 --> 01:20:15.000
+In fact, the sample code is out, just do get pull on your repository you'll have all this code yourself.
+
+01:20:15.000 --> 01:20:22.000
+Yes, I will show you the site. Later, it's Canadian North airlines.
+
+01:20:22.000 --> 01:20:34.000
+Okay, so server JSJS That's right, a bit more of this into it, we're almost done the server as the client actually as you can see here,
+
+01:20:34.000 --> 01:20:41.000
+we need two more things out of our client.
+
+01:20:41.000 --> 01:20:45.000
+One is an event listener on.
+
+01:20:45.000 --> 01:20:59.000
+And so, if the server disconnects that's going to send an event to the client that's called end. And then the end can say yeah, I'm disconnecting and then do its thing.
+
+01:20:59.000 --> 01:21:08.000
+So we'll just actually just grab that. If the end event fires we're going to write out client disconnected from server.
+
+01:21:08.000 --> 01:21:16.000
+And then one last piece of the puzzle on the client side is this.
+
+01:21:16.000 --> 01:21:25.000
+Now, notice that our on function is going to be on process standard in.
+
+01:21:25.000 --> 01:21:31.000
+Now we're listening for an event, not within the client object.
+
+01:21:31.000 --> 01:21:38.000
+But whether or not the user has typed something into the terminal.
+
+01:21:38.000 --> 01:21:44.000
+So with process standard in.on data.
+
+01:21:44.000 --> 01:21:48.000
+This is a callback that's going to run.
+
+01:21:48.000 --> 01:21:56.000
+If I type something in hit enter.
+
+01:21:56.000 --> 01:21:59.000
+So, this callback.
+
+01:21:59.000 --> 01:22:12.000
+If I run my client that server node client. js, and then I start typing and hit enter. This event will fire this callback will run.
+
+01:22:12.000 --> 01:22:32.000
+And what will it do it's going to run client dot right message that is whatever I typed in is going to get sent via the client dot right function to the server.
+
+01:22:32.000 --> 01:22:47.000
+Okay, see a few nodding heads, we go back to server.js server.js needs to be set up so that it can receive that message on the server side.
+
+01:22:47.000 --> 01:22:56.000
+Now, one thing that you'll notice about this code is that on the server side.
+
+01:22:56.000 --> 01:23:02.000
+We do have reference to a client object.
+
+01:23:02.000 --> 01:23:05.000
+But on the server side.
+
+01:23:05.000 --> 01:23:14.000
+The client object came to us as a parameter to the callback on the connection event listener.
+
+01:23:14.000 --> 01:23:21.000
+Why, why is it set up this way do we think the reason is because for anyone server.
+
+01:23:21.000 --> 01:23:26.000
+I can have many clients connect to it.
+
+01:23:26.000 --> 01:23:34.000
+And every time a connection is made, I get a new client object.
+
+01:23:34.000 --> 01:23:42.000
+So, when it comes to listening for messages that are coming from an individual client.
+
+01:23:42.000 --> 01:23:51.000
+It's actually on that individual client object that I need to set up an event listener.
+
+01:23:51.000 --> 01:24:03.000
+Right. So for my server event listeners, like server not listen here or server not on connection right. Those are happening out at this level of the code.
+
+01:24:03.000 --> 01:24:12.000
+But when I set up something that's going to be client specific in code that's on the server side.
+
+01:24:12.000 --> 01:24:15.000
+I actually have to write.
+
+01:24:15.000 --> 01:24:28.000
+client.on. But over here. So, Let's start. For example, with
+
+01:24:28.000 --> 01:24:31.000
+this.
+
+01:24:31.000 --> 01:24:32.000
+Right.
+
+01:24:32.000 --> 01:24:46.000
+That is down inside the callback, where I get my handle on a particular client object, this is on the server side now right but I've just been given a new client connection.
+
+01:24:46.000 --> 01:24:56.000
+It is on that client object that I did client, right, to send a message to that one client.
+
+01:24:56.000 --> 01:25:04.000
+I'm also going to set up, client.on data that is when that client sends me a message.
+
+01:25:04.000 --> 01:25:11.000
+Then I want to run this call back here.
+
+01:25:11.000 --> 01:25:17.000
+Right client.on data callback.
+
+01:25:17.000 --> 01:25:33.000
+And so, this callback will run. Whenever I received a message from the client. What will it do its gonna say message received from client and then type out the message on to the console.
+
+01:25:33.000 --> 01:25:35.000
+Fair.
+
+01:25:35.000 --> 01:25:38.000
+So we'll save that will go back to the terminal.
+
+01:25:38.000 --> 01:25:42.000
+Let's restart everything.
+
+01:25:42.000 --> 01:25:50.000
+So here's the server running listening on 8008. Okay. Here comes the client, I'm going to run it.
+
+01:25:50.000 --> 01:26:01.000
+Okay, client connected to server, the server said, welcome to my awesome server because that's what we see that it did right on the server side we see client is connected.
+
+01:26:01.000 --> 01:26:07.000
+But we've set up the client now to be listening to standard input.
+
+01:26:07.000 --> 01:26:17.000
+And so I can type something like, you know, monkey foes rules say.
+
+01:26:17.000 --> 01:26:20.000
+Hit enter.
+
+01:26:20.000 --> 01:26:25.000
+And on the server side.
+
+01:26:25.000 --> 01:26:35.000
+We had that listener listening for its data event to fire when the data event fired on the server side from that client.
+
+01:26:35.000 --> 01:26:43.000
+It wrote out the console log message received from client monkey has rules. This was the stuff that I had typed on the client side.
+
+01:26:43.000 --> 01:26:45.000
+Right.
+
+01:26:45.000 --> 01:26:49.000
+I can type some more.
+
+01:26:49.000 --> 01:26:55.000
+It goes through the internet now
+
+01:26:55.000 --> 01:27:12.000
+between one program on my computer, through a thing called the loop back interface, which is a TCP IP layer where the message gets sent out onto the internet but really gets looped back to local host.
+
+01:27:12.000 --> 01:27:19.000
+It's leveraging all of that internet related stuff.
+
+01:27:19.000 --> 01:27:25.000
+I am programming for the internet. It's just that I'm only using one computer.
+
+01:27:25.000 --> 01:27:30.000
+It's making an internet connection to itself.
+
+01:27:30.000 --> 01:27:44.000
+Sending whatever I type here, I can type some more to the server program.
+
+01:27:44.000 --> 01:27:47.000
+Okay, so I see a few questions.
+
+01:27:47.000 --> 01:27:49.000
+Um.
+
+01:27:49.000 --> 01:27:52.000
+See that go back far enough.
+
+01:27:52.000 --> 01:28:00.000
+Donnie asks So what you're saying is that the client will only be connecting to one server. True, but the server may be connected to multiple clients.
+
+01:28:00.000 --> 01:28:05.000
+Yes, and we will do that, In fact, why don't we do it now.
+
+01:28:05.000 --> 01:28:10.000
+Let me start up another client. So I'm going to open up another terminal tab. Right.
+
+01:28:10.000 --> 01:28:17.000
+I hope that it will come back to me soon my computer's slow for some reason.
+
+01:28:17.000 --> 01:28:28.000
+Okay, here we are, node client.js runs client is connected to my server, the server sent Welcome to my awesome server. Here's the other client This is the place where I typed some stuff before.
+
+01:28:28.000 --> 01:28:31.000
+Right. If I go back to the server.
+
+01:28:31.000 --> 01:28:34.000
+It's saying again client is connected.
+
+01:28:34.000 --> 01:28:39.000
+Because a second client is connected to my server now.
+
+01:28:39.000 --> 01:28:51.000
+Right now I can go back to that new client, and I can type. This is the second client.
+
+01:28:51.000 --> 01:29:00.000
+Okay, I typed it, the server has been programmed to respond to that.
+
+01:29:00.000 --> 01:29:15.000
+Both clients are connected over the same port. Yes, that's true. By the way, that's the same way that a web server works right, a web server listens to Port 80 for unencrypted stuff or 4434 encrypted stuff over SSL.
+
+01:29:15.000 --> 01:29:28.000
+The server listens support at many many many web clients that is a browser can connect to that one server through that one port.
+
+01:29:28.000 --> 01:29:33.000
+Good.
+
+01:29:33.000 --> 01:29:47.000
+So dummy tasks. So if there were more than one client the parameter would be client one client to, well, if we go back to the server code right
+
+01:29:47.000 --> 01:29:52.000
+on connection, this callback is called.
+
+01:29:52.000 --> 01:29:56.000
+It's called the first time and client gets one value.
+
+01:29:56.000 --> 01:29:59.000
+It's one object.
+
+01:29:59.000 --> 01:30:05.000
+That same callback is called again when the second client. Connect.
+
+01:30:05.000 --> 01:30:09.000
+And so, it's called again, it's still called client.
+
+01:30:09.000 --> 01:30:15.000
+Inside this call back. It's just that the callbacks been called a second time.
+
+01:30:15.000 --> 01:30:19.000
+So it's going to be a different client object.
+
+01:30:19.000 --> 01:30:33.000
+That is, I will send client dot right. Welcome to my awesome server, a second time, but now to a different client object.
+
+01:30:33.000 --> 01:30:37.000
+How does the server know which client the message is coming from.
+
+01:30:37.000 --> 01:30:42.000
+Well, what we've done.
+
+01:30:42.000 --> 01:30:52.000
+This is a very asynchronous thing, right, you're sitting you're queuing stuff to occur on the event loop, after the code has been run.
+
+01:30:52.000 --> 01:30:55.000
+And then the event loop runs.
+
+01:30:55.000 --> 01:30:59.000
+Each of these objects as they come in.
+
+01:30:59.000 --> 01:31:07.000
+are having event listeners attached to them. this event listener was attached to a client object twice.
+
+01:31:07.000 --> 01:31:16.000
+Right. The first client object came in, that's an object that's getting stored in memory, we're attaching an event listener to it.
+
+01:31:16.000 --> 01:31:36.000
+When the second client connects this callback is run again. Now we have a new object that new object is having this callback attached to it as a data event listener to that second object as well.
+
+01:31:36.000 --> 01:31:41.000
+Both of those objects are now stored in memory.
+
+01:31:41.000 --> 01:31:58.000
+And if my second client sends a message. It's gonna fire the event, the data event on the second object, and therefore, get message received from client and so on.
+
+01:31:58.000 --> 01:32:08.000
+We're actually going to write some more code here, so that the server side can distinguish between those two clients with a text name.
+
+01:32:08.000 --> 01:32:21.000
+Right. We're going to write some code that allows us to attach a name to each individual text human readable name. We're going to do that step next, but for now, it's actually functioning.
+
+01:32:21.000 --> 01:32:28.000
+It's just that we don't have any output on our terminal, that says who the message is coming from.
+
+01:32:28.000 --> 01:32:32.000
+But the server remembers which object.
+
+01:32:32.000 --> 01:32:35.000
+It's firing on
+
+01:32:35.000 --> 01:32:41.000
+that will become a little more clear perhaps as we go.
+
+01:32:41.000 --> 01:32:48.000
+So we would have to create a new ID number manually for each client. Yeah. And we're actually going to do that next.
+
+01:32:48.000 --> 01:32:54.000
+So, let's let's proceed to to improving our code a little bit more.
+
+01:32:54.000 --> 01:32:57.000
+Yeah.
+
+01:32:57.000 --> 01:33:10.000
+Right, so I'm going to go back, if I actually if I quit the server here. Watch what happens on the client sides client disconnected from server is a message that gets.
+
+01:33:10.000 --> 01:33:27.000
+It's an event that fires, remember client end that was happening on the client side, and so we got client disconnected. I'm going to actually just quit from each of these control, control C control see out of my clients.
+
+01:33:27.000 --> 01:33:32.000
+Okay and then we'll come back and will rerun these after we've made some improvements to the server.
+
+01:33:32.000 --> 01:33:36.000
+Okay. So back to the code.
+
+01:33:36.000 --> 01:33:38.000
+server.js.
+
+01:33:38.000 --> 01:33:48.000
+Yeah. What we're going to do is up here at the top level of the code, we're going to make an array.
+
+01:33:48.000 --> 01:33:55.000
+And this array is going to be called connected clients.
+
+01:33:55.000 --> 01:33:58.000
+Fine.
+
+01:33:58.000 --> 01:34:04.000
+When a connection is made this call backfires.
+
+01:34:04.000 --> 01:34:06.000
+Right.
+
+01:34:06.000 --> 01:34:08.000
+Okay.
+
+01:34:08.000 --> 01:34:11.000
+When any new client connects.
+
+01:34:11.000 --> 01:34:16.000
+One of the first things that we're going to do is
+
+01:34:16.000 --> 01:34:25.000
+push that client object on to our connected clients array.
+
+01:34:25.000 --> 01:34:39.000
+That way we'll have an array that we can loop over to send messages to all of our clients say if we wanted to do that.
+
+01:34:39.000 --> 01:34:52.000
+We're going to set the encoding to UCF aids here as well. In fact, we've been getting away without it because the client had it set on the other side.
+
+01:34:52.000 --> 01:34:58.000
+Maybe it only needs to be set in one place, I'm happy to set it in both places.
+
+01:34:58.000 --> 01:34:59.000
+Okay.
+
+01:34:59.000 --> 01:35:05.000
+Now, We've seen before what is happening.
+
+01:35:05.000 --> 01:35:10.000
+When we go client.on data. Right.
+
+01:35:10.000 --> 01:35:19.000
+That is when an individual client sends a message to us all we've been doing is writing out message received from client.
+
+01:35:19.000 --> 01:35:21.000
+Right.
+
+01:35:21.000 --> 01:35:29.000
+What I'd like to do next, whenever we receive a message from an individual client.
+
+01:35:29.000 --> 01:35:34.000
+I would like to turn around and send that message to all the connected clients.
+
+01:35:34.000 --> 01:35:43.000
+Right. That way when client one types in the thing that's going to go to the server, the server is going to say, Oh, I got a message from this client.
+
+01:35:43.000 --> 01:35:50.000
+I need to send it back to everybody, so that everybody can see what was sent into the server.
+
+01:35:50.000 --> 01:35:54.000
+Right, start to act like a chat room, if we get to that level.
+
+01:35:54.000 --> 01:35:57.000
+So to achieve that.
+
+01:35:57.000 --> 01:36:04.000
+I'm actually going to make a new function called broadcast and define that function, up here.
+
+01:36:04.000 --> 01:36:13.000
+It's just, it's a helper function that I'm going to run at that point.
+
+01:36:13.000 --> 01:36:19.000
+I'm. In fact, I want to write it a certain way to start with.
+
+01:36:19.000 --> 01:36:23.000
+To make it easier.
+
+01:36:23.000 --> 01:36:43.000
+I'd like to write it where we just broadcast the message. That's it. Nice and simple. Okay, we're going to write this helper function broadcast in such a way that
+
+01:36:43.000 --> 01:36:47.000
+we take in the message.
+
+01:36:47.000 --> 01:36:59.000
+And then
+
+01:36:59.000 --> 01:37:03.000
+do the following.
+
+01:37:03.000 --> 01:37:10.000
+We're going to have a for loop over our connected clients array.
+
+01:37:10.000 --> 01:37:19.000
+Right. So, for let connected client of connected clients
+
+01:37:19.000 --> 01:37:21.000
+console log.
+
+01:37:21.000 --> 01:37:31.000
+Actually, I'm going to leave this one out as well. This is going to be nice and simple, our broadcast function is going to do one and only one thing.
+
+01:37:31.000 --> 01:37:40.000
+It's going to say, oh, for this connected client, I want you to write
+
+01:37:40.000 --> 01:37:46.000
+the message.
+
+01:37:46.000 --> 01:37:52.000
+I've got two connected clients in my array, and a message come in from one.
+
+01:37:52.000 --> 01:37:56.000
+I'm going to send that message back to both.
+
+01:37:56.000 --> 01:38:00.000
+Nice and simple.
+
+01:38:00.000 --> 01:38:07.000
+Right, we'll get more sophisticated version of this broadcast here in a second.
+
+01:38:07.000 --> 01:38:14.000
+Okay, so we save that will go back here, here's our server. So we're not JS listening on 8008.
+
+01:38:14.000 --> 01:38:17.000
+Here's the first client.
+
+01:38:17.000 --> 01:38:26.000
+Connecting client is connected to server welcome by awesome servers and messages that came back from the server. The server says client is connected.
+
+01:38:26.000 --> 01:38:29.000
+Fine.
+
+01:38:29.000 --> 01:38:40.000
+Let's run the second client node client, which is now I have a third terminal now is open, running my second client. Yeah.
+
+01:38:40.000 --> 01:38:55.000
+client is connected to server server set Welcome to my awesome server on the server side client is connected. But now I can type on client one, this is client, one.
+
+01:38:55.000 --> 01:39:06.000
+Enter the server sent a message back to me that says this is client one. So the message that I sent here, went to the server and then the server sent it back.
+
+01:39:06.000 --> 01:39:08.000
+Right. Why.
+
+01:39:08.000 --> 01:39:15.000
+Well, here we have on the server side message received from client, this is client one.
+
+01:39:15.000 --> 01:39:20.000
+Okay, now let's look at client to
+
+01:39:20.000 --> 01:39:26.000
+server sent that very same message to me at client to.
+
+01:39:26.000 --> 01:39:34.000
+Why, because the broadcast looped over all of the client objects and sent the message back to all of them.
+
+01:39:34.000 --> 01:39:37.000
+Right now here I am on client to.
+
+01:39:37.000 --> 01:39:41.000
+This is client to hit enter.
+
+01:39:41.000 --> 01:39:51.000
+The message came back here, but crucially, it also went to client one.
+
+01:39:51.000 --> 01:39:54.000
+Cool.
+
+01:39:54.000 --> 01:39:56.000
+All right.
+
+01:39:56.000 --> 01:40:11.000
+Um, you know, we've got 15 minutes left I want to make sure we do this little demo, because it's just super awesome will improve the code a little bit more, but before we do that, I would like to take this client code here.
+
+01:40:11.000 --> 01:40:14.000
+Okay.
+
+01:40:14.000 --> 01:40:17.000
+And
+
+01:40:17.000 --> 01:40:27.000
+I'm going to set up and grace on my system to open up a port number
+
+01:40:27.000 --> 01:40:34.000
+that all of you could connect to through the internet that we talked about before.
+
+01:40:34.000 --> 01:40:43.000
+Through the radio waves that end up to the top of the tree that I showed you guys, and then down the little coaxial cable and in my window into my computer.
+
+01:40:43.000 --> 01:40:44.000
+Okay.
+
+01:40:44.000 --> 01:40:48.000
+So what I'm going to do is I'm going to go to the terminal.
+
+01:40:48.000 --> 01:40:54.000
+I'm going to go to X I'll just run it straight off the command line.
+
+01:40:54.000 --> 01:41:01.000
+Thanks to those of you who came to my command line to try tricks breakout from the other day.
+
+01:41:01.000 --> 01:41:08.000
+I'm going to run downloads and Brock.
+
+01:41:08.000 --> 01:41:15.000
+I'm going to have a TCP connection at Port 8008 right
+
+01:41:15.000 --> 01:41:17.000
+there.
+
+01:41:17.000 --> 01:41:22.000
+This is now open.
+
+01:41:22.000 --> 01:41:30.000
+I'm so here's the TCP connection made to this host at this port.
+
+01:41:30.000 --> 01:41:37.000
+And if you connect to that, then that's going to connect to my local host at 1008. Right.
+
+01:41:37.000 --> 01:41:38.000
+So I copy that.
+
+01:41:38.000 --> 01:41:44.000
+I go back to the client.
+
+01:41:44.000 --> 01:41:49.000
+And you know, perhaps some of you are already connecting to it.
+
+01:41:49.000 --> 01:41:53.000
+I will set up my code here.
+
+01:41:53.000 --> 01:42:02.000
+Now, to use this hostname.
+
+01:42:02.000 --> 01:42:03.000
+Whoops.
+
+01:42:03.000 --> 01:42:05.000
+on.
+
+01:42:05.000 --> 01:42:13.000
+Cut paste this port number.
+
+01:42:13.000 --> 01:42:15.000
+Like this.
+
+01:42:15.000 --> 01:42:17.000
+Right.
+
+01:42:17.000 --> 01:42:28.000
+And so now, if I go back to my terminal.
+
+01:42:28.000 --> 01:42:30.000
+Right.
+
+01:42:30.000 --> 01:42:34.000
+If I restart the client, it should still work.
+
+01:42:34.000 --> 01:42:49.000
+It does, even though it's using this publicly accessible and rock related path name and port number, it's still connecting to my server. Right, Okay. So I go back to my client as written like this now.
+
+01:42:49.000 --> 01:42:51.000
+I'm going to take this code.
+
+01:42:51.000 --> 01:43:02.000
+And I'm going to paste it to you guys in the chat of the zoom. Okay, so here comes.
+
+01:43:02.000 --> 01:43:07.000
+What you should be able to do is copy that code, and put it into any file on your end and run it.
+
+01:43:07.000 --> 01:43:20.000
+Put it into any file on your end and run it. And when you do so.
+
+01:43:20.000 --> 01:43:25.000
+It should make a connection to that place.
+
+01:43:25.000 --> 01:43:26.000
+Right.
+
+01:43:26.000 --> 01:43:35.000
+And connect to the server on my computer right through the internet through the trees through the coaxial cable in through the window.
+
+01:43:35.000 --> 01:43:54.000
+Right. And so there you go, people are typing on to their computers because they've run this client software.
+
+01:43:54.000 --> 01:44:06.000
+Good question. How do you hack this right well, there's a certain limited amount of stuff that you can do, you can send me messages and those messages are going to get broadcasted back to all the other clients that are connected to it.
+
+01:44:06.000 --> 01:44:11.000
+Yeah.
+
+01:44:11.000 --> 01:44:12.000
+All right.
+
+01:44:12.000 --> 01:44:20.000
+Well done, you know hey you know we need to celebrate the things right when they when we, when we have our victories we should celebrate them. Right.
+
+01:44:20.000 --> 01:44:25.000
+I would encourage you to celebrate them however you will.
+
+01:44:25.000 --> 01:44:28.000
+Um.
+
+01:44:28.000 --> 01:44:31.000
+cool.
+
+01:44:31.000 --> 01:44:35.000
+So,
+
+01:44:35.000 --> 01:44:38.000
+just like that.
+
+01:44:38.000 --> 01:44:45.000
+I'm going to turn off the server.
+
+01:44:45.000 --> 01:44:49.000
+There I just just disconnected all you guys, right.
+
+01:44:49.000 --> 01:44:56.000
+Um, can you have a question,
+
+01:44:56.000 --> 01:44:57.000
+I do.
+
+01:44:57.000 --> 01:45:06.000
+So over the way they're back to the event listener. Is there a difference between if we put connect or connection.
+
+01:45:06.000 --> 01:45:14.000
+Yeah so connection is an event type. First, on the server side.
+
+01:45:14.000 --> 01:45:15.000
+Okay.
+
+01:45:15.000 --> 01:45:23.000
+On client side where I've used the Create connection function to build my client object.
+
+01:45:23.000 --> 01:45:39.000
+It's a different name for the event called Connect. So there is a difference between connection and connect. It's the servers are listening for a connection event, and clients are listening for a connected.
+
+01:45:39.000 --> 01:45:43.000
+Thank you. You're welcome, Michael. Got a question.
+
+01:45:43.000 --> 01:45:46.000
+I've got two questions actually. Okay.
+
+01:45:46.000 --> 01:45:54.000
+So, first one, um, I don't know if anyone else was having this but on the, like the chat app that we just did.
+
+01:45:54.000 --> 01:46:07.000
+I was having this thing where I couldn't send a message because messages coming in, we're interrupting my, my typing, like, a new message would come in and would delete what I typed right I think what's happening is the messages are going to come in,
+
+01:46:07.000 --> 01:46:11.000
+you're typing, whatever. If you hit enter.
+
+01:46:11.000 --> 01:46:24.000
+It's going to assemble that message and send it. Even though it looks like it's all being overwritten. It's still going on to your standard input feed.
+
+01:46:24.000 --> 01:46:27.000
+And when you hit enter, it's going to send the whole message back.
+
+01:46:27.000 --> 01:46:36.000
+Okay. And my second question was going back to the,
+
+01:46:36.000 --> 01:46:56.000
+the code on the, on the server side, I believe, yet server side. Yeah, so, uh, right so online, 24, where you have the function receiving the client objects I know you said client object 100 times.
+
+01:46:56.000 --> 01:46:57.000
+Yeah.
+
+01:46:57.000 --> 01:47:02.000
+What exactly is the function receiving like what do you mean by a client object.
+
+01:47:02.000 --> 01:47:07.000
+Let's console log it and look.
+
+01:47:07.000 --> 01:47:15.000
+Right. And that by the way that's my reaction to almost any such thing right let's actually look at a client object and see what's in there.
+
+01:47:15.000 --> 01:47:23.000
+So we're console log that thing like that I'll go back and rerun the server will see if everybody connects to it all at once again are not.
+
+01:47:23.000 --> 01:47:28.000
+Here is the server listening on port thousand Port 8008.
+
+01:47:28.000 --> 01:47:31.000
+As soon as a client connects to it.
+
+01:47:31.000 --> 01:47:32.000
+There.
+
+01:47:32.000 --> 01:47:34.000
+Somebody just connected to us.
+
+01:47:34.000 --> 01:47:36.000
+Thank you for that.
+
+01:47:36.000 --> 01:47:42.000
+This is a console log of the client object.
+
+01:47:42.000 --> 01:47:48.000
+Let me scroll up until I get to the first one, first such thing.
+
+01:47:48.000 --> 01:47:54.000
+Obviously a lot of stuff in here right
+
+01:47:54.000 --> 01:47:56.000
+here we are.
+
+01:47:56.000 --> 01:48:00.000
+Okay.
+
+01:48:00.000 --> 01:48:02.000
+client is connected.
+
+01:48:02.000 --> 01:48:06.000
+It's an object of type socket.
+
+01:48:06.000 --> 01:48:21.000
+It has connecting had error, whether it has a parent, which hosts happens to be set to no readable state is another thing, events.
+
+01:48:21.000 --> 01:48:23.000
+Events count.
+
+01:48:23.000 --> 01:48:29.000
+Max listeners right it will stay there's all this stuff that's defined on it.
+
+01:48:29.000 --> 01:48:35.000
+It's information that's come into our server.
+
+01:48:35.000 --> 01:48:42.000
+Through a TCP IP connection.
+
+01:48:42.000 --> 01:48:55.000
+All of those assembled packets in the message that was sent over the internet. Got reassembled into an object for our use within our node program.
+
+01:48:55.000 --> 01:49:04.000
+That was all set up by
+
+01:49:04.000 --> 01:49:08.000
+this.
+
+01:49:08.000 --> 01:49:12.000
+When we did the require.net, we got a net object.
+
+01:49:12.000 --> 01:49:19.000
+The net object was, in turn, used to create a server.
+
+01:49:19.000 --> 01:49:27.000
+The server is what is listening for connection events.
+
+01:49:27.000 --> 01:49:35.000
+When a connection event occurs, we get this client object passed to us,
+
+01:49:35.000 --> 01:49:37.000
+and it represents.
+
+01:49:37.000 --> 01:49:42.000
+The thing that was happening in the other program that got sent to us over the internet.
+
+01:49:42.000 --> 01:49:53.000
+So, is this object, the same as the, the client object that's created in the client. js.
+
+01:49:53.000 --> 01:50:06.000
+Um, it's actually a reassembly of whatever information that was sent across the internet to us, right. So it's not the, it's not identically. This object.
+
+01:50:06.000 --> 01:50:20.000
+It will be some subset of stuff that was sent over when this connection was made, then a bunch of information was transmitted from one side to the other.
+
+01:50:20.000 --> 01:50:36.000
+Okay and so is this is this client object, what's being used to identify the client or is that being done somewhere else. Okay, that's it. It's the value of this client object right and so when we go connected clients, push client.
+
+01:50:36.000 --> 01:50:40.000
+it's actually pushing the whole object into that array.
+
+01:50:40.000 --> 01:50:50.000
+Right. And so every single client is has its own unique client object. That's right. Okay. Yeah, and it's, it gets created when this callback is called right.
+
+01:50:50.000 --> 01:50:54.000
+Notice I only have this function, this call back.
+
+01:50:54.000 --> 01:51:00.000
+This function definition here. It's only written out once right.
+
+01:51:00.000 --> 01:51:09.000
+But this function gets called for every new client that comes in, it gets rerun.
+
+01:51:09.000 --> 01:51:16.000
+And that's why client can have another value here.
+
+01:51:16.000 --> 01:51:27.000
+Okay, you know what, at this point, I'm actually going to leave out this slightly more sophisticated broadcast
+
+01:51:27.000 --> 01:51:40.000
+version of the broadcast code, I'm just going to save this code, committed, send it up to the system so that you guys can do a get pull and bring in this alternate version of the broadcast function.
+
+01:51:40.000 --> 01:51:51.000
+What it does is, you know, if I send in a message on a client here.
+
+01:51:51.000 --> 01:51:56.000
+You know hello world, like that.
+
+01:51:56.000 --> 01:52:00.000
+Then
+
+01:52:00.000 --> 01:52:16.000
+that system with the slightly improved broadcast message is going to be able to handle it, where, if, if the one client that sends the message, it actually doesn't need to receive the message back again.
+
+01:52:16.000 --> 01:52:23.000
+Right. If I'm the client that's sending it out I don't need to see it parroted back to me echoed or whatever.
+
+01:52:23.000 --> 01:52:30.000
+But that new version of the broadcast message would take in. okay, which was the client that sent it to me.
+
+01:52:30.000 --> 01:52:39.000
+I'm not going to bother sending that message back to the one who sent it to me, only to all the other clients. Right. It's a pretty straightforward.
+
+01:52:39.000 --> 01:52:43.000
+A improvement on the code.
+
+01:52:43.000 --> 01:53:00.000
+There's actually one other improvement in the code which I've left commented out, and it's where each client can set its own name as a property client name.
+
+01:53:00.000 --> 01:53:09.000
+So if I'm on the client side, say here, I can go set name Nally like that.
+
+01:53:09.000 --> 01:53:20.000
+And the server will recognize that the message that was sent to me started with set name
+
+01:53:20.000 --> 01:53:38.000
+pluck the text out of the message and set it on client name. That way every client object will then know its own name. Right. And then you can actually include that as part of the broadcast, where you say, client name says such and such.
+
+01:53:38.000 --> 01:53:44.000
+So if somebody types monkey flies, it'll say now he says monkey fights. Right.
+
+01:53:44.000 --> 01:53:55.000
+Fine. Those are two little improvements that you can see are made to the code, they're just left, left, commented out for now.
+
+01:53:55.000 --> 01:53:57.000
+Right.
+
+01:53:57.000 --> 01:54:03.000
+And that leaves us four minutes to talk about
+
+01:54:03.000 --> 01:54:06.000
+URLs.
+
+01:54:06.000 --> 01:54:29.000
+Okay, this is a big changing of gears to where the client system that we set up, was a TCP IP web sockets connection to facilitate observing what it's like to send information back and forth between a client at a server pair.
+
+01:54:29.000 --> 01:54:31.000
+Right.
+
+01:54:31.000 --> 01:54:38.000
+The clients or repair that we were making was entirely arbitrary.
+
+01:54:38.000 --> 01:54:44.000
+Right, we could make up our own commands. We could make up our own protocols.
+
+01:54:44.000 --> 01:54:50.000
+What commands were being sent from the client and how was the server going to respond.
+
+01:54:50.000 --> 01:54:53.000
+Right.
+
+01:54:53.000 --> 01:55:05.000
+For the rest of the boot camp, mostly, we're going to be concerned with web servers and web client pairs.
+
+01:55:05.000 --> 01:55:18.000
+Right. What's a web client that's a browser, right where every time you run a browser you're running a client, that's connecting to a server, right, how does it connect to a server through a thing called a URL.
+
+01:55:18.000 --> 01:55:20.000
+Right, a web address.
+
+01:55:20.000 --> 01:55:24.000
+When you type a web read web address into a browser.
+
+01:55:24.000 --> 01:55:40.000
+What you're doing is connecting to an individual server on the Internet through a port, just exactly the same way that we were doing with this chat thing that we just made, except that it's going to be using a very specific protocol.
+
+01:55:40.000 --> 01:55:49.000
+It's gonna make a web request, and a bunch of HTML is going to come back for the browser to render.
+
+01:55:49.000 --> 01:55:59.000
+That is how the web works right when I'm talking about the web. I'm talking about a thing that was born in a physics lab.
+
+01:55:59.000 --> 01:56:02.000
+In the early 90s.
+
+01:56:02.000 --> 01:56:17.000
+It was a it was source code for a server, and a client pair, just the same way that we just wrote one to leverage the Internet.
+
+01:56:17.000 --> 01:56:23.000
+Invented HTML
+
+01:56:23.000 --> 01:56:38.000
+used a particular kind of address that the browser side needed in order to ask questions of the server. So here's what a URL is.
+
+01:56:38.000 --> 01:57:07.000
+It has the protocol. At the beginning, http or https colon double slash www worldwide web right dot domain name, colon, Port slash path, question mark query parameters.
+
+01:57:07.000 --> 01:57:15.000
+Hashtag fragment. Those are all words that describe parts of a URL.
+
+01:57:15.000 --> 01:57:20.000
+Right. things that you would have been typing into your browser.
+
+01:57:20.000 --> 01:57:23.000
+For some of you, since you've been born.
+
+01:57:23.000 --> 01:57:28.000
+Right. This stuff has been available to you.
+
+01:57:28.000 --> 01:57:39.000
+Let's break down the parts, right. So, google.com, that's just the name of a computer that's going to respond to your particular request.
+
+01:57:39.000 --> 01:57:44.000
+You can put a colon after it before the first single slash here.
+
+01:57:44.000 --> 01:57:54.000
+That represents the particular port that you're connecting to. So as you guys right web servers throughout the rest of the boot camp.
+
+01:57:54.000 --> 01:58:07.000
+You're going to write web servers and have them listen to particular ports. Right. Sometimes it'll be Port 3000, sometimes it'll be port, 8080, you can have multiple web servers running on your computer.
+
+01:58:07.000 --> 01:58:15.000
+Each web server, serving different things different applications.
+
+01:58:15.000 --> 01:58:20.000
+Okay, this next part of the URL is called the path.
+
+01:58:20.000 --> 01:58:27.000
+It's called that because traditionally, it was actually.
+
+01:58:27.000 --> 01:58:40.000
+Most often, a file name path, a path to an actual file name and the whole job of the web server was to just go read that file and send it back to the client.
+
+01:58:40.000 --> 01:58:51.000
+It would have been an individual HTML file right you can still do this, of course, with your web servers, but you can also do a bunch of other stuff.
+
+01:58:51.000 --> 01:58:59.000
+So often you would see a thing here like index dot HTML, right, and so that would be an individual file, sitting on a web server.
+
+01:58:59.000 --> 01:59:08.000
+The web server would pick up that file and send it verbatim straight back to the client,
+
+01:59:08.000 --> 01:59:23.000
+following the path. If you have a question mark there, then you may see a set of name equal value pairs, right on the URL right, you've seen this with, say, for example, Google, if I go to google.
+
+01:59:23.000 --> 01:59:25.000
+com.
+
+01:59:25.000 --> 01:59:29.000
+And I do a search
+
+01:59:29.000 --> 01:59:37.000
+for oh I don't know, like house labs, like so.
+
+01:59:37.000 --> 01:59:46.000
+The URL that it goes to has a query attached to it after this question mark here.
+
+01:59:46.000 --> 01:59:51.000
+It's a set of name equal value pairs.
+
+01:59:51.000 --> 01:59:56.000
+Right here's q equals lighthouse, plus labs.
+
+01:59:56.000 --> 02:00:03.000
+And then there's an ampersand and another name equal value pair and then another ampersand and then another name equal value pair, and so on.
+
+02:00:03.000 --> 02:00:16.000
+It turns out the server can pick up these name equal value pairs directly from the URL, and then use them programmatically to change the way that it responds to any given web request.
+
+02:00:16.000 --> 02:00:21.000
+So that's what the all that's about.
+
+02:00:21.000 --> 02:00:35.000
+And then finally, on the URL, we've got this part called the fragment, This hashtag. It was referred to as an anchor, and sometimes you'll see this hashtag on your URLs.
+
+02:00:35.000 --> 02:00:52.000
+Traditionally, it was to allow the browser to automatically scroll to a part of a long page. Maybe I had a single file that had a table of contents, and then a bunch of paragraphs.
+
+02:00:52.000 --> 02:00:58.000
+Right. And if I had like hash tag index.
+
+02:00:58.000 --> 02:01:05.000
+Then when I went to this URL, it would scroll to the index for you automatically.
+
+02:01:05.000 --> 02:01:12.000
+That allowed these links to get deep within a single page.
+
+02:01:12.000 --> 02:01:26.000
+These things have been repurposed in the modern era for a variety of reasons, which we may or may not get into later as the boot camp unfolds.
+
+02:01:26.000 --> 02:01:48.000
+Okay. Any questions on that on any of these parts, one thing that is incorrect actually about this is that the port, 80 is actually associated with HTTP not HTTPS, the encrypted version of web traffic is usually on port 443 with SSL certificates, and
+
+02:01:48.000 --> 02:01:56.000
+then you get the little trusted lock because your traffic has been encrypted.
+
+02:01:56.000 --> 02:02:02.000
+Oh, Okay, Curtis go ahead you got a question,
+
+02:02:02.000 --> 02:02:02.000
+sorry you're muted yes yeah sorry.
+
+02:02:02.000 --> 02:02:20.000
+sorry you're muted yes yeah sorry, um, do you would you have to include like the query and stuff in the URL like why would they, why would they choose to do that would not be easier just to send the query to just a regular like end point like the flash
+
+02:02:20.000 --> 02:02:22.000
+search.
+
+02:02:22.000 --> 02:02:31.000
+Yeah. Um, there's two types of requests there's GET requests and POST requests, which we'll get into the details of later if you haven't already.
+
+02:02:31.000 --> 02:02:35.000
+This is very much part of a get request.
+
+02:02:35.000 --> 02:02:55.000
+So when you send in a get request with a bunch of name equal value pairs. This is how it is implemented is part of the URL for a POST request this very same set of name equal value pairs could actually show up in the headers of the post request, so it's
+
+02:02:55.000 --> 02:03:10.000
+a little bit hidden, but it's actually still there, like when you submit a form by a POST request. The, you would instead of having name equal value pairs on the URL itself, it would instead be hidden in the headers, but you're still able to upload name
+
+02:03:10.000 --> 02:03:14.000
+equal value pairs via the post request instead.
+
+02:03:14.000 --> 02:03:26.000
+Okay, so yeah, this everything past this slash here is optional, right, you can just go. google. com. With nothing else.
+
+02:03:26.000 --> 02:03:40.000
+And the web server is going to respond with what however it's going to respond, the homepage, actually, is what it's going to return to you. Right. But then when you start putting paths and other things on these are ways to ask the web server to return
+
+02:03:40.000 --> 02:03:43.000
+something else.
+
+02:03:43.000 --> 02:03:50.000
+Okay, this is how the web works. Right. There it is, in one class today.
+
+02:03:50.000 --> 02:03:58.000
+You've now walked away with a ton more vision into what's going on under the hood.
+
+02:03:58.000 --> 02:04:03.000
+Every time you click, you know, in fact there.
+
+02:04:03.000 --> 02:04:14.000
+A simple click can be doing quite a number of things by the end of the boot camp I think you'll have a good idea of what can be happening every time you click something on the web.
+
+02:04:14.000 --> 02:04:19.000
+But we're, we're about, you know, up to now.
+
+02:04:19.000 --> 02:04:30.000
+You've learned, I think enough to understand how almost all clicks were happening up to the mid 90s.
+
+02:04:30.000 --> 02:04:44.000
+And, you know, as the rest of the boot camp unfolds you'll learn how how clicks were happening through the 2000s and then into the modern era on the web, lot of, lot more JavaScript on the front end, to come.
+
+02:04:44.000 --> 02:04:49.000
+But that's, that's all context for a later day.
+
+02:04:49.000 --> 02:05:04.000
+Yeah, you know, I hope I blew your minds today. Um, yeah you're getting there, you know you're we're what week two day three, still got a couple more decades of the web to catch up on.
+
+02:05:04.000 --> 02:05:34.000
+Very good. Okay, I'm right, let's let you get back to your conferencing, click like and subscribe. Hold my beer and watch this.
+

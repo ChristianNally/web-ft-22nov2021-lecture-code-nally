@@ -17,7 +17,7 @@ const connectedClients = [];
 
 const broadcast = function(message){
     for (let connectedClient of connectedClients){
-        connectedClient.write(`${message}`);
+        connectedClient.write(`${currentClient.name} says: ${message}`);
     }
 };
 

@@ -22,7 +22,7 @@ const broadcast = function(message){
 };
 
 server.on('connection', function(client){
-    console.log('Client is connected');
+    console.log('Client is connected',client);
 
     // // add the current client to the list of connected clients
     connectedClients.push(client);

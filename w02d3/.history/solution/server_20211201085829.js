@@ -4,7 +4,7 @@ const port = 8008;
 const server = net.createServer();
 
 // // we need an array to store the connected clients.
-const connectedClients = [];
+// const connectedClients = [];
 
 // const broadcast = function(currentClient,message){
 //     for (let connectedClient of connectedClients){
@@ -15,20 +15,14 @@ const connectedClients = [];
 //     }
 // };
 
-const broadcast = function(message){
-    for (let connectedClient of connectedClients){
-        connectedClient.write(`${message}`);
-    }
-};
-
 server.on('connection', function(client){
     console.log('Client is connected');
 
     // // add the current client to the list of connected clients
-    connectedClients.push(client);
+    // connectedClients.push(client);
 
     // // set the encoding to utf8
-    client.setEncoding('utf8');
+    // client.setEncoding('utf8');
 
     client.write("Welcome to my awesome server! ⛵");
 
@@ -40,7 +34,6 @@ server.on('connection', function(client){
         //     client.name = clientName;
         // }
         // broadcast(client,message);
-        broadcast(message);
     });
 
 });

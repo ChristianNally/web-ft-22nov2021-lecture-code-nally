@@ -15,12 +15,6 @@ const connectedClients = [];
 //     }
 // };
 
-const broadcast = function(message){
-    for (let connectedClient of connectedClients){
-        connectedClient.write(`${message}`);
-    }
-};
-
 server.on('connection', function(client){
     console.log('Client is connected');
 

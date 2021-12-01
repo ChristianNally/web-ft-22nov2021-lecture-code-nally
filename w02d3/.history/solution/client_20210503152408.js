@@ -1,12 +1,12 @@
 const net = require('net');
-const port = 14736;
+const port = 8008;
 
 const client = net.createConnection({
     port: port, 
-    host: '6.tcp.ngrok.io'
+    host: 'localhost'
 });
 
-// // set the encoding to utf-8
+// set the encoding to utf-8
 client.setEncoding('utf8');
 
 process.stdin.on('data', function(message){
