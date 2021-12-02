@@ -12,11 +12,11 @@ returnPromise('one',1000)
   })
   .then((data) => {
     console.log(data);
-    return "three";
+    return returnPromise('three',1000);
   })
   .then((data) => {
     console.log(data);
-    return returnPromise('four',1000);
+    return returnRejectedPromise('four',1000);
   })
   .then((data) => {
     console.log(data);
@@ -28,5 +28,5 @@ returnPromise('one',1000)
   })
   .catch((err) => {
     // throw err;
-    console.log('err first:',err);
+    console.log('err:',err);
   });

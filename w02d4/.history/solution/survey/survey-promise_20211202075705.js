@@ -14,8 +14,7 @@ rlp.questionAsync('What do you think of Node.js? ')
   })
   .then((answer) => {
     answers.push(answer);
-    throw "never put pineapple on pizza!";
-//    return rlp.questionAsync('What\'s your favourite activity? ');
+    return rlp.questionAsync('What\'s your favourite activity? ');
   })
   .then((answer) => {
     answers.push(answer);
@@ -35,7 +34,8 @@ rlp.questionAsync('What do you think of Node.js? ')
   })
   .then((answer) => {
     answers.push(answer);
-   return rlp.questionAsync('Which sport is your absolute favourite? ');
+    return rlp.questionAsync('Which sport is your absolute favourite? ');
+    throw "error!";
   })
   .then((answer) => {
     answers.push(answer);
@@ -52,5 +52,5 @@ rlp.questionAsync('What do you think of Node.js? ')
     console.log(`My name is ${name} and I really like ${activity}! I listen to ${music} while eating ${food} during ${meal} and playing ${sport}... and I think Node is ${node}!!`);
   })
   .catch((err)=>{
-    console.log("Monkey Fuzz:",err);
+    console.log(err);
   });

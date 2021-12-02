@@ -12,7 +12,7 @@ returnPromise('one',1000)
   })
   .then((data) => {
     console.log(data);
-    return "three";
+    return returnPromise('three',1000);
   })
   .then((data) => {
     console.log(data);
@@ -28,5 +28,33 @@ returnPromise('one',1000)
   })
   .catch((err) => {
     // throw err;
-    console.log('err first:',err);
+    console.log('err:',err);
+  });
+
+  console.log('stuck in the middle');
+
+  returnPromise('1',1000)
+  .then((data) => {
+    console.log(data);
+    return returnPromise('2',1000);
+  })
+  .then((data) => {
+    console.log(data);
+    return returnPromise('3',1000);
+  })
+  .then((data) => {
+    console.log(data);
+    return returnPromise('4',1000);
+  })
+  .then((data) => {
+    console.log(data);
+    return returnPromise('5',1000);
+  })
+  .then((data) => {
+    console.log(data);
+    return returnPromise('6',1000);
+  })
+  .catch((err) => {
+    // throw err;
+    console.log('err:',err);
   });

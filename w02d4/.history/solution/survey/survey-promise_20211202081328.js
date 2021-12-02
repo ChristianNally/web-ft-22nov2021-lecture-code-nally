@@ -14,7 +14,7 @@ rlp.questionAsync('What do you think of Node.js? ')
   })
   .then((answer) => {
     answers.push(answer);
-    throw "never put pineapple on pizza!";
+    throw "error!";
 //    return rlp.questionAsync('What\'s your favourite activity? ');
   })
   .then((answer) => {
@@ -52,5 +52,5 @@ rlp.questionAsync('What do you think of Node.js? ')
     console.log(`My name is ${name} and I really like ${activity}! I listen to ${music} while eating ${food} during ${meal} and playing ${sport}... and I think Node is ${node}!!`);
   })
   .catch((err)=>{
-    console.log("Monkey Fuzz:",err);
+    console.log(err);
   });

@@ -1,0 +1,3773 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.000
+Okay, I see no reason not to dive straight in. Let me just make sure that we're recording
+
+00:00:02.000 --> 00:00:11.000
+resume recording hearing up right and so the timestamps would automatically be correct. Inside there.
+
+00:00:11.000 --> 00:00:14.000
+All right.
+
+00:00:14.000 --> 00:00:33.000
+Good morning. Welcome to week to day for where we are going to discuss a little thing called promises. And of course, we mean the promises that are built into JavaScript, and how those things are useful.
+
+00:00:33.000 --> 00:00:38.000
+With regard to asynchronous code.
+
+00:00:38.000 --> 00:00:51.000
+Basically it's a kind of syntax. That's going to make dealing with asynchronous code a little bit easier. A little bit more straightforward to understand as you read it.
+
+00:00:51.000 --> 00:00:52.000
+Right.
+
+00:00:52.000 --> 00:01:05.000
+So just a quick review before we start on that, who by show of hands, is completely and utterly confused by how a synchronous code actually works, people having trouble with that.
+
+00:01:05.000 --> 00:01:06.000
+Yeah.
+
+00:01:06.000 --> 00:01:10.000
+It's not the most straightforward thing in the world for sure.
+
+00:01:10.000 --> 00:01:13.000
+Right.
+
+00:01:13.000 --> 00:01:18.000
+Because you kind of have to have your head wrapped around a couple of things.
+
+00:01:18.000 --> 00:01:22.000
+One is callbacks.
+
+00:01:22.000 --> 00:01:23.000
+Right.
+
+00:01:23.000 --> 00:01:27.000
+functions as values.
+
+00:01:27.000 --> 00:01:32.000
+functions being passed in as a parameter to some other function.
+
+00:01:32.000 --> 00:01:40.000
+Right, those things need to be pretty natural in your reading and understanding of how code works.
+
+00:01:40.000 --> 00:01:43.000
+That's one thing.
+
+00:01:43.000 --> 00:01:52.000
+The other thing is that some code has a synchronous implications.
+
+00:01:52.000 --> 00:02:13.000
+And by that I mean, like if you're reading a file for example, if you're using a package that leverages asynchronous side effects asynchronous implications, then, yeah, you have a function that gets called right away on your main thread.
+
+00:02:13.000 --> 00:02:29.000
+But it's going to launch, some thing it's going to schedule some tasks, that's only going to occur on the event loop, which can only start after the main thread finishes.
+
+00:02:29.000 --> 00:02:35.000
+That's the other thing that you need to have your head wrapped around right to really understand how a synchronous code works.
+
+00:02:35.000 --> 00:02:45.000
+Right. You have to be willing to read through the main thread imagining all of the stuff that's going to get scheduled for the event loop later on.
+
+00:02:45.000 --> 00:02:56.000
+Then, as your main thread finishes, then you're thinking, Oh, you have your own mental model about what JavaScript is doing.
+
+00:02:56.000 --> 00:03:04.000
+That's the point when all of the stuff that was scheduled on the event loop can kick in.
+
+00:03:04.000 --> 00:03:06.000
+So that's my little.
+
+00:03:06.000 --> 00:03:16.000
+Two Minute Summary on how a synchronous code works is that you have to be thinking about the stuff that gets printed out onto the event model event loop.
+
+00:03:16.000 --> 00:03:19.000
+Right.
+
+00:03:19.000 --> 00:03:30.000
+So, with promises syntax. We're going to end up with a syntax that helps with that in a specific way.
+
+00:03:30.000 --> 00:03:36.000
+And I'm going to dig into that specific help that we're going to get from that today.
+
+00:03:36.000 --> 00:03:43.000
+So, as far as our index goes.
+
+00:03:43.000 --> 00:03:54.000
+We have a thing to illustrate called the callback waterfall, or callback hell it is sometimes referred to as.
+
+00:03:54.000 --> 00:04:01.000
+It's an issue with code, where you have a call back inside a call back inside of callback.
+
+00:04:01.000 --> 00:04:08.000
+And it's hard to keep track of when every one of these things moronic I can see you just like shaking your head and discussed is that what's going on.
+
+00:04:08.000 --> 00:04:13.000
+Yeah. So promises is going to help with this issue.
+
+00:04:13.000 --> 00:04:19.000
+And you'll, you'll see why in a moment, or you'll see how, in a moment.
+
+00:04:19.000 --> 00:04:29.000
+So we'll introduce promises will talk about error handling with promises we'll talk about the structure of an error in JavaScript.
+
+00:04:29.000 --> 00:04:38.000
+And then we'll talk about paralyzing a synchronous things.
+
+00:04:38.000 --> 00:04:48.000
+And a little bit of detail and what that actually means running our code on an actual computer.
+
+00:04:48.000 --> 00:05:00.000
+And then finally, at the end if we have time. If I choose to emphasize it will talk about creating our own promises, a little bit
+
+00:05:00.000 --> 00:05:08.000
+less weird, you'd think that, you know, creating our own promises would kind of be one of the most important things that we did.
+
+00:05:08.000 --> 00:05:09.000
+Right.
+
+00:05:09.000 --> 00:05:20.000
+Except that, it turns out when you're using promises especially to start.
+
+00:05:20.000 --> 00:05:28.000
+What happens is you use the promises that are made by other packages.
+
+00:05:28.000 --> 00:05:41.000
+That's actually what you're doing. Most of the time, most of your initial explorations with promises are going to be using promises that are built by other packages.
+
+00:05:41.000 --> 00:05:52.000
+And that's straightforward enough, right, it seems to be a gentle enough introduction to these things to be using promises that are made by other systems.
+
+00:05:52.000 --> 00:05:58.000
+So we, we like to go that route with it when we describe how they work.
+
+00:05:58.000 --> 00:06:03.000
+Thanks, Eric for the tip I'm going to look into that, make sure that we get that before.
+
+00:06:03.000 --> 00:06:10.000
+Let's see me we should set it live transcript.
+
+00:06:10.000 --> 00:06:17.000
+Just a quick diversion.
+
+00:06:17.000 --> 00:06:18.000
+Companies in.
+
+00:06:18.000 --> 00:06:28.000
+Nope. See that, that the options are coming up for me. But perhaps that you perhaps you get it. Maybe toward the end we'll get folks to save a copy, just in case I don't get one.
+
+00:06:28.000 --> 00:06:30.000
+Thank you very much.
+
+00:06:30.000 --> 00:06:33.000
+Good.
+
+00:06:33.000 --> 00:06:45.000
+Alright. So, before we dive into promises directly. I want to demonstrate what I mean by this callback hell business.
+
+00:06:45.000 --> 00:06:54.000
+Have you been working with code that had the little social media profile generator by asking a bunch of questions one after the other.
+
+00:06:54.000 --> 00:06:55.000
+Yeah.
+
+00:06:55.000 --> 00:07:09.000
+Thank you for that. Now Yeah, cool. Okay, so this is actually an example of callback hell. In so far as when we use the read line package.
+
+00:07:09.000 --> 00:07:15.000
+We have an interface where you can type stuff into that interface.
+
+00:07:15.000 --> 00:07:20.000
+And then the system will ask a question.
+
+00:07:20.000 --> 00:07:22.000
+Wait for the answer.
+
+00:07:22.000 --> 00:07:36.000
+The answer is coming on human time right when that first answer is submitted, then that answer gets pushed on to an array, and only at that time.
+
+00:07:36.000 --> 00:07:41.000
+Will the system ask the next question.
+
+00:07:41.000 --> 00:07:46.000
+Right. It's using an asynchronous system.
+
+00:07:46.000 --> 00:07:58.000
+Because you can't tell how long it's going to take for the user to answer the question, they may be a fast type or they may be a short temper, right, you want the next code to run.
+
+00:07:58.000 --> 00:08:08.000
+As a consequence of the finishing of the previous question. And so, this interface that gets built through this factory function.
+
+00:08:08.000 --> 00:08:14.000
+You can say RL dot question.
+
+00:08:14.000 --> 00:08:17.000
+And it will run.
+
+00:08:17.000 --> 00:08:23.000
+When this callback is executed.
+
+00:08:23.000 --> 00:08:36.000
+That's the asynchronous part. Right. It's that this library function call has a synchronous side effects.
+
+00:08:36.000 --> 00:08:41.000
+When you're dealing with a library that has a synchronous side effects.
+
+00:08:41.000 --> 00:08:44.000
+Often
+
+00:08:44.000 --> 00:09:03.000
+it's written in such a way as to punt a given activity on to the event loop right and remember the event loop only starts after the main thread has been finished it's been digested all the code has run, right.
+
+00:09:03.000 --> 00:09:12.000
+So what happens here is, we have the interface, we run, we actually run this code question.
+
+00:09:12.000 --> 00:09:14.000
+Right.
+
+00:09:14.000 --> 00:09:19.000
+It takes the question, and an associated callback.
+
+00:09:19.000 --> 00:09:25.000
+What's what that means is the system is going to ask this question.
+
+00:09:25.000 --> 00:09:29.000
+And then wait for an answer.
+
+00:09:29.000 --> 00:09:37.000
+And when that answer comes back this callback would be called, which callback, this callback.
+
+00:09:37.000 --> 00:09:49.000
+This massive function definition, it's an arrow function. And it goes all the way down to here.
+
+00:09:49.000 --> 00:10:02.000
+Right. It looks like it's a 30 some odd lines of code in one function definition, it's complex because it's got other calls to question inside it and more and more
+
+00:10:02.000 --> 00:10:17.000
+callback definitions inside it, but that's the one outside rapping callback right Don't believe me watch this I'll cut it there. Look at that. Now suddenly my code is easy to read, because it's got this one function call with thank you very much for the
+
+00:10:17.000 --> 00:10:31.000
+semi colon at the end, right, you can see that that thing that I cut out is actually what goes in place as the second parameter to the question call that whole thing was one parameter to that function call.
+
+00:10:31.000 --> 00:10:45.000
+This is why by the way I do this trick of of highlighting what I think is a single object and cut it out of the code to see what's left, it shows me that my syntax is correct.
+
+00:10:45.000 --> 00:10:53.000
+Right now I'm going to drop that back in, remember this is one functions definition. Sure, it's got stuff defined inside it.
+
+00:10:53.000 --> 00:10:59.000
+But that one function takes an answer as a parameter it's a callback.
+
+00:10:59.000 --> 00:11:02.000
+Right. And because it's a callback.
+
+00:11:02.000 --> 00:11:06.000
+We're not calling it directly.
+
+00:11:06.000 --> 00:11:12.000
+It's getting called by the stuff that's out on the event loop.
+
+00:11:12.000 --> 00:11:17.000
+Right, the stuff that was put out there by the asynchronous nature of this function call.
+
+00:11:17.000 --> 00:11:24.000
+This first question, uncle. right, that says, here's a question for you.
+
+00:11:24.000 --> 00:11:29.000
+Yes, ask it once the event loops, get running.
+
+00:11:29.000 --> 00:11:33.000
+Then wait for an answer to that question.
+
+00:11:33.000 --> 00:11:48.000
+By running the event loop over and over and over and When the answer comes in, then execute the callback, which callback, this one, this first one, and pass the answer in as a parameter to that call back.
+
+00:11:48.000 --> 00:12:02.000
+So, this business of callbacks being used in this way it's a hint that what your function calls are doing, have some asynchronous side effects to them.
+
+00:12:02.000 --> 00:12:15.000
+Some asynchronous implications. Right. You kind of have to read that into what's going on here, or you need to read the documentation about how this works, how the question function works, oh yeah this is asynchronous it puts the question on the event
+
+00:12:15.000 --> 00:12:30.000
+loop blah blah blah. Right. And so now you're, you're actually in a position where you can read that documentation, like two weeks ago you probably couldn't, and have it make any sense now you can write you can know that that's going to be asynchronous.
+
+00:12:30.000 --> 00:12:39.000
+Fine. And so, that first call back gets run pushes the answer which came in as a parameter.
+
+00:12:39.000 --> 00:12:41.000
+On to the array.
+
+00:12:41.000 --> 00:12:47.000
+And then runs RL question again.
+
+00:12:47.000 --> 00:12:57.000
+Which, even though it's being called on the event loop itself says, oh, I've got another thing that I would like to run in the event loop. Here's another question.
+
+00:12:57.000 --> 00:13:12.000
+And here, and now down to the yellow curly brace there, right, that is now the second callback.
+
+00:13:12.000 --> 00:13:20.000
+Right. Don't believe me I'll cut it out there now my code is suddenly easy to read right I have one callback.
+
+00:13:20.000 --> 00:13:33.000
+And inside that I have a call to RL question with this first parameter and the thing that I cut out is the second parameter to this second call to RL question, and so on, and so it goes this way.
+
+00:13:33.000 --> 00:13:35.000
+Right.
+
+00:13:35.000 --> 00:13:50.000
+So a little bit of a leap of faith is like this series of nested callbacks one inside the other, right. Actually this code isn't so bad to read because there's a great deal of symmetry.
+
+00:13:50.000 --> 00:14:00.000
+From one sub nested call to the next. You can kind of get what's going on just because there's so much symmetry from one layer to the next one. Right.
+
+00:14:00.000 --> 00:14:09.000
+But imagine instead that we had an example that was like, what was it 1234567 nested callbacks deep.
+
+00:14:09.000 --> 00:14:13.000
+But the structure was different for every one of them.
+
+00:14:13.000 --> 00:14:23.000
+You'd have it would be crazy. Who would want to debug this code. Like, if I want to add another question to this list.
+
+00:14:23.000 --> 00:14:40.000
+In the middle of my list of questions, you know, here is what what do you listen to while doing your favorite activity. Right. Maybe I need to add, you know, pineapple on pizza or not, crucial question.
+
+00:14:40.000 --> 00:14:41.000
+I'm sure you'll agree.
+
+00:14:41.000 --> 00:14:53.000
+And I want to put that question in between these two. Okay, now I have to invent everything but indentation doesn't really matter what really matters is whether the brackets are in the right place.
+
+00:14:53.000 --> 00:14:55.000
+Right.
+
+00:14:55.000 --> 00:14:59.000
+Terrible. no one wants to be faced with that.
+
+00:14:59.000 --> 00:15:09.000
+Right, let's run the code, just to see that it does its thing. I'm going to go into here, go into the survey.
+
+00:15:09.000 --> 00:15:18.000
+We've got a package. json because of the read line saying and pm and nit to make that package. json kick in and build out our code.
+
+00:15:18.000 --> 00:15:21.000
+Let's take
+
+00:15:21.000 --> 00:15:29.000
+know, I already did the in it. I want install. There we go.
+
+00:15:29.000 --> 00:15:42.000
+So it's pretty quick know every node modules package node modules with the package list, and so on. Let's try node survey callback hell.
+
+00:15:42.000 --> 00:15:45.000
+What do you think of node peachy.
+
+00:15:45.000 --> 00:15:53.000
+What's my name, CWN. What is my favorite activity. Hmm, sailing.
+
+00:15:53.000 --> 00:15:56.000
+What do you listen to while doing that, the wind.
+
+00:15:56.000 --> 00:16:02.000
+What meal is your favorite breakfast
+
+00:16:02.000 --> 00:16:06.000
+favorite thing to eat pancakes, of course.
+
+00:16:06.000 --> 00:16:08.000
+What is your favorite sport.
+
+00:16:08.000 --> 00:16:14.000
+I'm sailing racing racing samples.
+
+00:16:14.000 --> 00:16:18.000
+Okay, here's my profile.
+
+00:16:18.000 --> 00:16:22.000
+Yeah, Mohammed I'm not clear on the pineapple on pizza myself.
+
+00:16:22.000 --> 00:16:26.000
+Frankly, just started going to throw that out there.
+
+00:16:26.000 --> 00:16:32.000
+I won't use the word heathens to describe people who do that but I'm tempted to, you know, Okay.
+
+00:16:32.000 --> 00:16:36.000
+I'm good. Fine. It runs, everybody.
+
+00:16:36.000 --> 00:16:38.000
+Fair.
+
+00:16:38.000 --> 00:16:50.000
+You know that the code ran even though it was like this ridiculous subsets of of callback one after the other five.
+
+00:16:50.000 --> 00:16:56.000
+Here comes promises to the rescue.
+
+00:16:56.000 --> 00:17:07.000
+This syntax, you'll notice a few things straight away about it, how it holds together.
+
+00:17:07.000 --> 00:17:20.000
+First off, we don't have this indentation issue with with with every nested layer, it moves off to the right, and then our code gets kind of jammed over further and further.
+
+00:17:20.000 --> 00:17:22.000
+Right.
+
+00:17:22.000 --> 00:17:29.000
+And instead, what you'll see is a chain,
+
+00:17:29.000 --> 00:17:34.000
+and a decidedly interesting, lack of semi colons.
+
+00:17:34.000 --> 00:17:40.000
+For those of you who have heard my call to join Team semi colon.
+
+00:17:40.000 --> 00:17:50.000
+It's the lack of semi colons, here, and here, and here, etc.
+
+00:17:50.000 --> 00:17:55.000
+that are a big fat clue about what's going on with this thing.
+
+00:17:55.000 --> 00:18:01.000
+Also it's dot notation, which hopefully you're comfortable with from objects.
+
+00:18:01.000 --> 00:18:04.000
+Right.
+
+00:18:04.000 --> 00:18:10.000
+this.at the beginning of line 11 is telling us quite a lot.
+
+00:18:10.000 --> 00:18:18.000
+Actually, It's saying that this thing.
+
+00:18:18.000 --> 00:18:29.000
+And you know, you know my game of highlighting a thing and asked myself what is this attempted to play that game right away because you know line 11 starts with a dot right so what's going on here.
+
+00:18:29.000 --> 00:18:34.000
+Okay, so that thing that I just highlighted that is the entirety of line 10.
+
+00:18:34.000 --> 00:18:39.000
+What is this thing. Well, it's an object.
+
+00:18:39.000 --> 00:18:49.000
+It's an object that happens to have a function defined on it called then.
+
+00:18:49.000 --> 00:18:54.000
+And that function call
+
+00:18:54.000 --> 00:19:06.000
+appear appears to have some timing implications to it, because there's some stuff done. There's some stuff done with line 10.
+
+00:19:06.000 --> 00:19:10.000
+That's going to take some time.
+
+00:19:10.000 --> 00:19:21.000
+And after that time, I don't know how long that time is going to take because I don't know how long it's going to take the person to type the answer to that question,
+
+00:19:21.000 --> 00:19:29.000
+then feeds a call back into the system, you can see that there is a call back here.
+
+00:19:29.000 --> 00:19:42.000
+That is the single argument. The single parameter to the then function call. Right. So you can imagine what's going on here. It's that this question will be asked.
+
+00:19:42.000 --> 00:19:46.000
+Right, asynchronously out on the main event loop.
+
+00:19:46.000 --> 00:19:55.000
+And then when that thing is finished, ie when the person typed in their answer.
+
+00:19:55.000 --> 00:19:59.000
+Then, this callback will run.
+
+00:19:59.000 --> 00:20:02.000
+Right, so it's still callbacks.
+
+00:20:02.000 --> 00:20:12.000
+But the syntax is clean and clear, not nested
+
+00:20:12.000 --> 00:20:24.000
+Mohammed asks, so then is a key or property. Yes, it's a property of the object that this function call is returning.
+
+00:20:24.000 --> 00:20:32.000
+And that object that this function call is returning is a promise.
+
+00:20:32.000 --> 00:20:37.000
+A promise is a kind of object.
+
+00:20:37.000 --> 00:20:41.000
+It's a kind of object that has.
+
+00:20:41.000 --> 00:20:46.000
+Then function defined on it.
+
+00:20:46.000 --> 00:20:54.000
+It's a kind of promise that's built into JavaScript.
+
+00:20:54.000 --> 00:21:01.000
+The then function takes a callback.
+
+00:21:01.000 --> 00:21:11.000
+And that function.
+
+00:21:11.000 --> 00:21:19.000
+After the first bit is done. And look at this line 14 is the finishing of the then execution.
+
+00:21:19.000 --> 00:21:27.000
+And we get another.no semi colon here.
+
+00:21:27.000 --> 00:21:43.000
+That is another then clause, so it must be then I can conclude that if I highlight all of this stuff up to hear that, then itself.
+
+00:21:43.000 --> 00:21:48.000
+returns. Another promise.
+
+00:21:48.000 --> 00:21:55.000
+Because I'm allowed to attach a dot then on to it.
+
+00:21:55.000 --> 00:22:01.000
+So the then clause have any given promise itself returns another promise.
+
+00:22:01.000 --> 00:22:14.000
+Because I can attach a dot then to it, and so on and so on. Now remember the case where I felt like I needed to insert another question into the middle of my stack of things that was going on.
+
+00:22:14.000 --> 00:22:17.000
+Hold my beer and watch this.
+
+00:22:17.000 --> 00:22:18.000
+Right.
+
+00:22:18.000 --> 00:22:25.000
+I can grab up thing I then claws out of the middle of my chain
+
+00:22:25.000 --> 00:22:29.000
+and paste it in like so.
+
+00:22:29.000 --> 00:22:41.000
+And now I can add, what is your second favorite activity as another question right in the middle of my question list.
+
+00:22:41.000 --> 00:22:49.000
+And there you go. Right. simple, easy, straightforward to read the syntax.
+
+00:22:49.000 --> 00:23:07.000
+No nesting within one set of callbacks for asynchronous implications for the other right, we still have this asynchronous stuff to grapple with right we still have to have a notion of the event loop that starts after the main thread is finished, right,
+
+00:23:07.000 --> 00:23:27.000
+every one of these functions gets called before any of the asynchronous stuff happens, right. The main thread must finish before any of the asynchronous actions, take place.
+
+00:23:27.000 --> 00:23:32.000
+That's true regardless of whether I'm using promises or not.
+
+00:23:32.000 --> 00:23:37.000
+Okay, let's run this thing, I just want to show that it's actually working the way that we wanted it to.
+
+00:23:37.000 --> 00:23:45.000
+We've got survey dash promise. js like so. Hit enter. Yeah, what do you think of node map.
+
+00:23:45.000 --> 00:23:47.000
+What's your name.
+
+00:23:47.000 --> 00:23:56.000
+Now let's say this time was my favorite activity sit still sailing. What's your second favorite activity Ultimate Frisbee. Although I haven't played it in years.
+
+00:23:56.000 --> 00:24:05.000
+I think I would really hurt myself if I flung myself around this the way I used to when I played ultimate.
+
+00:24:05.000 --> 00:24:10.000
+What do you listen to while doing that other people.
+
+00:24:10.000 --> 00:24:14.000
+What's what meal is your favorite pizza.
+
+00:24:14.000 --> 00:24:18.000
+Without pineapple.
+
+00:24:18.000 --> 00:24:19.000
+Right.
+
+00:24:19.000 --> 00:24:22.000
+Uh oh.
+
+00:24:22.000 --> 00:24:40.000
+What meal is my favorite is pizza without pineapple a meal, see above. I messed that one up error. Oh, we're going to get to an error and error handling next. Notice that this error message came out in a rather civilized manner compared to the vomit that
+
+00:24:40.000 --> 00:24:46.000
+you usually see what an air comes up. But let me try this again.
+
+00:24:46.000 --> 00:25:01.000
+An error down in here. It's being generated on purpose. it came after. What's your favorite thing to eat for that meal here.
+
+00:25:01.000 --> 00:25:04.000
+Throw error. There we go.
+
+00:25:04.000 --> 00:25:06.000
+Thank you.
+
+00:25:06.000 --> 00:25:10.000
+Um,
+
+00:25:10.000 --> 00:25:19.000
+so yeah so throw error that's how you throw errors, we're going to do that very, very much. Next, let me save that as is will rerun this just for fun.
+
+00:25:19.000 --> 00:25:22.000
+Without the error this time.
+
+00:25:22.000 --> 00:25:31.000
+A, B, C, D, E, F, G, you didn't come here to listen to me saying there.
+
+00:25:31.000 --> 00:25:42.000
+So this is the profile, answer the program runs right. I have my second question built into it. What's your second favorite activity.
+
+00:25:42.000 --> 00:25:46.000
+Oh, okay.
+
+00:25:46.000 --> 00:25:54.000
+It works, it's alive.
+
+00:25:54.000 --> 00:26:00.000
+Next topic errors.
+
+00:26:00.000 --> 00:26:05.000
+Notice what this code had when I wanted it to throw an error.
+
+00:26:05.000 --> 00:26:09.000
+It's literally the phrase.
+
+00:26:09.000 --> 00:26:14.000
+Throw error.
+
+00:26:14.000 --> 00:26:18.000
+When you have code that you want to generate an error.
+
+00:26:18.000 --> 00:26:24.000
+You can make code that looks just like this.
+
+00:26:24.000 --> 00:26:30.000
+The thing that's interesting about this code, because it's using promises.
+
+00:26:30.000 --> 00:26:35.000
+Excuse me, is that the error.
+
+00:26:35.000 --> 00:26:42.000
+the error that's thrown by this then clause
+
+00:26:42.000 --> 00:26:45.000
+is caught by this.
+
+00:26:45.000 --> 00:26:48.000
+Catch clause.
+
+00:26:48.000 --> 00:26:51.000
+At the end,
+
+00:26:51.000 --> 00:27:01.000
+the fact that the error is caught means that we can handle it in a civilized manner.
+
+00:27:01.000 --> 00:27:12.000
+Rather than having the code, you know, do that trick of like halting and vomiting all over the terminal that you've seen with error messages before.
+
+00:27:12.000 --> 00:27:19.000
+In fact, I do believe I have a file kicking around that has an error in it.
+
+00:27:19.000 --> 00:27:26.000
+Yeah, throw an error Have a look at this file, throw an error.js.
+
+00:27:26.000 --> 00:27:33.000
+Throw too big. Okay, so the error message is too big. That's the only thing that this file does, right, if I run it.
+
+00:27:33.000 --> 00:27:47.000
+This error is not handled it's not caught.
+
+00:27:47.000 --> 00:27:48.000
+Interesting.
+
+00:27:48.000 --> 00:28:06.000
+In this case it's actually not doing all that vomit all over the terminal, but instead asking for me to include this option to show the exception there, this looks more like
+
+00:28:06.000 --> 00:28:15.000
+this looks more like what it looked like when you saw error messages that are run on node, typically, right.
+
+00:28:15.000 --> 00:28:20.000
+And so you see this stack trace.
+
+00:28:20.000 --> 00:28:28.000
+Right. So, yeah, throwing an error.
+
+00:28:28.000 --> 00:28:32.000
+I mean, just have one last look at this source code here.
+
+00:28:32.000 --> 00:28:46.000
+Throw is the word that you generate. It's the word that you use it's the syntax that you use when you want to create an error.
+
+00:28:46.000 --> 00:28:53.000
+And imagine that that error might be handled by code somewhere nearby.
+
+00:28:53.000 --> 00:28:58.000
+But if it's not handled by code somewhere nearby.
+
+00:28:58.000 --> 00:29:02.000
+Then the system is going to come to a grinding halt.
+
+00:29:02.000 --> 00:29:06.000
+That's what it is to throw an error.
+
+00:29:06.000 --> 00:29:20.000
+Whereas, handling an error is often done through a thing called a catch clause.
+
+00:29:20.000 --> 00:29:25.000
+So, for example, with this error.
+
+00:29:25.000 --> 00:29:29.000
+I can just quickly demonstrate this.
+
+00:29:29.000 --> 00:29:32.000
+You can do a thing called a try catch clause.
+
+00:29:32.000 --> 00:29:37.000
+So we'll try some code.
+
+00:29:37.000 --> 00:29:39.000
+And it's going to be. Oops.
+
+00:29:39.000 --> 00:29:43.000
+Got an error.
+
+00:29:43.000 --> 00:29:50.000
+And so this is the era that happens inside our try.
+
+00:29:50.000 --> 00:29:56.000
+And then the catch is there
+
+00:29:56.000 --> 00:30:00.000
+to run.
+
+00:30:00.000 --> 00:30:06.000
+Instead of letting the system Fall, fall over. Right.
+
+00:30:06.000 --> 00:30:16.000
+And I'll just say I caught the error, like that, so catch is kind of a special word when it comes to error handling.
+
+00:30:16.000 --> 00:30:31.000
+Because if you do have errors in your code you can catch those errors, and then your code can react in a graceful manner around the circumstances of errors.
+
+00:30:31.000 --> 00:30:37.000
+Unexpected token, let me just try that again, which
+
+00:30:37.000 --> 00:30:40.000
+is editing file didn't run this thing.
+
+00:30:40.000 --> 00:30:49.000
+Let's try this again.
+
+00:30:49.000 --> 00:30:55.000
+Two questions I see Chris and syrup Chris you want to go first.
+
+00:30:55.000 --> 00:31:02.000
+Yeah. So, with this, you throw an error say in your function.
+
+00:31:02.000 --> 00:31:14.000
+And then you would provide a little thing at the bottom that says catch and then you can provide more information. Yeah. and furthermore, keep going.
+
+00:31:14.000 --> 00:31:17.000
+Right. So if a function call.
+
+00:31:17.000 --> 00:31:23.000
+Now, about the throwing, let's just edit this file real quick here.
+
+00:31:23.000 --> 00:31:28.000
+Typically, you would do something more like this.
+
+00:31:28.000 --> 00:31:40.000
+Do some lips, some processing. Okay, this is like, you know, me and my famous function names that are super meta. Right.
+
+00:31:40.000 --> 00:31:53.000
+This throw would actually be down inside this function call somewhere right it's going to throw an error inside of do some processing, maybe I would need to take a return value from this.
+
+00:31:53.000 --> 00:32:13.000
+Like this. What I'm really hoping for is for the return value to be usable later on. So I might do something like let return value equal, an empty string to start with, but I'm going to do some processing to get a new value of return value.
+
+00:32:13.000 --> 00:32:28.000
+The throw is down inside here, right inside this function, I'm like, I can't do processing with what you've given me, because you forgot to include the parameter or something like this and in such a circumstance I'm going to throw an error because I give
+
+00:32:28.000 --> 00:32:30.000
+up.
+
+00:32:30.000 --> 00:32:34.000
+But the calling function, up here.
+
+00:32:34.000 --> 00:32:41.000
+We don't we can't give up, we need to soldier on maybe we're writing code that's like the for the lunar lander.
+
+00:32:41.000 --> 00:32:47.000
+And, you know, human lives are at stake, the code must keep going.
+
+00:32:47.000 --> 00:32:56.000
+So, in such a case, we're going to say, do this stuff inside the catch cause instead. Right.
+
+00:32:56.000 --> 00:33:00.000
+Keep on your feet keep running.
+
+00:33:00.000 --> 00:33:07.000
+We're going to be able to do this with promises, as well.
+
+00:33:07.000 --> 00:33:13.000
+This is the non promise version of doing catching and throwing errors. we're going to catch and throw.
+
+00:33:13.000 --> 00:33:17.000
+If errors are thrown within our promise chain.
+
+00:33:17.000 --> 00:33:26.000
+We're going to be able to have a different kind of catch clause that kind of catch clauses it's defined on a promise chain.
+
+00:33:26.000 --> 00:33:31.000
+so that's that's where we're headed with this.
+
+00:33:31.000 --> 00:33:46.000
+And then I asked, I'm sorry I'm sorry, in the, in the chat on your on your questions you had a question at sync is that like.on like is that a key word or did you just make up question, a thing.
+
+00:33:46.000 --> 00:34:00.000
+I didn't make it up, it came in as part of this package. Right. Notice that I'm asking that question a sink. On the RFP object.
+
+00:34:00.000 --> 00:34:05.000
+Right. Yeah, that's why I want to know if it was similar to like when we use like.on right.
+
+00:34:05.000 --> 00:34:23.000
+It's very similar to that. It's defined within the package that I'm using. So, you know when when you were doing your server and client pair yesterday right it's like you're, you haven't a.on.on is a function call.
+
+00:34:23.000 --> 00:34:38.000
+It was defined inside that package that you had brought in the net package right so in this case we're using a package called read line dash promise and relied on prod read line dash promise returns to us an object called read line.
+
+00:34:38.000 --> 00:34:50.000
+Read line has a function called create interface RLP is what comes out of that thing again all defined inside that package. Our LP is the thing that has question a sink defined on it.
+
+00:34:50.000 --> 00:35:00.000
+Right. And so you learn about these things by learning about like reading the documentation for this particular package. Yeah.
+
+00:35:00.000 --> 00:35:13.000
+Good syrup I know you've had a question for for a while now. Yes you are you partially answered that but I want to make it clear so the errors can be different, and I'll try to catch Klaus can handle different kinds of errors.
+
+00:35:13.000 --> 00:35:23.000
+So, how do we describe the errors that it can catch. For example, if it's the number or if it's an eye, you know, mathematical error, how you can catch these kinds of errors.
+
+00:35:23.000 --> 00:35:29.000
+Now to catch. Yes, this description of an error is just a string.
+
+00:35:29.000 --> 00:35:33.000
+And so, what kind of an error Am I throwing.
+
+00:35:33.000 --> 00:35:36.000
+In this case it's the two big error.
+
+00:35:36.000 --> 00:35:41.000
+Right. but if your error was especially numerical.
+
+00:35:41.000 --> 00:35:46.000
+You might make your system.
+
+00:35:46.000 --> 00:35:55.000
+Do something like throw, divide by zero error. Right.
+
+00:35:55.000 --> 00:36:12.000
+And there now that's the type of error that I'm throwing, Because I gave it a label. So there's no built in errors in in JavaScript or not. No, I'm actually there's a there's a huge long raft of them, you've seen many of them so far.
+
+00:36:12.000 --> 00:36:15.000
+Things like undefined.
+
+00:36:15.000 --> 00:36:29.000
+Like if I do some random object dot random property name that doesn't exist, and I try to call it an undefined error is going to get thrown. But we have to use the Troy or like, like you use troll.
+
+00:36:29.000 --> 00:36:37.000
+For example, either. These are sorry, these are errors that I am making up to this error. Yeah.
+
+00:36:37.000 --> 00:36:42.000
+There are other areas that are built into JavaScript.
+
+00:36:42.000 --> 00:36:48.000
+And they're all handled the same way, whether I make it or whether it's built into JavaScript I can still have these catch clauses that go with it. Yeah.
+
+00:36:48.000 --> 00:36:54.000
+Okay, thank you. Yeah, good. Thank you for the question.
+
+00:36:54.000 --> 00:36:57.000
+Lula.
+
+00:36:57.000 --> 00:37:10.000
+Hey, so I have two questions. One based on what you just saw, answered actually came up came up as you as you were answering it so my question is just.
+
+00:37:10.000 --> 00:37:25.000
+Why would we ever make the make our own air when they give us a date they give us an air that describes what our air is right. So like, but when, when I do have them.
+
+00:37:25.000 --> 00:37:37.000
+When I do have an air and that whole like screen pops up with all the mumbo jumbo it always helps me end up finding what was wrong with like my syntax or whatever so why would I want to throw my own ears.
+
+00:37:37.000 --> 00:37:46.000
+Yeah, because you're going to be building code that's around new types of data structures, and the error.
+
+00:37:46.000 --> 00:37:59.000
+Sorry. You cut out for a sec. Okay. Let me try that again. Let's, you're going to be writing code around your own types of objects.
+
+00:37:59.000 --> 00:38:03.000
+And when you whenever you're writing code that's that custom.
+
+00:38:03.000 --> 00:38:10.000
+Of course it's only you who knows the errors that are made for example if I were to make a pizza object in my code.
+
+00:38:10.000 --> 00:38:15.000
+And you tried to put pineapple on my pizza, I'm going to throw a fatal error. Right.
+
+00:38:15.000 --> 00:38:24.000
+Oh, oh ok ok ok ok so it's just starting limit, like, it's setting limitations. anyway. Okay cool and then my second question was about the ACE Ace and questions.
+
+00:38:24.000 --> 00:38:30.000
+My second question was about the ACE Ace and questions.
+
+00:38:30.000 --> 00:38:43.000
+How come when we were using promises, and we asked the questions. We just use questions but now we're using a sin questions while using the promises.
+
+00:38:43.000 --> 00:38:51.000
+It's just that this read line package is built, it is also a synchronous.
+
+00:38:51.000 --> 00:38:53.000
+This is a synchronous.
+
+00:38:53.000 --> 00:39:00.000
+It's just that the name of the function in that package doesn't include the word a sink on it.
+
+00:39:00.000 --> 00:39:03.000
+It's the way the package is written. Yes.
+
+00:39:03.000 --> 00:39:19.000
+Do the same thing. It does exactly the same thing, but this one achieves it by being passed a call back into the function itself, whereas this one achieves it by returning a promise.
+
+00:39:19.000 --> 00:39:24.000
+Instead,
+
+00:39:24.000 --> 00:39:33.000
+we're going to work with promises some more so this is just me introducing the promise syntax to you. I'm going to show you more about how promises work coming up.
+
+00:39:33.000 --> 00:39:34.000
+Okay.
+
+00:39:34.000 --> 00:39:36.000
+Yeah.
+
+00:39:36.000 --> 00:39:41.000
+I see for our next, next, yeah.
+
+00:39:41.000 --> 00:39:58.000
+Error equality for example when we are writing the game as for example that person, right, not men done better so that if I got the day three, we write in their skin is not true.
+
+00:39:58.000 --> 00:40:08.000
+You should put different example there is three messes up a number, so that they're all air all by myself. It was something like that.
+
+00:40:08.000 --> 00:40:23.000
+For example, when he prayed up her right there. And three numbers of it is three.
+
+00:40:23.000 --> 00:40:33.000
+Yes, it is like that, equal to, dysfunction. Yeah. Yeah, that's right I want when I'm making my own errors.
+
+00:40:33.000 --> 00:40:52.000
+I want to build in a message here. That is very much a very good clue to the programmer who's using my functions. Hey, don't do this. Right. So in this case I'm being a bit silly I'm saying never put pineapple on pizza objects or something like that right
+
+00:40:52.000 --> 00:41:09.000
+that message is extremely tuned to the particular error that occurred, say, right. And so, and this happens in the boot camp a lot right people start out in boot camp, when their code or fails with some fatal error.
+
+00:41:09.000 --> 00:41:17.000
+They like throw up their hands and run away screaming, you know, they're like my codes broken I can't do anything right now.
+
+00:41:17.000 --> 00:41:33.000
+When you guys start to read your error messages, they start to make sense, right, but there's actual vocabulary in the error message that you understand, and now you're like, Uh huh.
+
+00:41:33.000 --> 00:41:44.000
+attention to this error message right systems that have useful error messages are a joy to work with, right, because you're like yeah I have a bug, a problem to fix.
+
+00:41:44.000 --> 00:41:54.000
+What will I do, I'm going to read this error message, and I'm going to make it better, right, that and yeah, then you're going to love the their messages.
+
+00:41:54.000 --> 00:42:10.000
+Yeah. Does that work. Yeah, thank you. Good, thank you for the question. I'm Ed, you have a raised hand for a question and the question exercise if the error was like the second question or the third question, yes, we can keep going, we can keep putting
+
+00:42:10.000 --> 00:42:16.000
+data or the error message will like ruin the exercise.
+
+00:42:16.000 --> 00:42:28.000
+Yeah, I don't know about ruin its ruins an awfully strong word sorry I know. I mean, I'm the catch, we could put, like, keep going. What, so watch this.
+
+00:42:28.000 --> 00:42:35.000
+Let's, this is like a hold my beer and watch this moment right so we're going to do a throw an error right up here at the second answer. Okay.
+
+00:42:35.000 --> 00:42:45.000
+And what you'll see what happens is it's going to skip all these then clauses and it's going to go right to the catch clause at the bottom right.
+
+00:42:45.000 --> 00:42:53.000
+I'm going to put in my label here, which I should have on all of my console logs, right. Monkey fuzz.
+
+00:42:53.000 --> 00:42:55.000
+So, like so.
+
+00:42:55.000 --> 00:43:04.000
+And so we're going to go down into the survey we're going to run node survey dot promise.
+
+00:43:04.000 --> 00:43:07.000
+Okay. What do you think of node.
+
+00:43:07.000 --> 00:43:10.000
+Wicked.
+
+00:43:10.000 --> 00:43:11.000
+What's my name.
+
+00:43:11.000 --> 00:43:18.000
+cn and error. Right.
+
+00:43:18.000 --> 00:43:24.000
+It skipped all those other than clauses in the chain, and went right straight to the catch clause.
+
+00:43:24.000 --> 00:43:36.000
+We'll learn a little bit more about that later but that's how it all holds together. Okay and then later maybe you will find out how to keep going after the air.
+
+00:43:36.000 --> 00:43:42.000
+Yes, that's well in fact, in fact, what's going to happen is it's whatever code you run in here.
+
+00:43:42.000 --> 00:43:51.000
+Right. All I did was a console log, but this thing could be 20 lines long if I wanted to. Oh, okay. Thank you. Yeah, no problem.
+
+00:43:51.000 --> 00:44:04.000
+Yeah. Tatiana yeah hi Christian Sir, I cannot get it so the Barack was throws is clear so we just get it message which indicates what kind of problem we have.
+
+00:44:04.000 --> 00:44:26.000
+Yes, quad which caches so it gets us an error. What kind of error is it the built in error or is this the error was supposed to somewhere to declare and, like, in the context of promises in the context of promises with this new syntax I'm introducing.
+
+00:44:26.000 --> 00:44:34.000
+You can see that the error is actually getting passed in as a parameter to the callback that's inside the catch clause.
+
+00:44:34.000 --> 00:44:38.000
+So there's a parameter here called Er, yeah.
+
+00:44:38.000 --> 00:44:42.000
+That er parameter, the variable.
+
+00:44:42.000 --> 00:44:49.000
+Notice I'm console logging monkey fuzz here. Right. When I ran it.
+
+00:44:49.000 --> 00:45:03.000
+It actually wrote out this text error with an exclamation mark. That was the value of this parameter that text came from
+
+00:45:03.000 --> 00:45:05.000
+here.
+
+00:45:05.000 --> 00:45:15.000
+Right. So for example, I could put, you know, never put pineapple on pizza.
+
+00:45:15.000 --> 00:45:28.000
+That's my new type of error, that's happening. I've chosen to to run a throw, if this had been a question about what's your favorite pizza topping and the answer was pineapple I could throw this air never put pineapple on your pizza.
+
+00:45:28.000 --> 00:45:29.000
+Right.
+
+00:45:29.000 --> 00:45:49.000
+That's that type of error that I'm throwing it. Yeah, well this throw can indicate that there is the error that we didn't put the like correct ingredient to be That's right, that's right, this is entirely arbitrary.
+
+00:45:49.000 --> 00:46:06.000
+I'm choosing what my error is going to say, right, could be divided by zero. Yeah, but if you have 10 errors and how can you indicate what sentence you want to throw,
+
+00:46:06.000 --> 00:46:11.000
+throw the error.
+
+00:46:11.000 --> 00:46:32.000
+This throw part says it matches this this is exactly the error which. So, the sentence indicates like to. Yeah, I think, I think having 10 errors. I think you you can only deal with one error at a time.
+
+00:46:32.000 --> 00:46:34.000
+I think that that's true.
+
+00:46:34.000 --> 00:46:42.000
+And so for example in this case I throw this one error right away that means that now it's going to go down to the catch clause.
+
+00:46:42.000 --> 00:46:47.000
+And by the way, I'll run this one more time just so that you can see the customer.
+
+00:46:47.000 --> 00:47:01.000
+So does that mean that on your code when we have this flow, you just put arrow whenever you need it to have. That's right. Oh okay, this is us generating the errors in this case.
+
+00:47:01.000 --> 00:47:05.000
+Okay, thank you. Okay. breathe out, go ahead.
+
+00:47:05.000 --> 00:47:10.000
+Yeah, I want to clarify about the module you're using.
+
+00:47:10.000 --> 00:47:28.000
+So if we want to solve this survey exercise with promises. We need to use the read line promise module, because our question, a sink is returning a promise, which we need, which we need here to use Doug then.
+
+00:47:28.000 --> 00:47:43.000
+Whereas, if we would try to use this with promises but to use the read line the previous module, it wouldn't work because question does not return the promise right that returns something else so it would not work. Am I correct them they get correctly,
+
+00:47:43.000 --> 00:47:56.000
+that's absolutely correct. Yeah. So what does the read what this question return in this callback situation. Oh, that's interesting. Um, you know what the code I have written here doesn't care.
+
+00:47:56.000 --> 00:47:59.000
+It never collects the return value.
+
+00:47:59.000 --> 00:48:06.000
+Okay, we could console log it, it probably has some stuff to find on it, but it's just an object.
+
+00:48:06.000 --> 00:48:20.000
+I mean, we can find out actually why not why don't we do. Okay, um, I mean if it's not relevant. I just wanted to understand like why we're using one module over the other so yeah the promise is what we need that the return value is important for us to
+
+00:48:20.000 --> 00:48:34.000
+be able to years. Then, that's correct. Yep. No problem. In fact, I'm now that you said it I'm curious I'm going to console log it real fast here just to demonstrate that you two could do this if you had to right so returned value that's the return value
+
+00:48:34.000 --> 00:48:40.000
+that's coming back from that initial call to question up top here.
+
+00:48:40.000 --> 00:48:55.000
+Right I gathered the return value from question right because there's a semi colon at the end of that whole mess down here. Right. And so that return value from that call comes back in and now I'm going to see what it is here.
+
+00:48:55.000 --> 00:48:57.000
+Yeah.
+
+00:48:57.000 --> 00:49:10.000
+So I save it I go back to this. Here's the survey node survey callback.
+
+00:49:10.000 --> 00:49:17.000
+It actually didn't return anything.
+
+00:49:17.000 --> 00:49:19.000
+Okay, very good.
+
+00:49:19.000 --> 00:49:23.000
+Thank you for the questions we do want to move on.
+
+00:49:23.000 --> 00:49:26.000
+Um,
+
+00:49:26.000 --> 00:49:31.000
+Mohammed, one more.
+
+00:49:31.000 --> 00:49:37.000
+So, going back to the survey promise Dr J s dot one.
+
+00:49:37.000 --> 00:49:42.000
+So, for example, right in each of the questions.
+
+00:49:42.000 --> 00:50:00.000
+We're basically pushing, whatever answer we get out to the array, right here. Yeah, that's inside the callback that then Claus accepts the answer comes in as a parameter to that callback, this array is going to.
+
+00:50:00.000 --> 00:50:04.000
+You're going to push the new answer on to the array.
+
+00:50:04.000 --> 00:50:22.000
+And then return a new promise. Okay. So, for example, like, let's say, let's say for example, first question what do you think of Node. js, let's say we just typed in empty, like we didn't type anything we just had to enter or something like that, that'll
+
+00:50:22.000 --> 00:50:26.000
+be a blank stream, answer will be an empty string.
+
+00:50:26.000 --> 00:50:28.000
+Or maybe undefined.
+
+00:50:28.000 --> 00:50:35.000
+Oh ok, ok, so it would not, it would not or no not catch that air.
+
+00:50:35.000 --> 00:50:39.000
+It's not an error. It's just a blanket response.
+
+00:50:39.000 --> 00:50:54.000
+Okay. All right. But how can we make it so that it's an error for example, if answer is undefined, throw cannot have any answers. Yeah. Okay. Alright, so just a basic if statement.
+
+00:50:54.000 --> 00:50:58.000
+Yep. Okay, sounds good. Thank you. Yeah. Very good.
+
+00:50:58.000 --> 00:51:00.000
+Okay.
+
+00:51:00.000 --> 00:51:01.000
+Great.
+
+00:51:01.000 --> 00:51:12.000
+Thank you for all the questions, you know, I think that they are in context and they are helping people learn so you know if you're wondering a thing there are a bunch of other people that are also wondering that thing.
+
+00:51:12.000 --> 00:51:21.000
+That said, we do need to move on. And so, let us look into a bunch of things about promises.
+
+00:51:21.000 --> 00:51:26.000
+I'm going to bring up the source code.
+
+00:51:26.000 --> 00:51:35.000
+Back here now not in the survey, but instead inside the promises directory.
+
+00:51:35.000 --> 00:51:42.000
+So, I believe that you have actually learned a lot about promises already just from that introduction of the syntax.
+
+00:51:42.000 --> 00:51:52.000
+But we're going to move on to understand some more details about the promise objects and how they work.
+
+00:51:52.000 --> 00:52:03.000
+And the way that we're going to do this is we're going to use a promise generator.
+
+00:52:03.000 --> 00:52:08.000
+It's a promise generator of our own creation.
+
+00:52:08.000 --> 00:52:21.000
+Now, I mentioned earlier that I don't want to focus too hard on how to make your own promises instead I want to start with learning how to use promises.
+
+00:52:21.000 --> 00:52:22.000
+Right.
+
+00:52:22.000 --> 00:52:34.000
+And so, yeah, I want to show you a file, where a bunch of promises are generated, but I don't want to get mired down in questions about how promises are generated in the first place.
+
+00:52:34.000 --> 00:52:39.000
+I want to just show how promises are used.
+
+00:52:39.000 --> 00:52:40.000
+Okay.
+
+00:52:40.000 --> 00:52:53.000
+So, for example, I have this line require the code that's inside the promise generator file here, right, that promise generate a file that's our file.
+
+00:52:53.000 --> 00:52:57.000
+That's the place where these promises are being made.
+
+00:52:57.000 --> 00:53:04.000
+What I want to show you is, imagine this function, imagine in your mind now what this.
+
+00:53:04.000 --> 00:53:08.000
+What this file contains.
+
+00:53:08.000 --> 00:53:21.000
+Well, near the bottom of that file it's going to have module dot exports set to a thing, right, because we're collecting the return value of the require function call.
+
+00:53:21.000 --> 00:53:25.000
+And this
+
+00:53:25.000 --> 00:53:29.000
+thing here
+
+00:53:29.000 --> 00:53:39.000
+is going to be a collection of promises a collection of promise objects.
+
+00:53:39.000 --> 00:53:42.000
+And that's more or less all that I want you to know.
+
+00:53:42.000 --> 00:53:43.000
+Right.
+
+00:53:43.000 --> 00:53:46.000
+In fact, let me.
+
+00:53:46.000 --> 00:53:58.000
+Rename this symbol. I'm going to change the variable name from functions to collection of promises.
+
+00:53:58.000 --> 00:54:13.000
+Okay, it changed the variable name now, so it reads a little bit better right collection of promises equals require promise generator. That's what promise generator does is it makes a collection of promise objects for us to use
+
+00:54:13.000 --> 00:54:19.000
+one of those promises is called return promise.
+
+00:54:19.000 --> 00:54:27.000
+Another one of those promises that it makes is called return or rejected promise.
+
+00:54:27.000 --> 00:54:36.000
+And those things are themselves functions, actually.
+
+00:54:36.000 --> 00:54:41.000
+And so I this is an even better name for this is going to be the following.
+
+00:54:41.000 --> 00:54:52.000
+Rename the symbol collection of promise generators, generate tours.
+
+00:54:52.000 --> 00:54:53.000
+Okay.
+
+00:54:53.000 --> 00:55:04.000
+So return promise is itself a promise generator right and now here it is an action line eight is a function call.
+
+00:55:04.000 --> 00:55:06.000
+Right.
+
+00:55:06.000 --> 00:55:09.000
+It takes two parameters.
+
+00:55:09.000 --> 00:55:16.000
+The first parameter is a string that gives the promise that we're going to make a label.
+
+00:55:16.000 --> 00:55:26.000
+The second is some number of milliseconds that it's going to take for the promise to resolve.
+
+00:55:26.000 --> 00:55:33.000
+And now we actually need to talk about what a promise is
+
+00:55:33.000 --> 00:55:35.000
+fine.
+
+00:55:35.000 --> 00:55:44.000
+What is a promise in real life.
+
+00:55:44.000 --> 00:55:47.000
+in real life.
+
+00:55:47.000 --> 00:55:54.000
+I may make a promise to pay my rent.
+
+00:55:54.000 --> 00:56:00.000
+That promise is going to hang out there as an arrangement to be made.
+
+00:56:00.000 --> 00:56:04.000
+And the promise may ultimately be kept.
+
+00:56:04.000 --> 00:56:20.000
+Or it may not be kept.
+
+00:56:20.000 --> 00:56:24.000
+It's in a state that we call pending.
+
+00:56:24.000 --> 00:56:27.000
+When it comes to code.
+
+00:56:27.000 --> 00:56:33.000
+So a promise will sit there in a state for a while. It's in the pending state.
+
+00:56:33.000 --> 00:56:48.000
+And so this promise generator kit that we've built here, takes a second parameter, which is the number of milliseconds for which this promise should stay in that pending state.
+
+00:56:48.000 --> 00:57:02.000
+Before it resolves. So it's either going to resolve in the positive sense that the promise was kept or it'll end up in a rejected state.
+
+00:57:02.000 --> 00:57:05.000
+Instead,
+
+00:57:05.000 --> 00:57:13.000
+let me just grab this in case I need it. In fact, I find that I was in the wrong file I want to talk about the intro.
+
+00:57:13.000 --> 00:57:17.000
+And so,
+
+00:57:17.000 --> 00:57:21.000
+this is better.
+
+00:57:21.000 --> 00:57:28.000
+Same deal though, right, I've got my collection of promise generators that comes back from promise generator.
+
+00:57:28.000 --> 00:57:46.000
+And one of them is called return promise right and again I have this function call here, return promise right has a label for the promise that I'm generating, and a number of milliseconds, that the promise is going to be in the pending state,
+
+00:57:46.000 --> 00:57:52.000
+while it does its thing.
+
+00:57:52.000 --> 00:57:56.000
+So, let me comment this out for the moment.
+
+00:57:56.000 --> 00:58:05.000
+And let's just run this and see what happens right we're going to play around with the object.
+
+00:58:05.000 --> 00:58:07.000
+So here we go.
+
+00:58:07.000 --> 00:58:10.000
+node.js.
+
+00:58:10.000 --> 00:58:24.000
+Okay, interesting. It console logs the promise. It showed us a text representation of that promise. Then it console log a couple of other things, and then it hung there, and waited.
+
+00:58:24.000 --> 00:58:27.000
+Because there was stuff going on on the event loop.
+
+00:58:27.000 --> 00:58:32.000
+For a time, And then the program finished.
+
+00:58:32.000 --> 00:58:35.000
+Let me do that again.
+
+00:58:35.000 --> 00:58:39.000
+The promise is pending. It's in the pending state.
+
+00:58:39.000 --> 00:58:51.000
+Couple more console logs just to prove that the code still alive, then it hung there waited for the event loop to do its thing. And then, somehow, something happened on the event loop that our code could finish.
+
+00:58:51.000 --> 00:58:55.000
+Right, let's look at the code.
+
+00:58:55.000 --> 00:59:02.000
+We have, it's mostly commented out, right, we've got collection of promise generators.
+
+00:59:02.000 --> 00:59:11.000
+We're going to use that collection promise generators to get a function called return promise.
+
+00:59:11.000 --> 00:59:14.000
+Right. we're going to use that function here.
+
+00:59:14.000 --> 00:59:25.000
+Okay, return a promise. What kind of a promise well it's going to be a promise that's got the first promise label on it.
+
+00:59:25.000 --> 00:59:39.000
+And that promise is going to stay in the pending state for 4444 milliseconds. That was the pause that you observed the promise was going to sit there in that pending state for a time.
+
+00:59:39.000 --> 00:59:50.000
+Okay, this function call is actually super fast. Right. It's one of these function calls that has a synchronous side effects, where it pushes the sing off on to the event loop.
+
+00:59:50.000 --> 00:59:54.000
+The event loop can't start until the main thread is done.
+
+00:59:54.000 --> 00:59:59.000
+But at least it's been scheduled a thing is going to go out onto the event loop.
+
+00:59:59.000 --> 01:00:01.000
+Fun.
+
+01:00:01.000 --> 01:00:08.000
+That's a very fast function call all it's doing is scheduling a thing.
+
+01:00:08.000 --> 01:00:23.000
+Then we get a console log of the promise object itself right you can see this label here promise. Right. That's what is generating this, that's the label.
+
+01:00:23.000 --> 01:00:28.000
+There's the value,
+
+01:00:28.000 --> 01:00:33.000
+then these are a couple of console logs.
+
+01:00:33.000 --> 01:00:36.000
+Bang Bang superfast.
+
+01:00:36.000 --> 01:00:37.000
+The.
+
+01:00:37.000 --> 01:00:43.000
+And then it hangs right you saw it hang for a while. 4444 milliseconds.
+
+01:00:43.000 --> 01:00:47.000
+And then that's it now.
+
+01:00:47.000 --> 01:00:55.000
+Let's say that we want to actually see this promise actually resolve.
+
+01:00:55.000 --> 01:01:02.000
+Well, here's one way that we could do that.
+
+01:01:02.000 --> 01:01:08.000
+Let's make this six seconds later, just to make sure that it actually works.
+
+01:01:08.000 --> 01:01:09.000
+Right.
+
+01:01:09.000 --> 01:01:15.000
+A quick show of hands, people are cool with set time out as a function. Is that true.
+
+01:01:15.000 --> 01:01:27.000
+Yeah, I see some tentative hands being raised by some tentative faces. Because yes, you've learned set time out, but you're not entirely comfortable with what it's doing.
+
+01:01:27.000 --> 01:01:34.000
+Is that a fair description of how things are for people. Okay, there's the, there's the nodding heads I wanted to see thank you for having your cameras on.
+
+01:01:34.000 --> 01:01:35.000
+Okay.
+
+01:01:35.000 --> 01:01:38.000
+And the text responses as well.
+
+01:01:38.000 --> 01:01:50.000
+I will, I'm going to before we go to break. I'm going to give you a super quick review of set timeout and what it's doing. It is one of these functions that has a synchronous side effects.
+
+01:01:50.000 --> 01:01:54.000
+Some asynchronous implications, if you will, right.
+
+01:01:54.000 --> 01:01:59.000
+Here is how you read JavaScript.
+
+01:01:59.000 --> 01:02:01.000
+You read the file.
+
+01:02:01.000 --> 01:02:07.000
+You understand that every one of these functions is being called.
+
+01:02:07.000 --> 01:02:10.000
+Right.
+
+01:02:10.000 --> 01:02:17.000
+Sometimes you've got callbacks past this parameters and you wonder when is this callback going to get run.
+
+01:02:17.000 --> 01:02:25.000
+Is it going to get run now by me or is it going to get run by something often event loop later.
+
+01:02:25.000 --> 01:02:26.000
+Okay.
+
+01:02:26.000 --> 01:02:31.000
+But when I promise you, is that as you read through the main thread.
+
+01:02:31.000 --> 01:02:37.000
+These function calls that you're encountering are being run. They are being executed.
+
+01:02:37.000 --> 01:02:43.000
+Often, they're super fast scheduling function calls.
+
+01:02:43.000 --> 01:02:51.000
+So set timeout is one of those does set timeout run. Yes, absolutely.
+
+01:02:51.000 --> 01:02:57.000
+set timeout, has a synchronous side effects.
+
+01:02:57.000 --> 01:03:02.000
+It's going to schedule
+
+01:03:02.000 --> 01:03:08.000
+some stuff to happen on the event loop, the event loop can't start until the main thread is finished.
+
+01:03:08.000 --> 01:03:17.000
+That's the model for JavaScript and how it works that you should be bringing on to your understanding that you read through the main loop.
+
+01:03:17.000 --> 01:03:29.000
+You arrive at this function call and say yes indeed set timeout does run, but it's actually just a super fast scheduling of a callback that will happen.
+
+01:03:29.000 --> 01:03:34.000
+6000 milliseconds from now.
+
+01:03:34.000 --> 01:03:46.000
+Yeah back here, there was a function call that happened first that had some scheduling in it in so far as that it generated a promise that promise has some asynchronous side effects as well.
+
+01:03:46.000 --> 01:03:50.000
+Right. So what you're saying is, okay. Make me a promise.
+
+01:03:50.000 --> 01:04:01.000
+And the way that this promise is written 4444 milliseconds from now, it will resolve.
+
+01:04:01.000 --> 01:04:06.000
+It's going to be in the pending state until that happens though.
+
+01:04:06.000 --> 01:04:10.000
+That's an a synchronous side effect.
+
+01:04:10.000 --> 01:04:19.000
+So you read through the code you get to there that thing gets scheduled on the event loop, then we got a couple of console logs. couple of three console logs.
+
+01:04:19.000 --> 01:04:26.000
+And then finally, there's a set timeout that says, oh, six seconds from now I'd like to see you.
+
+01:04:26.000 --> 01:04:28.000
+console log.
+
+01:04:28.000 --> 01:04:34.000
+The promise, again, to see what it looks like six seconds from now.
+
+01:04:34.000 --> 01:04:39.000
+And then the code will be done. The main.
+
+01:04:39.000 --> 01:04:47.000
+Then the event loop will finish. After that six seconds is passed all of this stuff is scheduling stuff on the event loop.
+
+01:04:47.000 --> 01:04:54.000
+The event loop doesn't start until I fall off the bottom of my main loop of my main thread.
+
+01:04:54.000 --> 01:04:58.000
+Okay, now let me run this thing now.
+
+01:04:58.000 --> 01:05:16.000
+Before we go, run it. We got our promise made 4444 milliseconds later the promise resolves but six seconds later, I get my last console log Finally, and now here is the console log of that very same promise.
+
+01:05:16.000 --> 01:05:17.000
+It looks different now.
+
+01:05:17.000 --> 01:05:27.000
+Because in the time that we waited to put this last console log up.
+
+01:05:27.000 --> 01:05:29.000
+It had resolved.
+
+01:05:29.000 --> 01:05:36.000
+I was console logging the same promise. But now that promise object was in a resolve state.
+
+01:05:36.000 --> 01:05:39.000
+Right.
+
+01:05:39.000 --> 01:05:48.000
+If I redid this and made this 12 seconds instead, it's going to take us 12 seconds longer to see the last console log.
+
+01:05:48.000 --> 01:05:53.000
+If I did this in two seconds.
+
+01:05:53.000 --> 01:05:57.000
+And I say, two seconds later.
+
+01:05:57.000 --> 01:06:05.000
+Instead, let's rerun this two seconds later I get another console log of the same thing.
+
+01:06:05.000 --> 01:06:16.000
+Right, but it's still independent state and hasn't resolved yet because we haven't had the 4444 milliseconds run in time. Okay. When we come back from the break, we're going to do this with promises instead.
+
+01:06:16.000 --> 01:06:26.000
+And it means that we won't have to guess how long thing comes, where is the yay coming from, that's actually inside the promise generator.
+
+01:06:26.000 --> 01:06:37.000
+Here's my list of promise generators The thing I promised I didn't want to dwell on these, this is bits of code for how to make actual promises of your own.
+
+01:06:37.000 --> 01:06:39.000
+And here they are.
+
+01:06:39.000 --> 01:06:47.000
+Right. Yay resolved is what happens when the resolve happens. We're also going to make promises that always reject.
+
+01:06:47.000 --> 01:06:56.000
+And we're going to get different texts, out of, in that case instead. But again, I don't want you to dwell on this code just yet we're going to do it at the end of the class.
+
+01:06:56.000 --> 01:07:01.000
+Okay.
+
+01:07:01.000 --> 01:07:04.000
+Okay, let's take that 10 minute break.
+
+01:07:04.000 --> 01:07:13.000
+Um. Anybody have any strong opinions about coffee or non Actually, you know what, I'm, I have a strong opinion.
+
+01:07:13.000 --> 01:07:32.000
+Instead, we're going to go for.
+
+01:07:32.000 --> 01:07:34.000
+the coop.
+
+01:07:34.000 --> 01:07:35.000
+Haha.
+
+01:07:35.000 --> 01:07:44.000
+Francis has been on has been active, again, and he's produced a video for us.
+
+01:07:44.000 --> 01:07:52.000
+Hopefully it's not black the whole time of the 10 minutes, where he's cutting a bunch of radishes, which is pretty darn cool if you ask me.
+
+01:07:52.000 --> 01:08:03.000
+If these routers just don't come up though we're going to retreat back into the coffee for 10 minutes. Give it another 30, see how far we get with it.
+
+01:08:03.000 --> 01:08:08.000
+If not, we'll flip over to naan bread. Yeah.
+
+01:08:08.000 --> 01:08:10.000
+Well done Nadia.
+
+01:08:10.000 --> 01:08:15.000
+We're watching coffee after all. Hey.
+
+01:08:15.000 --> 01:08:21.000
+Oh, you seen the route is cutting fine it I thought I was being revealing the thing.
+
+01:08:21.000 --> 01:08:30.000
+Okay. In such a case, let's go back to non then
+
+01:08:30.000 --> 01:08:37.000
+why are they all black.
+
+01:08:37.000 --> 01:09:07.000
+Oh, There we go. Okay, see in 10 minutes.
+
+01:18:33.000 --> 01:18:37.000
+All right, who was that masked guitarist I wonder.
+
+01:18:37.000 --> 01:18:47.000
+Let us get back to the class, we'll talk about some promises away with you non stop making us hungry. Okay.
+
+01:18:47.000 --> 01:18:50.000
+Welcome back to the class.
+
+01:18:50.000 --> 01:19:04.000
+Let us see where we are at right, so we're generating some promises. We're console logging the promises to check out the state of those promises.
+
+01:19:04.000 --> 01:19:12.000
+And let's dig into more. We've been playing this game of console logging the state of a promise.
+
+01:19:12.000 --> 01:19:25.000
+By changing the times when we're looking at it, because we're imagining this promise which is being built and then it's going on to the event loop and doing its thing and we're console logging at various times to check in on it state.
+
+01:19:25.000 --> 01:19:40.000
+Yeah, there's a better way than this, trying to guess when things are finished, though, and promises to the rescue.
+
+01:19:40.000 --> 01:19:49.000
+Here is the promise that we made right this is the promise object that came back from the return promise call.
+
+01:19:49.000 --> 01:19:53.000
+Because it's a promise object.
+
+01:19:53.000 --> 01:20:04.000
+We can run a dot then cause off of it, it's an object, the dots syntax is going to allow us to call then on it.
+
+01:20:04.000 --> 01:20:06.000
+Alright, so a quick review of what we got.
+
+01:20:06.000 --> 01:20:11.000
+That's for Tatiana's question.
+
+01:20:11.000 --> 01:20:16.000
+The collection of promise generators is an object that comes back from our custom code.
+
+01:20:16.000 --> 01:20:27.000
+It's got promise generators in it out of our collection of promise generators there's one that's called return promise, that's a function call.
+
+01:20:27.000 --> 01:20:42.000
+Sorry, that's, that's this is actually a function definition here, you can see that function in use online six, right, that function came from our collection of promise generators.
+
+01:20:42.000 --> 01:20:51.000
+Okay, I just read question number three, like this long collection of promises generators that return promises so return promises goes from the collection.
+
+01:20:51.000 --> 01:21:04.000
+So, this way of writing is just like a sentence we have to remember right, it's just that this is an object, that's all. It's an object that has a bunch of properties inside it.
+
+01:21:04.000 --> 01:21:13.000
+Oh okay I gotta thank you. Yeah, no problem, right, that in fact let's just quickly look at the code here it is here, because module exports is returning an object.
+
+01:21:13.000 --> 01:21:20.000
+And inside that object are three function values variables.
+
+01:21:20.000 --> 01:21:22.000
+That's all.
+
+01:21:22.000 --> 01:21:24.000
+Good.
+
+01:21:24.000 --> 01:21:32.000
+Okay, so we have that function, a function that makes promises for us. Here's a promise object.
+
+01:21:32.000 --> 01:21:35.000
+Because this is a promise object.
+
+01:21:35.000 --> 01:21:43.000
+I can use the syntax on it with a then claws. Right. and what do you pass to.
+
+01:21:43.000 --> 01:21:47.000
+Then clause, a callback.
+
+01:21:47.000 --> 01:21:51.000
+It's a callback that's going to get run.
+
+01:21:51.000 --> 01:21:57.000
+When this promise resolves.
+
+01:21:57.000 --> 01:22:04.000
+That's when this callback gets called, we don't have to guess how long that's going to take anymore.
+
+01:22:04.000 --> 01:22:05.000
+Right.
+
+01:22:05.000 --> 01:22:13.000
+So, I can write. First one second one, right, just to distinguish it from what goes on down here.
+
+01:22:13.000 --> 01:22:19.000
+We're going to generate our promise that's going to take 4444 milliseconds to resolve.
+
+01:22:19.000 --> 01:22:23.000
+We're going to console log it straight away.
+
+01:22:23.000 --> 01:22:28.000
+To see what state it's in as soon as we've made it. We're going to console log a couple of things.
+
+01:22:28.000 --> 01:22:39.000
+Then, on this promise object, we're going to run a then clause which sets up a call back to be run whenever it resolves.
+
+01:22:39.000 --> 01:22:53.000
+Much better than trying to guess how much time we have to put in here, to know when it's going to finish on its own. Right, so we'll do it that way we'll go back here and we'll run the code again.
+
+01:22:53.000 --> 01:23:07.000
+Okay, it during the main loop, it makes the promise it does this first to console logs, then the console logs run. Why, because they're inside that callback.
+
+01:23:07.000 --> 01:23:14.000
+Inside the then claws, then cause says, Call this call back when the promise resolves.
+
+01:23:14.000 --> 01:23:29.000
+So, data, data is just the parameter, it's, it's the parameter that is sent to the callback, that we feed into the then claws right we feed a call back into the then Claus.
+
+01:23:29.000 --> 01:23:37.000
+When the promise resolves, it's going to return, whatever text, it's been programmed to return.
+
+01:23:37.000 --> 01:23:48.000
+When the promise resolves and so we see that, that thing, whatever it returned is going to be what gets passed into us here.
+
+01:23:48.000 --> 01:23:58.000
+And so we can look at this new data stuff is just it's some sample code that's running inside here.
+
+01:23:58.000 --> 01:24:06.000
+What we're really interested in is looking at data. Right. So let's look at data.
+
+01:24:06.000 --> 01:24:20.000
+Data is the text that was returned from promise, when it resolved.
+
+01:24:20.000 --> 01:24:21.000
+Okay.
+
+01:24:21.000 --> 01:24:25.000
+What I hope that you see here is yeah here's our promise syntax.
+
+01:24:25.000 --> 01:24:31.000
+Here's how we use promise syntax.
+
+01:24:31.000 --> 01:24:48.000
+The promise syntax allows us to attach a dot. Then on to a promise, such that the callback inside that then call is going to run when the promise resolves.
+
+01:24:48.000 --> 01:24:53.000
+If the promise is rejected instead it's going to look for a catch clause.
+
+01:24:53.000 --> 01:24:56.000
+We also saw a little bit of that.
+
+01:24:56.000 --> 01:25:08.000
+Eric asks the promise is being resolved based on a set timeout. That's true. That's because of how our promise generators are built, they're set timeouts all over the place inside here.
+
+01:25:08.000 --> 01:25:17.000
+They're based on the second parameter for our promise generator functions, they wait a certain amount of time before the resolution occurs. But yes, that's right.
+
+01:25:17.000 --> 01:25:23.000
+What are other ways that we can resolve a promise. Good question.
+
+01:25:23.000 --> 01:25:27.000
+For example,
+
+01:25:27.000 --> 01:25:36.000
+You can resolve a promise, based on the fact that a file is finished reading
+
+01:25:36.000 --> 01:25:42.000
+or that an API call to some machine on the internet has finished,
+
+01:25:42.000 --> 01:25:48.000
+or when a user is finished typing some stuff.
+
+01:25:48.000 --> 01:25:59.000
+Right. And notice that there's a common thread through all of this stuff. It's when you've got code that's going to run, and you don't know how long it's going to take to run.
+
+01:25:59.000 --> 01:26:03.000
+You have no idea. In fact, it may take quite a while.
+
+01:26:03.000 --> 01:26:05.000
+for a file to read in.
+
+01:26:05.000 --> 01:26:13.000
+It may take quite a while for a human to type out their answer to a question.
+
+01:26:13.000 --> 01:26:23.000
+It may take quite a while for you to get some information back from an API call to some server in Australia.
+
+01:26:23.000 --> 01:26:32.000
+You know, the internet stuff may need to bounce out to space and back before you get your answer.
+
+01:26:32.000 --> 01:26:36.000
+So you wait some number of seconds.
+
+01:26:36.000 --> 01:26:44.000
+You know, how long are you going to wait, not sure, but we'll have the promise wrap up.
+
+01:26:44.000 --> 01:26:51.000
+When that data comes back.
+
+01:26:51.000 --> 01:26:57.000
+Have it asks, doesn't, then method take two parameters, not usually.
+
+01:26:57.000 --> 01:27:07.000
+I'm not even sure if it can. The two parameters that we were talking about before, was when we were passing in a call back as the second function second part.
+
+01:27:07.000 --> 01:27:09.000
+Yeah.
+
+01:27:09.000 --> 01:27:17.000
+Eric asks, so A promise is always resolved, using a synchronous code.
+
+01:27:17.000 --> 01:27:20.000
+I'm.
+
+01:27:20.000 --> 01:27:31.000
+That's the point of using promises, I suspect that in some weird theoretical demo, you could build a promise that returned synchronously.
+
+01:27:31.000 --> 01:27:33.000
+But what would be the point.
+
+01:27:33.000 --> 01:27:41.000
+Then there's no point in using promise syntax for that.
+
+01:27:41.000 --> 01:27:57.000
+Thank you, Mohammed for for passing me the references on then. And I gather that you love wants to have a quick look. Because it's going to be useful right.
+
+01:27:57.000 --> 01:28:00.000
+Here's the then prototype.
+
+01:28:00.000 --> 01:28:13.000
+Up to two arguments callback functions for the success and failure case, right, I see. So, in fact, by passing a second parameter. That's like having its own built in catch clause to that one, then clause.
+
+01:28:13.000 --> 01:28:16.000
+So that's pretty clever and useful.
+
+01:28:16.000 --> 01:28:24.000
+Yeah, but it's, you know, we're actually going to do this differently where we put in catch clauses further down the chain.
+
+01:28:24.000 --> 01:28:29.000
+Instead,
+
+01:28:29.000 --> 01:28:33.000
+Okay, that's intro.js.
+
+01:28:33.000 --> 01:28:42.000
+Let's look at a couple of other things. For example, catch clauses and errors.
+
+01:28:42.000 --> 01:28:45.000
+Okay, so out of our collection of promise generators.
+
+01:28:45.000 --> 01:28:52.000
+There are actually three kinds of promises that we can make, there's one that always returns as resolved.
+
+01:28:52.000 --> 01:28:57.000
+There's one that always returns is rejected.
+
+01:28:57.000 --> 01:29:03.000
+And there's a third one that will return randomly one or the other.
+
+01:29:03.000 --> 01:29:06.000
+We're not using that one yet.
+
+01:29:06.000 --> 01:29:15.000
+Now we're going to avail ourselves of the return rejected promise, and we're going to chain these things together.
+
+01:29:15.000 --> 01:29:17.000
+Yeah.
+
+01:29:17.000 --> 01:29:27.000
+So for now, Let's have the chain always return promises that resolve.
+
+01:29:27.000 --> 01:29:31.000
+And then we'll put together a chain of them here.
+
+01:29:31.000 --> 01:29:34.000
+Notice how you get the chain to work.
+
+01:29:34.000 --> 01:29:45.000
+It's that you get one call back from the first then Claus to return a promise of its own.
+
+01:29:45.000 --> 01:29:54.000
+That's how your then Claus can have another then Claus that attaches to it,
+
+01:29:54.000 --> 01:30:04.000
+we'll see in a moment that this actually always happens, no matter what you do, but for now we're going to return the, the second promise explicitly.
+
+01:30:04.000 --> 01:30:13.000
+So this then cause has its callback right this callback is itself going to return a promise.
+
+01:30:13.000 --> 01:30:27.000
+And so we get to attach more than clauses on to it.
+
+01:30:27.000 --> 01:30:33.000
+It's actually not recursion. but I chain.
+
+01:30:33.000 --> 01:30:39.000
+a very similar kind of a thing, but not identical.
+
+01:30:39.000 --> 01:30:51.000
+What we're doing is we're changing together function calls, because the first function call returns an object that the second chain can second link in the chain can deal with.
+
+01:30:51.000 --> 01:30:56.000
+Yeah, yeah, definitely like a domino effect.
+
+01:30:56.000 --> 01:30:57.000
+Yep.
+
+01:30:57.000 --> 01:31:06.000
+Okay, let's run this thing, right, called errors such as node.js.
+
+01:31:06.000 --> 01:31:15.000
+So, as each promise resolves, then the next one goes.
+
+01:31:15.000 --> 01:31:17.000
+Right.
+
+01:31:17.000 --> 01:31:24.000
+All of these things have 1000 milliseconds as their time and so we're effectively building a counter that counts one seconds.
+
+01:31:24.000 --> 01:31:35.000
+One second. Two seconds, three seconds, and so on, every promise in the chain resolves it makes a new promise that takes another second to run
+
+01:31:35.000 --> 01:31:36.000
+by.
+
+01:31:36.000 --> 01:31:43.000
+Now, what happens though, If, instead of making a promise that resolves.
+
+01:31:43.000 --> 01:31:51.000
+We make a promise that will reject. After a second.
+
+01:31:51.000 --> 01:31:57.000
+What happens here is, well, we'll see.
+
+01:31:57.000 --> 01:32:02.000
+123.
+
+01:32:02.000 --> 01:32:03.000
+All right.
+
+01:32:03.000 --> 01:32:16.000
+promise for was rejected, and it went straight to this, er, colon, that is in the catch cause at the bottom.
+
+01:32:16.000 --> 01:32:26.000
+So, to where Mohammed pointed out that, then Claus could take a second callback that would that would be run in the case that the prior thing was rejected.
+
+01:32:26.000 --> 01:32:29.000
+Instead
+
+01:32:29.000 --> 01:32:34.000
+of there's this other way that you can handle rejected promises.
+
+01:32:34.000 --> 01:32:38.000
+And that is to have a dot catch.
+
+01:32:38.000 --> 01:32:44.000
+And so if any of these promises are to be rejected.
+
+01:32:44.000 --> 01:32:52.000
+It's going to come down here and run the catch clause.
+
+01:32:52.000 --> 01:33:08.000
+Um, yeah, it's, it's, it's efficient, it's lazy in that I don't need to be super specific about the particular catch. I mean, all I'm really doing is, is throwing the message that comes back from the rejected promise right.
+
+01:33:08.000 --> 01:33:25.000
+If on the other hand, I needed to have a catch clause that was specific to the way that previous promises were rejected, then it would be better to have catch clauses sprinkled throughout the chain.
+
+01:33:25.000 --> 01:33:37.000
+So that if the first one rejects then it's this catch clause that runs, and if the second one. If the second, then clause rejects then it's it's immediately following catch balls that would run, and so on.
+
+01:33:37.000 --> 01:33:48.000
+And so, passing it as the second parameter is the way that you mentioned would be another way to achieve a catch cause for every then Glaus.
+
+01:33:48.000 --> 01:33:59.000
+Good. Eric I see a hand raised. Do you have a question. Yeah, so if you took this code here from line eight to line, 32 and you were to copy it and put it below.
+
+01:33:59.000 --> 01:34:08.000
+Would they run simultaneously, or what it execute the first and then the second. Good question. Let's do it.
+
+01:34:08.000 --> 01:34:15.000
+In fact, it will run them simultaneously.
+
+01:34:15.000 --> 01:34:26.000
+That is as close to simultaneous as it can get, just to understand just so that everybody can understand the question that Eric is asking here.
+
+01:34:26.000 --> 01:34:29.000
+I'm going to put a console log in between the two.
+
+01:34:29.000 --> 01:34:35.000
+Okay. Whoops, console dot log. Right.
+
+01:34:35.000 --> 01:34:41.000
+I'm going to say, stuck in the middle.
+
+01:34:41.000 --> 01:34:45.000
+Okay, that's a console log that's happening between these two promise chains.
+
+01:34:45.000 --> 01:34:46.000
+Right.
+
+01:34:46.000 --> 01:34:51.000
+And here's how I know what's going to happen.
+
+01:34:51.000 --> 01:34:54.000
+These function calls are all very fast.
+
+01:34:54.000 --> 01:34:59.000
+They all happen. This is a function call that executes This is another function call but executes.
+
+01:34:59.000 --> 01:35:09.000
+What it's doing is it's scheduling stuff that will happen on the event loop.
+
+01:35:09.000 --> 01:35:25.000
+So this is saying yeah make a promise that has a one second delay, and then schedule this call back to run when that one resolves, what would it do it would run this promise, then schedule this third thing to resolve when that one results, no matter what
+
+01:35:25.000 --> 01:35:34.000
+it does, and so on. These are just scheduling scheduling things are quite quick, right, they have a synchronous side effects. They synchronous implications yeah absolutely right.
+
+01:35:34.000 --> 01:35:37.000
+All that stuff's been scheduled on the event.
+
+01:35:37.000 --> 01:35:43.000
+Right. Then it consoles console log stuck in the middle straightaway again all this stuff happens super quickly.
+
+01:35:43.000 --> 01:35:57.000
+Then, a new promise set is made with its 123, right, I'm going to change the names of these slightly let's make these digits, instead of text. Okay.
+
+01:35:57.000 --> 01:36:02.000
+And so doing, you're going to see this second promise chain that gets built.
+
+01:36:02.000 --> 01:36:16.000
+Five, six, and if we want to see these things run, we better make this second chain, not throw an error, say,
+
+01:36:16.000 --> 01:36:19.000
+yeah.
+
+01:36:19.000 --> 01:36:27.000
+In fact, just so that people understand what's happening. I'm going to make the first one not throw an error first as well.
+
+01:36:27.000 --> 01:36:34.000
+Right. Okay, so here we are. This is the main thread. The main thread is give me some promise generators.
+
+01:36:34.000 --> 01:36:48.000
+Use those promise generators to make some promises and a chain of things that will happen after those promises resolve, one after the other, here's the catch handler for the first chain here's a catch handler for the second chain.
+
+01:36:48.000 --> 01:37:01.000
+We're going to say that this one is error. First, and that this one down here is a catch clause, for error 123.
+
+01:37:01.000 --> 01:37:03.000
+Okay, let's run it.
+
+01:37:03.000 --> 01:37:06.000
+Node arrows.
+
+01:37:06.000 --> 01:37:16.000
+Notice that the first thing that showed up was stuck in the middle, right, that was the console log that you saw between the scheduling
+
+01:37:16.000 --> 01:37:24.000
+of the two event chains. It wasn't until the main thread finished that the first.
+
+01:37:24.000 --> 01:37:31.000
+Promise resolved. And then the second promise that resolved in time.
+
+01:37:31.000 --> 01:37:41.000
+Also resolved. Right, so you can see that these two chains are running in parallel.
+
+01:37:41.000 --> 01:37:57.000
+Now, the truth is that a computer can actually only work on one thing at a time. We are relying on the multitasking nature of the event loop to make this look like it's simultaneous.
+
+01:37:57.000 --> 01:38:02.000
+Okay, great. Interesting question for sure. Right.
+
+01:38:02.000 --> 01:38:23.000
+It shows you how to read a synchronous code, right, think of it in terms of scheduling stuff happening on the event loop. Same thing happens by the way when you use a package that reads files, or does API calls or waits asynchronously for user input.
+
+01:38:23.000 --> 01:38:28.000
+Right. All those things are happening on the event loop.
+
+01:38:28.000 --> 01:38:33.000
+Good. That's how errors are handled.
+
+01:38:33.000 --> 01:38:37.000
+Next up,
+
+01:38:37.000 --> 01:38:44.000
+about the nested promises.
+
+01:38:44.000 --> 01:38:56.000
+You know what I'm going to skip this bit. I don't think it's super important. The thing that I do think is very important, is to realize that.
+
+01:38:56.000 --> 01:39:02.000
+Okay, let's go back to our errors case right with the 123 and so on.
+
+01:39:02.000 --> 01:39:11.000
+In this chain of promises that are being made. We're actually explicitly returning promises.
+
+01:39:11.000 --> 01:39:19.000
+At the end of event clauses call back, so that the next then clause would pick up a promise. Right.
+
+01:39:19.000 --> 01:39:23.000
+But here's the thing.
+
+01:39:23.000 --> 01:39:30.000
+I actually don't have to explicitly return in a promise object.
+
+01:39:30.000 --> 01:39:34.000
+If I don't, the chain is still going to work.
+
+01:39:34.000 --> 01:39:45.000
+And this happens because
+
+01:39:45.000 --> 01:39:51.000
+if I return a primitive.
+
+01:39:51.000 --> 01:39:57.000
+It's going to get wrapped in a promise anyway.
+
+01:39:57.000 --> 01:40:07.000
+It's just that the data is going to show up as the return value from the previous piece of the chain. When you return a thing from one of these callbacks.
+
+01:40:07.000 --> 01:40:11.000
+That gets wrapped up inside a promise.
+
+01:40:11.000 --> 01:40:15.000
+So let's run this now.
+
+01:40:15.000 --> 01:40:26.000
+One of our promises is going to be an immediate resolve there see that two three happened right away three was just the return value of the previous then clause.
+
+01:40:26.000 --> 01:40:34.000
+So that's kind of cool it's kind of tricky right, it's like, I don't even have to make a promise at the end of my callback.
+
+01:40:34.000 --> 01:40:39.000
+It's still changeable.
+
+01:40:39.000 --> 01:40:47.000
+This thing is wrapped in a promise of its own.
+
+01:40:47.000 --> 01:40:50.000
+Excellent.
+
+01:40:50.000 --> 01:40:52.000
+Next topic.
+
+01:40:52.000 --> 01:40:57.000
+Let's talk about
+
+01:40:57.000 --> 01:41:02.000
+a neat trick that you can do with promises.
+
+01:41:02.000 --> 01:41:07.000
+And it's all about this magic that's happening online 13.
+
+01:41:07.000 --> 01:41:11.000
+That's the punch line of this section.
+
+01:41:11.000 --> 01:41:17.000
+This is all about. Promise dot all notice promise with a capital P.
+
+01:41:17.000 --> 01:41:22.000
+This is a class.
+
+01:41:22.000 --> 01:41:30.000
+So promise dot all takes an array of promises.
+
+01:41:30.000 --> 01:41:37.000
+I want to make sure these are in the right order for reasons that will become clear in a moment.
+
+01:41:37.000 --> 01:41:49.000
+Like so. Promise one promise to promise three promise for here are for promises they finish at different times, right, This is using the promise generator that we've been using.
+
+01:41:49.000 --> 01:41:52.000
+Promise one is going to resolve.
+
+01:41:52.000 --> 01:42:04.000
+One and a half seconds from now promise to is going to resolve four seconds from now. Promise three is going to resolve two seconds from now and promise four is going to resolve three seconds for him, kind of random feeling right, we have for Promises,
+
+01:42:04.000 --> 01:42:14.000
+Promise one promise you promise three problems for, they've been assembled into an array array of promises.
+
+01:42:14.000 --> 01:42:25.000
+So with this array of promises. I can pass that to promise dot all.
+
+01:42:25.000 --> 01:42:31.000
+So any predictions about what might happen here we've got a then Claus we've got to catch Claus.
+
+01:42:31.000 --> 01:42:36.000
+Oh, goodness gracious This is missing a semi colon. Okay, please join Team semi colon.
+
+01:42:36.000 --> 01:42:41.000
+Put semi colons at the end of all your phone calls you
+
+01:42:41.000 --> 01:42:47.000
+No semi colon here, why because there's a.on the next line.
+
+01:42:47.000 --> 01:43:02.000
+So promised all takes this array of promises, and we're either going to have the then clause run or the catch clauses right now it won't be the couch clause because all of these promises are going to resolve.
+
+01:43:02.000 --> 01:43:03.000
+Fine.
+
+01:43:03.000 --> 01:43:08.000
+But let's see what the data is that comes back from this.
+
+01:43:08.000 --> 01:43:16.000
+What will be the parameter that gets handed to this then clause.
+
+01:43:16.000 --> 01:43:20.000
+We're going to console log it.
+
+01:43:20.000 --> 01:43:26.000
+But let's just see what that looks like.
+
+01:43:26.000 --> 01:43:34.000
+Node Promise all run waiting up to probably four seconds or so.
+
+01:43:34.000 --> 01:43:37.000
+And then we get our then clause run
+
+01:43:37.000 --> 01:43:52.000
+the data parameter in this case was not the resolved returned value from the one promise above it in the chain, no we had an array of for promises that ran
+
+01:43:52.000 --> 01:43:55.000
+some of those promises finished rather quickly.
+
+01:43:55.000 --> 01:44:08.000
+One of those promises took four seconds to run our then Claus didn't run until all of the promises had resolved.
+
+01:44:08.000 --> 01:44:25.000
+And, in such a case, we got, as our parameter to that callback in that then clause we got an array of outputs from the promise from the promises that ran.
+
+01:44:25.000 --> 01:44:30.000
+So this is kind of a nice setup actually what it is, is useful.
+
+01:44:30.000 --> 01:44:33.000
+If you've got code.
+
+01:44:33.000 --> 01:44:47.000
+That can only run after four or five or some number of inputs have all been gathered from different places that each take different amounts of time.
+
+01:44:47.000 --> 01:44:57.000
+You can pull in inputs for your code, and be assured that they're all successfully loaded.
+
+01:44:57.000 --> 01:45:09.000
+I might need the contents of a file, and the return of an API call from somewhere in Australia, and I have no idea how long it's going to take the signal to bounce around in space and come back to me with data.
+
+01:45:09.000 --> 01:45:10.000
+Right.
+
+01:45:10.000 --> 01:45:16.000
+But if I wrap this in a set of promises and I run it through a promise all.
+
+01:45:16.000 --> 01:45:24.000
+Then when my then clause runs, I can be assured that all of these promises have resolved.
+
+01:45:24.000 --> 01:45:30.000
+And therefore, work with the data that they send back.
+
+01:45:30.000 --> 01:45:43.000
+What kind of data did they send back, they sent back an array of return values, one for each of the promises, 1234, what's the order that these things sit inside this array.
+
+01:45:43.000 --> 01:46:04.000
+It's the same order that the promises sat in the original array that was fed to promised All right, for example, if I turn this backward you know make a different order here like so right now I'm feeding the promises into this array promise 134 to like
+
+01:46:04.000 --> 01:46:22.000
+the odd ones first and then the second, the even ones next but in the evens case it's for first into next right 134 to save it rerun it takes still takes four seconds because that's the longest time that any one of the prompts and then here I have 1342.
+
+01:46:22.000 --> 01:46:40.000
+As the order of the outputs. So, some questions Eric asks promise dot all is a built in function. Yes, it's defined on the promise class. Right. This is a capital P here.
+
+01:46:40.000 --> 01:46:50.000
+And so that's a predefined class that has this object define this method defined on it.
+
+01:46:50.000 --> 01:46:51.000
+Yeah.
+
+01:46:51.000 --> 01:46:56.000
+I have it asks, What if one of the promises didn't resolve.
+
+01:46:56.000 --> 01:47:13.000
+Glad you asked, we're going to do that case next will promise all not run until it receives all listeners from all promises. It's the then clause a Lula that wouldn't run until it receives all of the responses.
+
+01:47:13.000 --> 01:47:36.000
+Right this then Claus. This then causes callback is only executed when all of the promises that resolved. Now, to habits question. What happens if one of these promises returns as rejected in fact let's make the short one reject the one that's only 1.5
+
+01:47:36.000 --> 01:47:50.000
+seconds instead of returning as resolved, we're going to have a return is rejected instead.
+
+01:47:50.000 --> 01:47:58.000
+Like this.
+
+01:47:58.000 --> 01:48:03.000
+So, we get
+
+01:48:03.000 --> 01:48:05.000
+something was rejected.
+
+01:48:05.000 --> 01:48:07.000
+Then it waits a little bit longer.
+
+01:48:07.000 --> 01:48:11.000
+And then it finishes.
+
+01:48:11.000 --> 01:48:20.000
+So what happened there was just as soon as any one of these promises in this array is rejected.
+
+01:48:20.000 --> 01:48:28.000
+Then promise dot all is going to throw an error, such that the catch is picked up.
+
+01:48:28.000 --> 01:48:36.000
+Instead of the then then will never run, because one of them failed.
+
+01:48:36.000 --> 01:48:44.000
+And the error message that's passed to this catch clause is for the one that failed.
+
+01:48:44.000 --> 01:48:49.000
+It's the one that failed first actually.
+
+01:48:49.000 --> 01:49:01.000
+If they all failed, it's going to pass it the one that failed first.
+
+01:49:01.000 --> 01:49:05.000
+God asked what if they all resolved simultaneously.
+
+01:49:05.000 --> 01:49:16.000
+Well, it's going to, they'll come out in the order. He actually doesn't matter the order that they resolve in the, the output is going to be.
+
+01:49:16.000 --> 01:49:33.000
+So, they were in the array Sorry, go ahead Tatiana. My question is, so we have, we have this all set time out right for each of them. So when we use this promise all meaning that we don't care about the time we just want them all together, to be resolved.
+
+01:49:33.000 --> 01:49:48.000
+Is that right, um, what we want is to have our then claws, not run until they're all done.
+
+01:49:48.000 --> 01:49:53.000
+It's a way of waiting around for the last one to resolve.
+
+01:49:53.000 --> 01:49:58.000
+It's a way of saying we need all these results.
+
+01:49:58.000 --> 01:50:06.000
+So we're going to wrap it in a promise all so that we make sure that we have them all resolved before we proceed.
+
+01:50:06.000 --> 01:50:11.000
+Yeah. Okay, thank you. Yep. Very good. Okay, thank you for the question.
+
+01:50:11.000 --> 01:50:17.000
+Um, Michael asks, actually asks an answer.
+
+01:50:17.000 --> 01:50:34.000
+Mustapha says, What's the use of promise in code. What does it help to achieve. It means that you're going to delay executing your then Claus until the promise results, you can see how it's a synchronous, you can see why we're using the word then here,
+
+01:50:34.000 --> 01:50:51.000
+right, then is a is a is a cause you can attach to a promise. Right. So you use a promise to establish a chain of cause and effect.
+
+01:50:51.000 --> 01:50:54.000
+Good.
+
+01:50:54.000 --> 01:51:12.000
+Michael states so when you use promise at all when you want to be sure that all the asynchronous promises that are listening. Yeah, it's not, it's, it's more like you're, you're setting up a condition such that when all four promises have resolved, then
+
+01:51:12.000 --> 01:51:14.000
+we will run the callback.
+
+01:51:14.000 --> 01:51:17.000
+Yeah.
+
+01:51:17.000 --> 01:51:30.000
+Have it asks, so we can make an array with the ones that pass in the ones that fail, know, in this case we're actually catching only the first one that fails.
+
+01:51:30.000 --> 01:51:47.000
+If you needed to do something as complex as Muhammad is suggesting then maybe you can't use promised all instead you have to actually just run each promise independently and have each have their own cash costs set.
+
+01:51:47.000 --> 01:51:49.000
+Okay, good.
+
+01:51:49.000 --> 01:51:59.000
+I'm Nick I'm not sure quite sure I understand your question if you want to ask it to feel free to just ask it an audio to clarify it.
+
+01:51:59.000 --> 01:52:05.000
+Very good. There's actually one more, a very similar kind of a promise.
+
+01:52:05.000 --> 01:52:09.000
+grouping running thing. It's called a race.
+
+01:52:09.000 --> 01:52:18.000
+So instead of promised all probably start race will return with which ever one finishes first.
+
+01:52:18.000 --> 01:52:30.000
+So in this case we're building three promises that all resolve, but we're passing in a random number of milliseconds, up to five seconds.
+
+01:52:30.000 --> 01:52:33.000
+And we'll see which one runs first.
+
+01:52:33.000 --> 01:52:37.000
+In each case
+
+01:52:37.000 --> 01:52:42.000
+node. Promise race.
+
+01:52:42.000 --> 01:52:46.000
+So two was the one that resolved first.
+
+01:52:46.000 --> 01:52:52.000
+I run it again to resolve first but way faster, because it's delay was quite short.
+
+01:52:52.000 --> 01:53:01.000
+Here's the third one there. One was the shortest of the three it resolved first, that's the one that gets passed to our then closed.
+
+01:53:01.000 --> 01:53:07.000
+This time three was the one that finished first, and so on.
+
+01:53:07.000 --> 01:53:07.000
+Right.
+
+01:53:07.000 --> 01:53:19.000
+This is called a race condition and literally we're setting up our promise resolve our thing to only be past the one out of this group that passes first.
+
+01:53:19.000 --> 01:53:33.000
+It's a little bit esoteric this thing, you may not find a use case for this in one use case for it would be if you have to weather forecast APIs.
+
+01:53:33.000 --> 01:53:38.000
+And it's super important to give the weather forecast.
+
+01:53:38.000 --> 01:53:42.000
+You're going to give whichever one comes back first.
+
+01:53:42.000 --> 01:53:52.000
+Right there might be advantages and disadvantages to each of the two and you don't know which one's going to finish first and so, but it's super important to get the weather forecasts and so you say, Okay, give me the first one that comes back.
+
+01:53:52.000 --> 01:54:00.000
+Something like that.
+
+01:54:00.000 --> 01:54:01.000
+Okay.
+
+01:54:01.000 --> 01:54:04.000
+Yeah. Very good. You know, that's a wrap.
+
+01:54:04.000 --> 01:54:09.000
+Um, let's go back to the notes.
+
+01:54:09.000 --> 01:54:12.000
+We covered
+
+01:54:12.000 --> 01:54:18.000
+the callback hell waterfall problem with nested callbacks which is can be ridiculous for reasons that we saw.
+
+01:54:18.000 --> 01:54:21.000
+We introduced promises.
+
+01:54:21.000 --> 01:54:27.000
+We showed error handling with callbacks, which is done via these catch clauses.
+
+01:54:27.000 --> 01:54:36.000
+Right, if, if your code is going to throw an error. You can have a catch clause that's going to allow you to land gracefully.
+
+01:54:36.000 --> 01:54:44.000
+We talked about parallelized some stuff with promise race and promised all.
+
+01:54:44.000 --> 01:54:54.000
+And that leaves us with that thing that I said that I was going to leave to the end to only have a few minutes to look at. Let's look at how we make promises of our road.
+
+01:54:54.000 --> 01:54:58.000
+Finally, yeah.
+
+01:54:58.000 --> 01:55:05.000
+So for that I'm going to look in at the promise generator. And so here are these promises that we've been using all along.
+
+01:55:05.000 --> 01:55:07.000
+Okay.
+
+01:55:07.000 --> 01:55:19.000
+They're returned via the module not exports, right, this is the syntax where we've got parameters and the parameter, the properties right and the properties have the value of the variables value.
+
+01:55:19.000 --> 01:55:20.000
+Right.
+
+01:55:20.000 --> 01:55:31.000
+So return promises, one of the things, return rejected promises and is the second of the thing, this one is the one that returns.
+
+01:55:31.000 --> 01:55:37.000
+Either resolved or rejected, you can play around with that one if you feel like it.
+
+01:55:37.000 --> 01:55:48.000
+So returned promise. Here's a promise object, the return value of this function is going to be a promise object.
+
+01:55:48.000 --> 01:55:54.000
+You can see how this holds together here. Yes, this is a function definition.
+
+01:55:54.000 --> 01:55:57.000
+It's an arrow function, it takes two parameters.
+
+01:55:57.000 --> 01:56:06.000
+Inside this function definition, I'm seeing actually one line of JavaScript starts here with a return line. Right.
+
+01:56:06.000 --> 01:56:11.000
+What is it returning it's returning a new promise object.
+
+01:56:11.000 --> 01:56:22.000
+Right, it's an object it's object oriented code. That's what the new token says, it says, build an object of this class.
+
+01:56:22.000 --> 01:56:25.000
+Fine.
+
+01:56:25.000 --> 01:56:28.000
+The object of this class.
+
+01:56:28.000 --> 01:56:35.000
+Clearly, if I cut this piece out. Right.
+
+01:56:35.000 --> 01:56:41.000
+There's my new object, it's a new promise
+
+01:56:41.000 --> 01:56:45.000
+that constructor to that type of object.
+
+01:56:45.000 --> 01:56:50.000
+Takes a callback.
+
+01:56:50.000 --> 01:57:00.000
+It's a callback, that the promise infrastructure built into JavaScript is going to call
+
+01:57:00.000 --> 01:57:11.000
+the promise infrastructure that's built into JavaScript is going to call this callback, with two callbacks of its own.
+
+01:57:11.000 --> 01:57:22.000
+One call back that should be called if this promises to resolve in the positive sense, and another call back to be called.
+
+01:57:22.000 --> 01:57:32.000
+If this promise that we're making is to resolve in the rejected way
+
+01:57:32.000 --> 01:57:37.000
+right I feel that people are panicking, with the complexity of what I'm saying, okay.
+
+01:57:37.000 --> 01:57:40.000
+That's okay.
+
+01:57:40.000 --> 01:57:49.000
+You only really need to understand what I'm talking about. If you yourself are going to be writing code to generate your own promises.
+
+01:57:49.000 --> 01:57:50.000
+Right.
+
+01:57:50.000 --> 01:57:58.000
+The vast, vast majority of the time, while you're getting used to how promises work is going to be the call package at somebody else's package.
+
+01:57:58.000 --> 01:58:02.000
+And then attach then clauses to it.
+
+01:58:02.000 --> 01:58:07.000
+Maybe a chain and then clauses.
+
+01:58:07.000 --> 01:58:13.000
+But if you wanted to make your own promise that rejected.
+
+01:58:13.000 --> 01:58:18.000
+After a time,
+
+01:58:18.000 --> 01:58:34.000
+here's how you would do it, you would take in this reject callback, and you would call that reject callback here, we're saying let's do a set time out, and always reject it after this amount of delay.
+
+01:58:34.000 --> 01:58:44.000
+Right, that's the source code for how this promise is being created, we're setting up the logic of when it would be rejected.
+
+01:58:44.000 --> 01:58:53.000
+Right down here for example, we're going to return a resolved.
+
+01:58:53.000 --> 01:58:58.000
+We're going to return this promise, as resolved.
+
+01:58:58.000 --> 01:59:07.000
+So long as our random number was between zero and one. But if our random number was between one and two, we're going to reject instead.
+
+01:59:07.000 --> 01:59:13.000
+We're going to set we're going to return a rejected promise here instead.
+
+01:59:13.000 --> 01:59:20.000
+And so, when it comes to making your own promises. Right, you get this fancy.
+
+01:59:20.000 --> 01:59:25.000
+Two callbacks callback.
+
+01:59:25.000 --> 01:59:34.000
+The first call back in your callback is the function that you call when you're resolving your promise and the other one is the function that you call if you choose to reject the promise.
+
+01:59:34.000 --> 01:59:41.000
+That's how making your own promises work. You can see why I didn't want to snow everybody with this stuff.
+
+01:59:41.000 --> 01:59:51.000
+At the beginning, is a little bit of complexity here, but you can dig into this example code, you can understand how promises made if you need to write.
+
+01:59:51.000 --> 01:59:54.000
+You just don't need to at the beginning.
+
+01:59:54.000 --> 01:59:58.000
+So come back to this later.
+
+01:59:58.000 --> 02:00:01.000
+Yeah. Okay.
+
+02:00:01.000 --> 02:00:02.000
+Go ahead.
+
+02:00:02.000 --> 02:00:03.000
+Yeah.
+
+02:00:03.000 --> 02:00:24.000
+So he says like there for example, they're lacking, our function in the trillion cash. As a result, is this something that like a try. As we are wrapping our, our function or anything we want to do in the preamble to try and may have been rejected like
+
+02:00:24.000 --> 02:00:40.000
+it the cash, and it is something wrapping, you know, I would say, in terms of the function that it's most similar to, to the, the one that you have the most experience with so far, you did mention the map function is that right.
+
+02:00:40.000 --> 02:00:42.000
+Yes, Yes.
+
+02:00:42.000 --> 02:00:58.000
+No, I you know what they're rapping with to try and catch stuff yeah yeah that's a separate thing, know that I thought you were talking about the map function and it is true that the map function is actually kind of like this.
+
+02:00:58.000 --> 02:01:04.000
+Why, because the map function takes a callback, as its parameter.
+
+02:01:04.000 --> 02:01:08.000
+Right. And so this when I'm making a new promise.
+
+02:01:08.000 --> 02:01:17.000
+This is my callback that I'm passing to it when I make it right if I cut it out you can see right here's the syntax for making a new promise object.
+
+02:01:17.000 --> 02:01:35.000
+Yeah, the constructor to this new promise object itself takes a callback this callback is going to be executed by the promise infrastructure, in the case of map maps callback was going to be called for each element of the thing that we're mapping.
+
+02:01:35.000 --> 02:01:42.000
+Right. But in both cases you can see oh I've got a callback that I'm passing it as my thing.
+
+02:01:42.000 --> 02:01:55.000
+Right. And then you have to ask yourself okay when is this callback going to be called. Well, this is going to be called by the promise infrastructure, where what this callback takes two parameters.
+
+02:01:55.000 --> 02:02:16.000
+Both of those are callbacks that you use to either resolve or reject your promise that there's because, in the case of the math. Yes, we are wrapping the data, and on to the our function but it is the reverse way because we are marking the our function
+
+02:02:16.000 --> 02:02:23.000
+in depth parameter that is a result and reject so I would say that in the map case.
+
+02:02:23.000 --> 02:02:42.000
+Your callback that you're making is going to be called with each value. Yeah. Okay, here we have a callback, that's going to be called right away with two callbacks of their own, that we have to treat appropriately.
+
+02:02:42.000 --> 02:02:54.000
+Right. And that's the closest analogy that I can find. Right. As far as try catch goes, that's a that's a different thing where if the try throws an error.
+
+02:02:54.000 --> 02:02:58.000
+Then and only then will the catch claws run.
+
+02:02:58.000 --> 02:03:10.000
+Right. But in here in my callback that I'm making with resolve and reject. I can make any logic I want to resolve and reject.
+
+02:03:10.000 --> 02:03:16.000
+Right now I might choose to write a try catch pair inside here.
+
+02:03:16.000 --> 02:03:23.000
+And if the catch clauses runs, then run the reject callback.
+
+02:03:23.000 --> 02:03:27.000
+That would be typical of the source code inside of promise.
+
+02:03:27.000 --> 02:03:38.000
+Oh, thank you. Yeah, good. Yeah. Anyway, right, didn't want to go over this in the beginning, but it's now here in the video if you want to.
+
+02:03:38.000 --> 02:03:47.000
+Someday figure out how to write your own promises, just come to the end of this video, watch this bit again on repeat for a bit.
+
+02:03:47.000 --> 02:03:50.000
+Read some stuff from MDN about making promises and how to do it.
+
+02:03:50.000 --> 02:04:04.000
+Right. But rest assured, the right way to learn how promises work is to just start using them to make your own than closets.
+
+02:04:04.000 --> 02:04:13.000
+That's far more straightforward to understand, and so that and so it goes, that will be what it's like in your compass work today.
+
+02:04:13.000 --> 02:04:18.000
+You'll bring in some packages that make promises for you.
+
+02:04:18.000 --> 02:04:23.000
+And you'll add some then clauses to those promises.
+
+02:04:23.000 --> 02:04:29.000
+Okay, hang around if you got extra questions, click like and subscribe. Hold my beer and watch this.
+
+02:04:29.000 --> 02:04:35.000
+Let us learn a bunch of code today.
+
+02:04:35.000 --> 02:04:41.000
+Thank you, was it Eric you were going to promise to send me the transcript.
+
+02:04:41.000 --> 02:04:49.000
+I'm going to search that transcript for the phrase next topic and see if I can get some timestamps out of it
+
+02:04:49.000 --> 02:04:57.000
+can try sharing a file through slack. Yeah, idea.
+
+02:04:57.000 --> 02:05:04.000
+Yeah, I have a feeling I'm going to get a copy of the transcript this time but if not, it'll be nice to have it.
+
+02:05:04.000 --> 02:05:13.000
+A Is it your visa or joe
+
+02:05:13.000 --> 02:05:18.000
+Yes, he was discussing about yesterday's thing is this an item to speak.
+
+02:05:18.000 --> 02:05:28.000
+Yeah, if there are no other questions about any other things to do with promises then yeah we can move on to that. Does anybody else have any promise related questions before we kick everyone out.
+
+02:05:28.000 --> 02:05:33.000
+And you can hang around for gv this question if you want I presume.
+
+02:05:33.000 --> 02:05:37.000
+Going once,
+
+02:05:37.000 --> 02:05:39.000
+going twice yeah okay go ahead.
+
+02:05:39.000 --> 02:05:47.000
+What have you got yep so yesterday's. the question the last one, fetcher.
+
+02:05:47.000 --> 02:05:52.000
+Okay. Should I go into compass I'm not very familiar with it.
+
+02:05:52.000 --> 02:05:53.000
+Okay.
+
+02:05:53.000 --> 02:05:58.000
+So under program schedule.
+
+02:05:58.000 --> 02:06:07.000
+I'm lost with the snake one, as well as that, especially the call by part where
+
+02:06:07.000 --> 02:06:23.000
+the entire the whole thing was a little confusing for me, I had to do a lot of research, but the real confusion where I had to call back things from the other files so I found it really difficult to understand that concept.
+
+02:06:23.000 --> 02:06:29.000
+Is it this one here the file server. I'm know.
+
+02:06:29.000 --> 02:06:43.000
+While I'm speaking with you so sure sure ah downloader. It's page download it up up up up up up page download this one. Yes. Yes, that's right. Okay, thank you.
+
+02:06:43.000 --> 02:06:54.000
+Page download. So, create a new good new repo on GitHub clone it here's the challenge implement a note app called fetcher.
+
+02:06:54.000 --> 02:06:56.000
+It's an app.
+
+02:06:56.000 --> 02:06:59.000
+So it's just it's a source code, we're going to put in here.
+
+02:06:59.000 --> 02:07:03.000
+It should take to command line arguments.
+
+02:07:03.000 --> 02:07:15.000
+So we're going to go after that, process.org v. To find out what the values are there. Fine. It should take a URL, and a local file path.
+
+02:07:15.000 --> 02:07:31.000
+So, it should download the resource at the URL to the local path on your machine. Upon completion, it should print out a message like this downloaded and saved exabytes to block file name.
+
+02:07:31.000 --> 02:07:33.000
+Cool.
+
+02:07:33.000 --> 02:07:41.000
+So we've got some a synchronous operations here, right, loading in the content from a URL
+
+02:07:41.000 --> 02:07:54.000
+is going to take a certain amount of time that we can't predict how long that's going to actually take after that resource comes in, then we can write to the file.
+
+02:07:54.000 --> 02:07:59.000
+Now, you would have been doing this before you knew about promises presumably.
+
+02:07:59.000 --> 02:08:05.000
+And so my guess is that you're going to be using the callbacks method of doing it.
+
+02:08:05.000 --> 02:08:09.000
+Now we could do it with promises to now.
+
+02:08:09.000 --> 02:08:15.000
+But, let's have in our mind, the callbacks way of doing things. Yeah.
+
+02:08:15.000 --> 02:08:30.000
+So asynchronous operations indeed. Right. There are two operations in this problem which will take an unknown amount of time. One is we need to make the HTTP request and wait for the response that comes back.
+
+02:08:30.000 --> 02:08:43.000
+After the HTTP request is complete, you need to take the data you receive and write it into a file in the file system, that's also going to take a certain amount of time that we don't know how long that's going to take.
+
+02:08:43.000 --> 02:08:59.000
+And so we could be using a function that's going to have some asynchronous implications, such that when it finishes, then it's going to write this text out.
+
+02:08:59.000 --> 02:09:00.000
+No.
+
+02:09:00.000 --> 02:09:03.000
+You can even hear me use the word then.
+
+02:09:03.000 --> 02:09:09.000
+When this happens, then do this, when this happened then. Then do that, right.
+
+02:09:09.000 --> 02:09:15.000
+So, whether I actually use promises within clauses is a syntax question.
+
+02:09:15.000 --> 02:09:20.000
+If I don't, then I'm going to use callbacks.
+
+02:09:20.000 --> 02:09:22.000
+Okay.
+
+02:09:22.000 --> 02:09:28.000
+So reading some documentation this challenge requires you to search for some answers online.
+
+02:09:28.000 --> 02:09:39.000
+The official API docs for node are valuable resource but they can feel overwhelming at first. Luckily the Node. js team has also provided a friendlier guide focus for people who are learning.
+
+02:09:39.000 --> 02:09:43.000
+Writing files with Node. js.
+
+02:09:43.000 --> 02:09:46.000
+You may find a function in the node documentation.
+
+02:09:46.000 --> 02:09:49.000
+Right file sync.
+
+02:09:49.000 --> 02:09:56.000
+It is considered bad practice to use sync functions when we could be doing stuff the asynchronous way.
+
+02:09:56.000 --> 02:10:11.000
+And so, I guess that Arvind has given us the tip Fs dot right file is going to be the asynchronous way to write files out, rather than right file sync, we're just going to use right file.
+
+02:10:11.000 --> 02:10:13.000
+Okay.
+
+02:10:13.000 --> 02:10:22.000
+How can you get the file size. Well, there are a couple ways you can dig into nodes documentation you'll find that there's a way to get the statistics about a file that is sitting on your file system.
+
+02:10:22.000 --> 02:10:30.000
+However, you may not need to do that, if you think about the fact that one character is equal to one bite.
+
+02:10:30.000 --> 02:10:47.000
+So for example, we may know the size of the thing that we're writing to the file, we can keep that size as a variable. While it's writing it out and then pass that variable on to the bit that actually writes the, The final logging message out.
+
+02:10:47.000 --> 02:10:49.000
+Right.
+
+02:10:49.000 --> 02:11:09.000
+So some tips, install and use the request library to make the HTTP request. We know this library is advocated but we like it for our purposes, it may be simple and straightforward to use, relatively speaking, say, also use nodes Fs file system to do the
+
+02:11:09.000 --> 02:11:11.000
+right.
+
+02:11:11.000 --> 02:11:14.000
+That's where Fs thought right file is coming from.
+
+02:11:14.000 --> 02:11:19.000
+For the file right so so we're going to have request. Such and such.
+
+02:11:19.000 --> 02:11:27.000
+Right. Use the callback based approach this line means don't use promises.
+
+02:11:27.000 --> 02:11:31.000
+Because you don't know about those yet.
+
+02:11:31.000 --> 02:11:38.000
+Do not use the pipe function that's interesting. Do not use synchronous functions see the warning above.
+
+02:11:38.000 --> 02:11:43.000
+Okay, we don't need to talk about edge cases, yet.
+
+02:11:43.000 --> 02:11:47.000
+Oh, I get the solution. Haha.
+
+02:11:47.000 --> 02:12:02.000
+Do you I just read the solution. You want me to like give it away or do you think there's actually some learning here that you have done it. I've completed this stretch part is just that, um, I would like some more explanation as to how are you know the
+
+02:12:02.000 --> 02:12:10.000
+the get the, the callback part because I find that a little confusing. Okay. Do you want to show you want to share your screen.
+
+02:12:10.000 --> 02:12:13.000
+I'm not sure how, how do I do that in on.
+
+02:12:13.000 --> 02:12:26.000
+There's a yeah there's a green button in the controls at the middle of the control says new share, I think, okay, I just leave the zoom and come back again because I think I'm having some issues with my connectivity.
+
+02:12:26.000 --> 02:12:29.000
+Oh, yeah, I'll come back I'll join back soon.
+
+02:12:29.000 --> 02:12:34.000
+Okay. Yeah. Anybody have any questions that they would like to ask in the meantime.
+
+02:12:34.000 --> 02:12:51.000
+Yes, I would like to ask, so I was trying to solve the same problem yesterday, like, I hate when I even didn't get even the half of the way so my question is, we supposed to use this require a fast and require request.
+
+02:12:51.000 --> 02:13:04.000
+And also I find a solution the internet and there are like bunch of red line great interface, I tried to find it in the node implementation, but I don't know what I did wrong.
+
+02:13:04.000 --> 02:13:09.000
+I couldn't find all this bunch of stuff.
+
+02:13:09.000 --> 02:13:15.000
+Well, Let's see. Whoops,
+
+02:13:15.000 --> 02:13:19.000
+Sorry. Are you still there.
+
+02:13:19.000 --> 02:13:31.000
+Yeah, I'm here. Okay sorry I don't know why, something happened on my system suddenly where it's grayed out. and I don't know why that's the case.
+
+02:13:31.000 --> 02:13:37.000
+Okay, maybe it was, I was, I hit the annotation key by accident. Okay.
+
+02:13:37.000 --> 02:13:43.000
+Um, okay, node request.
+
+02:13:43.000 --> 02:13:46.000
+Example.
+
+02:13:46.000 --> 02:13:54.000
+That's the first thing I'm curious about.
+
+02:13:54.000 --> 02:14:08.000
+So, making HTTP requests with node, node. js, Deb, let's have a look at what we see here. Yeah, you share your screen, you're not sharing your phone, sorry.
+
+02:14:08.000 --> 02:14:12.000
+Okay, everybody good now.
+
+02:14:12.000 --> 02:14:23.000
+Making HTTP requests with Node. js performing GET requests that seems typical like something we might do require HTTP s.
+
+02:14:23.000 --> 02:14:25.000
+Hmm.
+
+02:14:25.000 --> 02:14:30.000
+We were going to be using the request package know.
+
+02:14:30.000 --> 02:14:41.000
+It was suggesting that we use the request package. Okay so this answer is actually not what we want to do.
+
+02:14:41.000 --> 02:14:49.000
+Let's see. Node request
+
+02:14:49.000 --> 02:14:56.000
+package
+
+02:14:56.000 --> 02:15:00.000
+request.
+
+02:15:00.000 --> 02:15:09.000
+Yes, this package has been dedicated but we're going to use it anyway, is what they said in the notes, simple to use, concert requests equal require request.
+
+02:15:09.000 --> 02:15:11.000
+Okay.
+
+02:15:11.000 --> 02:15:19.000
+I can see why we're using it for this particular stretch, because we have our URL.
+
+02:15:19.000 --> 02:15:21.000
+And we have a call back.
+
+02:15:21.000 --> 02:15:35.000
+Right. So I can grab this and this callback is the callback, that we write ourselves.
+
+02:15:35.000 --> 02:15:48.000
+So that certain code will run in the case that the request comes back and so on right so if the request comes back with an error message.
+
+02:15:48.000 --> 02:15:55.000
+Then we can react to the value of error and respond appropriately.
+
+02:15:55.000 --> 02:16:00.000
+If it comes back with a response.
+
+02:16:00.000 --> 02:16:06.000
+That's not an error. We're going to get the status code in here.
+
+02:16:06.000 --> 02:16:09.000
+And then we could react appropriately.
+
+02:16:09.000 --> 02:16:17.000
+With that response, say, the response is likely to be in the body parameter.
+
+02:16:17.000 --> 02:16:18.000
+Right.
+
+02:16:18.000 --> 02:16:30.000
+So I'm going to grab this sample code. That's right on the request package documentation. And I'm going to make my solution look a lot like this one.
+
+02:16:30.000 --> 02:16:33.000
+There.
+
+02:16:33.000 --> 02:16:42.000
+So I can go back to, you know, some place where I'm going to make a solution.
+
+02:16:42.000 --> 02:16:51.000
+What is it going to be request or.js, I forget what the name they wanted us to call it but let's just do that.
+
+02:16:51.000 --> 02:16:55.000
+Here's the sample code, I'm going to need.
+
+02:16:55.000 --> 02:17:03.000
+I'm actually, I have it. There's my requests require request.
+
+02:17:03.000 --> 02:17:07.000
+Oh, I'm going to want
+
+02:17:07.000 --> 02:17:14.000
+context URL equals process.rv.
+
+02:17:14.000 --> 02:17:25.000
+And it's going to be which 110 no two for the URL. Is that right,
+
+02:17:25.000 --> 02:17:31.000
+we've got the URL and then we've got a path for a file name for the output
+
+02:17:31.000 --> 02:17:47.000
+at three, or are we good so far. You know what, let me see if I've got this in my editor, because I like it a little bit better right
+
+02:17:47.000 --> 02:17:48.000
+request or you're here.
+
+02:17:48.000 --> 02:17:51.000
+You're here.
+
+02:17:51.000 --> 02:17:52.000
+Okay.
+
+02:17:52.000 --> 02:18:10.000
+Um, yeah I'm going to do this, but I want to comment it out first until I get it right, and then in the meantime I want to console log, my parameters to see if they're right, so here's the URL
+
+02:18:10.000 --> 02:18:13.000
+and
+
+02:18:13.000 --> 02:18:17.000
+path, like so.
+
+02:18:17.000 --> 02:18:18.000
+Right.
+
+02:18:18.000 --> 02:18:32.000
+Okay, back here, node requested. js, the URL might be HTTP example.com and the path might be output file dot txt.
+
+02:18:32.000 --> 02:18:46.000
+Oh, can't find Mongo request MPM install a request.
+
+02:18:46.000 --> 02:18:51.000
+Soviet run again.
+
+02:18:51.000 --> 02:18:56.000
+Okay, my URL and my path or good.
+
+02:18:56.000 --> 02:19:03.000
+So next I'm going to run this request, like so.
+
+02:19:03.000 --> 02:19:11.000
+But instead of this hard coded URL, I'm going to pass in URL.
+
+02:19:11.000 --> 02:19:13.000
+And now I have a call back.
+
+02:19:13.000 --> 02:19:18.000
+And I'm going to do some stuff with this call back.
+
+02:19:18.000 --> 02:19:24.000
+If that now As it stands, I was using example, calm.
+
+02:19:24.000 --> 02:19:33.000
+Maybe that'll come back okay Actually, let's just use these console logs to see what comes back.
+
+02:19:33.000 --> 02:19:41.000
+So, we're running again with example, calm, we're not using output file yet but so be it.
+
+02:19:41.000 --> 02:19:43.000
+Okay, this is interesting.
+
+02:19:43.000 --> 02:19:46.000
+I'm actually getting back.
+
+02:19:46.000 --> 02:19:52.000
+The error parameter is no, because it's working.
+
+02:19:52.000 --> 02:19:55.000
+I get a status code of 200.
+
+02:19:55.000 --> 02:20:03.000
+And I get a body which is the HTML, that lives at example, calm.
+
+02:20:03.000 --> 02:20:07.000
+Right, it's a bunch of characters
+
+02:20:07.000 --> 02:20:11.000
+set of HTML, come back from this resource.
+
+02:20:11.000 --> 02:20:16.000
+Everybody cool with what we've seen so far.
+
+02:20:16.000 --> 02:20:17.000
+Okay.
+
+02:20:17.000 --> 02:20:25.000
+So, great, I'm able to call the URL that was step one.
+
+02:20:25.000 --> 02:20:27.000
+Now.
+
+02:20:27.000 --> 02:20:44.000
+Step two is. I have a body as a variable with the contents of the stuff that I want to write into the file.
+
+02:20:44.000 --> 02:20:53.000
+So we're going to need the FS package.
+
+02:20:53.000 --> 02:20:57.000
+And we're going to call it Fs right.
+
+02:20:57.000 --> 02:21:03.000
+And I'm going to use that Fs variable to run.
+
+02:21:03.000 --> 02:21:10.000
+fs dot right file.
+
+02:21:10.000 --> 02:21:14.000
+Now, if I recall correctly.
+
+02:21:14.000 --> 02:21:23.000
+This takes a path and encoding and a call back.
+
+02:21:23.000 --> 02:21:28.000
+Is that right, let me confirm.
+
+02:21:28.000 --> 02:21:43.000
+Fs dot right file. Example
+
+02:21:43.000 --> 02:21:52.000
+file data options and callback.
+
+02:21:52.000 --> 02:21:57.000
+Okay, there may be other ways to do this with fewer off with fewer things.
+
+02:21:57.000 --> 02:22:04.000
+But I'm willing to run with this as a way to call my Fs dot right file, right.
+
+02:22:04.000 --> 02:22:08.000
+This is obviously the path that I'm trying to write out to.
+
+02:22:08.000 --> 02:22:14.000
+Let's read the documentation. It is a string
+
+02:22:14.000 --> 02:22:29.000
+buffer URL or file descriptor. Shouldn't integer that denotes the path of the file where it is to be written. So indeed this is in fact the value that we already have the one that we plucked off the command line right
+
+02:22:29.000 --> 02:22:39.000
+data that's the string buffer type during our data view that will be written to the file, so that's going to be our body is what we pass in here.
+
+02:22:39.000 --> 02:22:48.000
+Options, it is a string or an object that can be used to specify optional parameters, things like the encoding.
+
+02:22:48.000 --> 02:22:51.000
+The default values UCF eight.
+
+02:22:51.000 --> 02:22:58.000
+The mode. What will be the permissions on the file that we write a flag.
+
+02:22:58.000 --> 02:23:12.000
+Is it a strip, it is a string value that specifies the flag used while writing to the file the default values W, I'm happy with the defaults here, frankly.
+
+02:23:12.000 --> 02:23:14.000
+Um.
+
+02:23:14.000 --> 02:23:17.000
+Okay, so I'm going to take this example code.
+
+02:23:17.000 --> 02:23:30.000
+Like this. Oh by the way callback callback is the function that would be called when the method is executed.
+
+02:23:30.000 --> 02:23:37.000
+They go on to give examples. I believe that that callback is the thing that that's going to get called when we're finished.
+
+02:23:37.000 --> 02:23:44.000
+Such that we can write out our message that we want to write out.
+
+02:23:44.000 --> 02:23:47.000
+So, there.
+
+02:23:47.000 --> 02:23:58.000
+That's the sample code that I'm borrowing from file is going to be path right because I have a value for path from the command line I'm going to feed it in here.
+
+02:23:58.000 --> 02:24:03.000
+Data is going to be body.
+
+02:24:03.000 --> 02:24:06.000
+Like so.
+
+02:24:06.000 --> 02:24:12.000
+Options I'm happy to leave that as blank for now, because I'm taking the.
+
+02:24:12.000 --> 02:24:18.000
+The default character encoding of ut f8.
+
+02:24:18.000 --> 02:24:21.000
+We'll see if that works.
+
+02:24:21.000 --> 02:24:22.000
+callback.
+
+02:24:22.000 --> 02:24:31.000
+I want to put in a function definition here that's going to get run when I believe this is when the files finished writing. So let's just write in our own function definition here.
+
+02:24:31.000 --> 02:24:35.000
+Like so.
+
+02:24:35.000 --> 02:24:42.000
+Right, there's my blank function definition. And at that point, I'm going to write console. log.
+
+02:24:42.000 --> 02:24:45.000
+I'm done.
+
+02:24:45.000 --> 02:24:51.000
+And it's going to be I am done so that I don't have problems with my quotes.
+
+02:24:51.000 --> 02:25:10.000
+Save All right, let's run this again. See what happens in terms of console logs. This time, and file outputs and whatnot to right, so we've got this, we're running the command node, my file, my URL, and there's the output file dot txt, run it.
+
+02:25:10.000 --> 02:25:15.000
+Okay, this is rather hopeful, right, we got all of our console logs.
+
+02:25:15.000 --> 02:25:32.000
+The URL parameters as we included them. We got the error no coming back when it pulled in example, calm. Right. And then finally, it says I am done. Now what I'm going to be really happy with, is if this comes up with output file.
+
+02:25:32.000 --> 02:25:51.000
+And sure enough, there it is, and it's got context content. Let's have a look inside that file, more output file dot txt. And sure enough, it's got the HTML in it that came out from that resource that we pulled it.
+
+02:25:51.000 --> 02:25:53.000
+Yeah.
+
+02:25:53.000 --> 02:26:10.000
+Okay, good. So the last piece of the puzzle, then, is that we want to have this right out the message that they were asking for. Right. So if I go back to campus.
+
+02:26:10.000 --> 02:26:12.000
+Is it here.
+
+02:26:12.000 --> 02:26:20.000
+Yes, the message that we wanted out was something that looks like this.
+
+02:26:20.000 --> 02:26:26.000
+Right, downloaded and saved this to that.
+
+02:26:26.000 --> 02:26:40.000
+So instead of writing I am done I want to do that instead. In fact, let's use back tix because that allows me to interpolate some, some dynamic values into it right.
+
+02:26:40.000 --> 02:26:48.000
+So there's downloaded and saved some number of bytes.
+
+02:26:48.000 --> 02:26:54.000
+Let's use a variable called bytes to do that, too.
+
+02:26:54.000 --> 02:26:58.000
+and then instead of this, Let's go.
+
+02:26:58.000 --> 02:27:06.000
+A path
+
+02:27:06.000 --> 02:27:18.000
+Okay, but we haven't set bites yet, right. So I think I need bites to be something like this context, bites equals.
+
+02:27:18.000 --> 02:27:21.000
+Bye body dot.
+
+02:27:21.000 --> 02:27:24.000
+Now is the links of thing.
+
+02:27:24.000 --> 02:27:26.000
+No.
+
+02:27:26.000 --> 02:27:27.000
+sighs.
+
+02:27:27.000 --> 02:27:38.000
+Not sure what is the type of body it, I suspect it's a string,
+
+02:27:38.000 --> 02:27:39.000
+you think is gonna work.
+
+02:27:39.000 --> 02:27:45.000
+Um, can I show my screen I did it this way.
+
+02:27:45.000 --> 02:27:55.000
+Yeah, I'll, I'll let you share the screen, let's just see if this works here.
+
+02:27:55.000 --> 02:27:59.000
+Yeah, 1256, is that the size of it.
+
+02:27:59.000 --> 02:28:07.000
+Yeah, must be in fact I do Alice want to sell out file it work. 1256. Yep. Okay. Yeah, go ahead.
+
+02:28:07.000 --> 02:28:20.000
+Share your screen. Similar thing. You cannot start screen share but other participants are sharing okay I just stopped trying.
+
+02:28:20.000 --> 02:28:22.000
+Can you see it. Yeah.
+
+02:28:22.000 --> 02:28:27.000
+So this is how I've done it, I've used this part.
+
+02:28:27.000 --> 02:28:31.000
+Okay, you're happy with your values for path and file.
+
+02:28:31.000 --> 02:28:39.000
+Yep. If substituted file for the body.
+
+02:28:39.000 --> 02:28:50.000
+And, yeah, by the way that your name's path and file, I would change path to URL, I think, okay, would you agree.
+
+02:28:50.000 --> 02:28:59.000
+Yeah, I mean, can I can keep that as. Yeah, cuz usually path is, is it a word that's used for a file name.
+
+02:28:59.000 --> 02:29:03.000
+Okay, so I you know that's why I use URL and path myself.
+
+02:29:03.000 --> 02:29:08.000
+That's more miserable. I mean, you can understand it more better.
+
+02:29:08.000 --> 02:29:14.000
+Yeah, I think it's it's you want to associate the word path with a file name.
+
+02:29:14.000 --> 02:29:15.000
+Sure.
+
+02:29:15.000 --> 02:29:23.000
+Oh by the way, I need to check really quickly my calendar because I may have another thing scheduled right now I don't think I do but I should at least be on the ball.
+
+02:29:23.000 --> 02:29:25.000
+Know what I mean.
+
+02:29:25.000 --> 02:29:29.000
+Let me check my calendar here.
+
+02:29:29.000 --> 02:29:35.000
+Yeah, okay, I'm off at the moment so as we're good. Okay go ahead
+
+02:29:35.000 --> 02:29:39.000
+of you see if statements. So, you haven't used that on your own.
+
+02:29:39.000 --> 02:29:45.000
+That's true. I have not, I have assumed that my system is going to succeed.
+
+02:29:45.000 --> 02:29:47.000
+Okay.
+
+02:29:47.000 --> 02:29:51.000
+Right, I would have to go back and write the part about the error.
+
+02:29:51.000 --> 02:30:02.000
+If the error comes back as having a non normal thing that I need to react by saying that there was some error on the, on the resource load.
+
+02:30:02.000 --> 02:30:09.000
+Um, I cannot continue after this, the stretch part is where I got stuck. Okay.
+
+02:30:09.000 --> 02:30:12.000
+Yeah.
+
+02:30:12.000 --> 02:30:31.000
+To know how are you with what you've seen so far here. Yeah explanation is pretty clear but you know the sentence oldest tons of requires read lines wherever it's too much you have to read like behind all each word a lot of information.
+
+02:30:31.000 --> 02:30:34.000
+Yeah, it's like the rabbit hole and you just.
+
+02:30:34.000 --> 02:30:44.000
+They falling down and you have to read like you, you look at your code, I look at your course like few lines but like behind those those few lines like tons of information.
+
+02:30:44.000 --> 02:30:52.000
+That's right. That's exactly correct. And that tons of information does take a long time to understand.
+
+02:30:52.000 --> 02:31:12.000
+And I completely understand how it works and how this today's lecture, I understand I can only explain by my words, I cannot ride like. Yes, because I don't know the sentence I don't remember it right and the only way to proceed, is to take those words
+
+02:31:12.000 --> 02:31:19.000
+that you do understand and start to write little bits of code that are wrong.
+
+02:31:19.000 --> 02:31:23.000
+Okay. And then, and then fix them.
+
+02:31:23.000 --> 02:31:25.000
+With help.
+
+02:31:25.000 --> 02:31:35.000
+That's the thing we don't get that mean it's wrong. I mean, the problem that I face is when I get stuck.
+
+02:31:35.000 --> 02:31:48.000
+I know I'm close to the solution. Yes, then the whole for help, I shouldn't be saying that but ever asked for have the entire thing is changed, So, I have to start all from scratch.
+
+02:31:48.000 --> 02:31:56.000
+So, you asked for help, the helper modifies your stuff too much. Yes.
+
+02:31:56.000 --> 02:32:08.000
+Sometimes Yes, I think most of the time Yes, that I would just take that, that is, don't get too attached to what you wrote first.
+
+02:32:08.000 --> 02:32:24.000
+It took a long time to come down. It's a. It is an ego crushing activity, until until you decide that your ego is not worth keeping.
+
+02:32:24.000 --> 02:32:36.000
+Oh, Christian, it's not about the ego because then spend two hours writing. You just finally got it and start all over again. Yes, yes, yes, yes, yes.
+
+02:32:36.000 --> 02:32:41.000
+Yeah, yeah, I hear you it is frustrating there's no question.
+
+02:32:41.000 --> 02:32:45.000
+I would suggest pair programming.
+
+02:32:45.000 --> 02:33:00.000
+Sometimes, finding someone and, and switch up who you're doing your pair programming with, you know, don't make all it's not personal. I don't want to pair program with you today I want to pair program with somebody else right and then you can share problems
+
+02:33:00.000 --> 02:33:18.000
+with each other as you go. And one of you will get somebody in the assistance queue right, reach out to others, ask questions in the text. Right. Get ready for your code to be rewritten and rewritten and rewritten with people using the vocabulary, this
+
+02:33:18.000 --> 02:33:37.000
+is crucial, by the way, is give yourselves opportunities to use the words that you know, so that you can provide solutions for each other. You can practice using the words, while you're writing the code.
+
+02:33:37.000 --> 02:33:46.000
+Right, so like this demo that I just gave to you and the answer to this question. I'm using the words, but I'm also writing the code that goes with the words.
+
+02:33:46.000 --> 02:33:48.000
+Could you please show it again.
+
+02:33:48.000 --> 02:33:57.000
+Yes, sir.
+
+02:33:57.000 --> 02:34:00.000
+Let me see here.
+
+02:34:00.000 --> 02:34:03.000
+Yeah.
+
+02:34:03.000 --> 02:34:12.000
+I could add the part about the error handling, if you want, because you had that but I did not write this it just gives me more opportunity to to use the words right.
+
+02:34:12.000 --> 02:34:14.000
+Okay.
+
+02:34:14.000 --> 02:34:18.000
+So when we call this this request function.
+
+02:34:18.000 --> 02:34:26.000
+Right, we pass in some parameters. The first parameter is the URL that were requested. Fine.
+
+02:34:26.000 --> 02:34:28.000
+The second parameter is a callback.
+
+02:34:28.000 --> 02:34:35.000
+This call back is going to get executed when the request comes back with data.
+
+02:34:35.000 --> 02:34:41.000
+Right now, we hope it comes back with data.
+
+02:34:41.000 --> 02:34:46.000
+Excuse me, right, if I cut this out, you can see that this is just the second parameter, I always do this trick.
+
+02:34:46.000 --> 02:34:52.000
+There it is. There's my callback, the callback is going to be called.
+
+02:34:52.000 --> 02:34:54.000
+When this is done.
+
+02:34:54.000 --> 02:35:00.000
+It could be done for two reasons. One, it could be done because there's an error.
+
+02:35:00.000 --> 02:35:08.000
+Or it could be done because there's a decent response in the body.
+
+02:35:08.000 --> 02:35:11.000
+Okay, how do we tell.
+
+02:35:11.000 --> 02:35:15.000
+Well, we should check the value of error. Right.
+
+02:35:15.000 --> 02:35:17.000
+And so far, when we've been doing it.
+
+02:35:17.000 --> 02:35:28.000
+The value of error has been coming back as No. By the way, this is why I include labels on all my console logs, it so that I can scroll up, look for the thing.
+
+02:35:28.000 --> 02:35:44.000
+Look for the value there, right, that came from this console on it had this label on it, so I could quickly find the value of error, the value of error was know if their value there is no, then this is all going to work right.
+
+02:35:44.000 --> 02:35:49.000
+But what if I did have an error, than I should do something like this.
+
+02:35:49.000 --> 02:35:55.000
+If error, do something different.
+
+02:35:55.000 --> 02:35:56.000
+Right.
+
+02:35:56.000 --> 02:36:03.000
+Like, I could console log error.
+
+02:36:03.000 --> 02:36:12.000
+And then I could return. I saw that's what you did to veto. Right.
+
+02:36:12.000 --> 02:36:17.000
+Okay, so let's do this. Let's.
+
+02:36:17.000 --> 02:36:26.000
+Instead of running it the way we have with some success. Why don't we run it like a thing that will surely fail.
+
+02:36:26.000 --> 02:36:32.000
+Today, and see if this produces an error.
+
+02:36:32.000 --> 02:36:37.000
+In fact, it's not returning an error because it's actually going to return from that path.
+
+02:36:37.000 --> 02:36:48.000
+Oh 404 did era come back as anything. No, it came back with a valid status code, and it went on with body it did not go into there.
+
+02:36:48.000 --> 02:36:51.000
+So depends on the kind of error that we have.
+
+02:36:51.000 --> 02:37:04.000
+Let's, let's actually try a different kind of there then. Because this error obviously didn't come back with an error value. Let's go for a domain name that likely does not exist.
+
+02:37:04.000 --> 02:37:12.000
+Instead, because it's going to then request should fail with an error saying that the domain name doesn't exist. Let's try that.
+
+02:37:12.000 --> 02:37:17.000
+Sure enough, now we're having an error object in the callback.
+
+02:37:17.000 --> 02:37:20.000
+And so,
+
+02:37:20.000 --> 02:37:22.000
+error.
+
+02:37:22.000 --> 02:37:24.000
+The console log is running.
+
+02:37:24.000 --> 02:37:31.000
+What kind of narrative we get, Get address info, not found
+
+02:37:31.000 --> 02:37:37.000
+this error message now makes perfect sense for, given what I typed in.
+
+02:37:37.000 --> 02:37:40.000
+Fair.
+
+02:37:40.000 --> 02:37:43.000
+Here's the code.
+
+02:37:43.000 --> 02:37:48.000
+Everybody good with that.
+
+02:37:48.000 --> 02:37:53.000
+Okay.
+
+02:37:53.000 --> 02:38:02.000
+One, I should encourage you to be happy about the bugs that you're making to be happy about the brick walls that you run into.
+
+02:38:02.000 --> 02:38:15.000
+Even though it's frustrating, because the more of those that you can string together one after the other, and the higher you are going to climb this very steep learning curve.
+
+02:38:15.000 --> 02:38:26.000
+If you run into a brick wall. You're like, Yay, I managed to do it, I managed to get to a place where I can't go real learning is about to occur.
+
+02:38:26.000 --> 02:38:31.000
+Just as soon as I can find somebody who knows the answer,
+
+02:38:31.000 --> 02:38:42.000
+rinse, repeat, rinse, repeat, rinse, repeat, rinse, repeat, that's how you succeed. Give yourself the opportunities to use the vocabulary.
+
+02:38:42.000 --> 02:38:49.000
+As much as you can. Yeah, good. Any more questions before I go before you guys go on to some more learning.
+
+02:38:49.000 --> 02:38:51.000
+Can I say another thing.
+
+02:38:51.000 --> 02:38:56.000
+So, the greatest thing that you explained.
+
+02:38:56.000 --> 02:39:07.000
+If what I'm understanding is dot, then, then, is I think like a method. So already takes into parameters, how does it act like a function.
+
+02:39:07.000 --> 02:39:14.000
+So, yeah, that was raised by Mohammed in the class is that the part you mean when then takes two parameters.
+
+02:39:14.000 --> 02:39:19.000
+So you mean. Normally we don't use it that way. So you could ignore that safely.
+
+02:39:19.000 --> 02:39:32.000
+If you wanted to, but if you want to I'll give you the advanced bit about the then function where it can take two parameters. Right. The way we've been using it.
+
+02:39:32.000 --> 02:39:38.000
+We've been using then clauses that only take one parameter here.
+
+02:39:38.000 --> 02:39:42.000
+Right. So, just to interrupt you.
+
+02:39:42.000 --> 02:39:51.000
+Because I mean, the thing is, so right now it looks like it's a function. It is a function. It's a function called.
+
+02:39:51.000 --> 02:39:55.000
+I'm sorry. What do you mean, then is itself a function.
+
+02:39:55.000 --> 02:39:58.000
+But in the end, it's mentioned it's a method.
+
+02:39:58.000 --> 02:40:02.000
+Oh, same, it's another word for the same thing.
+
+02:40:02.000 --> 02:40:10.000
+Oh, okay. It's a synonym method is a function that is defined on an object.
+
+02:40:10.000 --> 02:40:13.000
+Okay.
+
+02:40:13.000 --> 02:40:19.000
+Sorry, but then, not at all. Don't be sorry, that's this is exactly what you want to be doing.
+
+02:40:19.000 --> 02:40:30.000
+You right you want to clarify your vocabulary, so that you can use that word in context that will generate more learning in the future. The fact that you've clarified.
+
+02:40:30.000 --> 02:40:43.000
+In fact, that's a really great way to take notes in boot camp, by the way, is to make a glossary of your own with your own definitions.
+
+02:40:43.000 --> 02:40:59.000
+And then review that glossary with somebody like a senior programmer who can help you clarify your definitions in your glossary, but if you own the glossary, it's going to show you the state of your knowledge, And you can share that state of your knowledge
+
+02:40:59.000 --> 02:41:10.000
+with somebody else. Find the glossary is one thing. You also need to be able to write code samples to go with each of your glossary entries.
+
+02:41:10.000 --> 02:41:20.000
+That's an excellent way to accelerate your boot camp experience.
+
+02:41:20.000 --> 02:41:34.000
+That was, that was my initial question because I don't know what Muhammad us but okay. You read about methods, what is the method. Yeah, okay. The method and the, the object or the function but so I was confused with that.
+
+02:41:34.000 --> 02:41:35.000
+Okay.
+
+02:41:35.000 --> 02:41:36.000
+Great.
+
+02:41:36.000 --> 02:41:38.000
+Everybody good.
+
+02:41:38.000 --> 02:41:47.000
+I just want to ask about the previous assignment, there was 122 and empty object What is it empty object for.
+
+02:41:47.000 --> 02:41:51.000
+Can I bring it up
+
+02:41:51.000 --> 02:42:07.000
+in here. This slide 22. Yes. Oh, so I when I looked at the FS dot right file documentation. Hmm, I found
+
+02:42:07.000 --> 02:42:11.000
+this.
+
+02:42:11.000 --> 02:42:13.000
+It's this thing.
+
+02:42:13.000 --> 02:42:21.000
+Oh, some options, so it's optional yeah and so description.
+
+02:42:21.000 --> 02:42:24.000
+It's like a description of the, of the function.
+
+02:42:24.000 --> 02:42:39.000
+Well, so let's look at what they say the options parameter is, it says it is a string or object. Okay data that can be used to specify optional parameters that will affect the output.
+
+02:42:39.000 --> 02:42:44.000
+It has three optional parameters, and coding mode and flag.
+
+02:42:44.000 --> 02:42:50.000
+So I could for example, say, in code inside here. Whoops.
+
+02:42:50.000 --> 02:42:58.000
+inside here, I could put encoding UTF eight.
+
+02:42:58.000 --> 02:43:02.000
+But that would just be setting what the default is already set to.
+
+02:43:02.000 --> 02:43:15.000
+But if I wanted to have a different encoding I could have UCF 16 I could have ASCII whatever the encoding I wanted. So, then it would, You know, encode the file differently.
+
+02:43:15.000 --> 02:43:20.000
+This one's going to work with emojis right the other ones not going to work with pool mo Geez.
+
+02:43:20.000 --> 02:43:24.000
+Okay.
+
+02:43:24.000 --> 02:43:36.000
+Nice. Thank you. So instead of like, we can put anything encoding it's not necessary. Right. They has a default value. If I don't specify it it's going to be the default value.
+
+02:43:36.000 --> 02:43:45.000
+Like that. Now, I think that there's likely other ways that you can run the right file like if I leave it out, it might work so.
+
+02:43:45.000 --> 02:43:56.000
+But that's fancier versions and like I'd have to dig into the documentation of right file, let me back this out because I did a Google search to land here.
+
+02:43:56.000 --> 02:44:00.000
+I ended up on a URL geeks for geeks let's try node.
+
+02:44:00.000 --> 02:44:06.000
+js dev writing files with Node. js I think this is the link that they pointed us to encompass actually.
+
+02:44:06.000 --> 02:44:09.000
+And so here.
+
+02:44:09.000 --> 02:44:16.000
+Yeah, see how it was run without the fourth parameter path, content and a callback.
+
+02:44:16.000 --> 02:44:31.000
+So if it only has three parameters. Evidently, it can figure that out and make sure that the right one gets assigned to the right thing.
+
+02:44:31.000 --> 02:44:37.000
+Yeah, I can see how that would be confusing.
+
+02:44:37.000 --> 02:44:40.000
+This function is fancy. Right.
+
+02:44:40.000 --> 02:45:10.000
+It can say oh I only had three parameters to third one must be a call back.
+

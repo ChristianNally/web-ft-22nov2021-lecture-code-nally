@@ -6,8 +6,8 @@ const returnPromise = collectionOfPromiseGenerators.returnPromise;
 const promise = returnPromise('first promise', 4444);
 console.log('promise:',promise);
 
-console.log('first 1');
-console.log('second 1');
+console.log('first');
+console.log('second');
 
 // Not the best way to do this
 // setTimeout(()=>{
@@ -22,7 +22,7 @@ promise
   .then((data) => {
     console.log('first');
     console.log('second');
-    // const newData = 'another thing';
-    // console.log("newData:",newData);
+    const newData = 'another thing';
+    console.log("newData:",newData);
     console.log('data:', data);
   });

@@ -14,7 +14,7 @@ rlp.questionAsync('What do you think of Node.js? ')
   })
   .then((answer) => {
     answers.push(answer);
-    throw "never put pineapple on pizza!";
+    throw "error!";
 //    return rlp.questionAsync('What\'s your favourite activity? ');
   })
   .then((answer) => {

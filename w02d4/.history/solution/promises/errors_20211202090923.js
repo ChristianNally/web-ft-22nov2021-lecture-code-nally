@@ -12,7 +12,7 @@ returnPromise('one',1000)
   })
   .then((data) => {
     console.log(data);
-    return "three";
+    return returnPromise('three',1000);
   })
   .then((data) => {
     console.log(data);
