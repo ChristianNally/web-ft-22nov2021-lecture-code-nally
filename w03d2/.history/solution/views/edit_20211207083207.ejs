@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Objective</title>
+  </head>
+  <body>
+
+
+<h4><%= id %></h4>
+<h4><%= JSON.stringify(objective) %></h4>
+
+    <form method="POST" action="/objectives">
+      <label for="question">Question</label>
+      <input id="question" type="text" name="question" value="<%= objective.question %>"/>
+      <label for="answer">Answer</label>
+      <input id="answer" type="text" name="answer" />
+      <input type="submit" name="edit" value="Submit" />
+    </form>
+  </body>
+</html>
