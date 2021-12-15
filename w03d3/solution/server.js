@@ -17,7 +17,6 @@ let users = {'nally': "qwerty"};
 //
 // MIDDLEWARE
 //
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
