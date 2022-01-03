@@ -1,0 +1,214 @@
+Nally Today at 7:30 AM
+Intro to SQL Chat Thread!
+
+
+
+
+62 replies
+
+Nally  2 hours ago
+Let's try this out here!
+:+1::skin-tone-5::+1:
+8
+:parrot-shuffle:
+1
+
+
+Cassie/Ren  2 hours ago
+Quiz sounds good, since I'm in a constant state of asking questions :smile:
+
+Cassie/Ren  2 hours ago
+I think my brain died, may I ask what the (...)s are?
+
+Cassie/Ren  2 hours ago
+:thumbsup::skin-tone-3:  thanks :smile:
+
+Russell Mair  2 hours ago
+Sorry where is the link to that git repo?
+:eyes:
+1
+
+
+Cassie/Ren  2 hours ago
+I'm so sorry, where did we find this directory? Should we be following along in it?
+
+Prabhu Vardhan Pilli  2 hours ago
+i just hope i understand better about joins better after this
+
+Nally  2 hours ago
+https://github.com/ChristianNally/web-ft-22nov2021-lecture-code-nally
+
+GitHubGitHub
+GitHub - ChristianNally/web-ft-22nov2021-lecture-code-nally
+Contribute to ChristianNally/web-ft-22nov2021-lecture-code-nally development by creating an account on GitHub. (80 kB)
+https://github.com/ChristianNally/web-ft-22nov2021-lecture-code-nally
+
+:raised_hands::skin-tone-5:
+1
+
+
+Cassie/Ren  2 hours ago
+@Prabhu Vardhan Pilli bro same
+
+Prabhu Vardhan Pilli  2 hours ago
+CREATE DATABASE <database name> , do we need to capitalize ? i found out that its not necessary but its just like a naming convention ?
+
+Cassie/Ren  2 hours ago
+just for clarification and to drill it into my brain, -U postgres is a username we can automatically use without creating a new user?
+
+Prabhu Vardhan Pilli  2 hours ago
+/dt
+
+Cassie/Ren  2 hours ago
+yeah, the username is vagrant, tried it out this morning!
+
+Valentin Lyash  2 hours ago
+would you say that Excel is a table and not a database?
+
+Donny Phan  2 hours ago
+with that default other first 3 or randomly select?
+
+Russell Mair  2 hours ago
+those rows returned are random?
+
+Donny Phan  2 hours ago
+will*
+
+Cassie/Ren  1 hour ago
+What would happen if we ordered it by question?
+
+Donny Phan  1 hour ago
+hiii!
+
+Michael Dever  1 hour ago
+Hi Snoopy
+
+Cassie/Ren  1 hour ago
+Pet the pup, pet the pup!
+:+1:
+1
+
+
+Cassie/Ren  1 hour ago
+if all the questions use What as the first word, will it use the second word to order it alphabetically?
+
+Stella Maris  1 hour ago
+why not limit the number of column to select, thus easier to view/display
+
+Donny Phan  1 hour ago
+can you order with primary, secondary, etc?
+
+Cassie/Ren  1 hour ago
+what the ordering of the symbol alphabet?
+
+Cassie/Ren  1 hour ago
+(or if too long, what could I google to get that? What are they called in technical world?)
+
+Prabhu Vardhan Pilli  1 hour ago
+SNOPPYS UPSET
+
+Russell Mair  1 hour ago
+Snoopy needs that break as much as I do haha
+
+Suliman Fayyaz  1 hour ago
+Was the Responsive Design and SASS (last class) posted anywhere?
+
+Henry Chidozie  1 hour ago
+if you use autoincrement for id, can you easily change it later?
+
+Jeffery Park:tent:  1 hour ago
+avg does not count deleted number?
+
+Jeffery Park:tent:  1 hour ago
+got it thanks
+
+Prabhu Vardhan Pilli  1 hour ago
+me
+
+Prabhu Vardhan Pilli  1 hour ago
+vscode
+
+Prabhu Vardhan Pilli  1 hour ago
+lol , i didnt know we could do that - awesome christian !
+
+Prabhu Vardhan Pilli  1 hour ago
+question ! = whats with the PRIMARY KEY AND ITS SIGNIFICANCE - WE KNOW THAT ID DOES NOT REPEAT
+
+Cassie/Ren  1 hour ago
+what's generally best practice for assigning id?
+
+Zakiya Alfughi  1 hour ago
+which table has day_id? objectives or days?
+
+Zakiya Alfughi  45 minutes ago
+ok  thanks
+
+Zakiya Alfughi  43 minutes ago
+so day_id & id in days table should be declared as primary keys?
+
+Ahmed Elmolla  41 minutes ago
+can you please go over the JOIN clause syntax again ?
+
+Jeffery Park:tent:  39 minutes ago
+is the ‘day_description’ column from days table and ‘question and answer’ from objectives table?
+
+Valentin Lyash  36 minutes ago
+you did objectives.sort =5 but it lists 11 rows. how come?
+
+Russell Mair  32 minutes ago
+the ON command is the IF logic right?
+
+Russell Mair  31 minutes ago
+can the ON logic be more complex than if 1 row = to another or something?
+
+Russell Mair  30 minutes ago
+Right that also makes sense
+
+Nally  21 minutes ago
+https://12bc-207-102-221-225.ngrok.io
+
+Cassie/Ren  15 minutes ago
+What would the | More do?
+
+Prabhu Vardhan Pilli  12 minutes ago
+no backup means KABOOM!
+
+Valentin Lyash  12 minutes ago
+in which case would we use > vs | ?
+
+Valentin Lyash  8 minutes ago
+so both would work when creating files?
+
+Kurtis Grant  8 minutes ago
+When you create a database from inside psql, where is the database file/data stored?
+
+Valentin Lyash  7 minutes ago
+perfect thank you :slightly_smiling_face:
+
+Prabhu Vardhan Pilli  7 minutes ago
+CREATE DATABASE
+
+Prabhu Vardhan Pilli  7 minutes ago
+\DT
+
+Kurtis Grant  6 minutes ago
+Thanks :slightly_smiling_face:
+
+Russell Mair  6 minutes ago
+is there a particular reason that rows on the  test site are reorderable?
+
+Russell Mair  5 minutes ago
+ah ok
+
+Russell Mair  5 minutes ago
+like we can drag them around though
+
+Cassie/Ren  4 minutes ago
+I just wanted to reask Zakiya's questeion cause I don't think an answer stuck x.x
+
+Cassie/Ren  4 minutes ago
+so day_id & id in days table should be declared as primary keys?
+
+Russell Mair  < 1 minute ago
+Thanks!
+

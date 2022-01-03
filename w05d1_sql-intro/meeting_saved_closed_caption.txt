@@ -1,0 +1,915 @@
+07:33:56 Okay.
+07:34:11 Welcome back to The New Year like has labs, 2022.
+07:34:17 Today is week five, just so that we're all caught up. Day one sequel intro introduction to sequel, where we finally get to have the data in our apps be stored in a persistent way.
+07:34:35 Right.
+07:34:36 I mean you know every time you were turning off your apps, all your data would go away.
+07:34:41 And then you restart the app.
+07:34:44 And then you'd be starting fresh every time. Clearly this is not going to be a working solution for production applications.
+07:34:53 And so we're going to finally get that third layer of the web app stack plugged in, so that we can save data and query data and present data to the end user dynamic data, right.
+07:35:11 Data is it's not static Lee hard coded into pages but things like blog posts for a blog system or username and password hashes and all that good stuff that's going to get stored in the database.
+07:35:27 So, on the agenda for today.
+07:35:31 We've got why we use databases database management systems related bait, sorry relational databases in particular, and sequel, the language that we use to interact with databases.
+07:35:47 Also on the agenda is this little system I've got cooked up, which is the learning objectives, right, I think I've exposed this to you once or twice in the learning bits in the sample code that we've sent out.
+07:36:04 Today I've got set of learning objectives for sequel, things like, what is a table.
+07:36:10 How do I create a table, what is the database. What does the where clause and so on.
+07:36:16 And so by the end of class, and we will practice with it at the break.
+07:36:22 I'd love to get people's feedback on this, where I'll have folks, open up their own version of this I'm going to expose it a tunnel to this computer through and rock.
+07:36:53 a quiz format where, you know, you ask yourself Oh, what is the table and then you click on it and then it tells you what the table is and you say okay does that match your understanding, then then you get to answer by saying you know how much you understand
+07:36:57 it, and then picked a little drop down and say, Yes, I understand this very well or no it's kind of confusing or whatever.
+07:37:03 So you can go through that process. And what this does is it lets me know how well you feel that you understand that given concept before today is out
+07:37:17 for the lectures, by the time that lecture search yeah so that's super helpful for me, gives me a chance to prove the lectures and gives you a chance to give yourself a little pop quiz to see if you're, you know, down with all the notions from today.
+07:37:32 So we'll give that a bit of a more of an explanation at the break.
+07:37:37 And in the meantime, we're going to dive right in.
+07:37:42 To databases, so Excel is not a database. Right.
+07:37:47 Often though because people use spreadsheets to record information into them.
+07:37:57 The database, you know, spreadsheets are awesome. They're so useful they're an underutilized tool in some ways, spreadsheets, just the kinds of calculations that you can do optimization solution problems you can do an amazing amount of quality engineering
+07:38:17 in a spreadsheet.
+07:38:18 But this is not a class about that. This is a class about databases and spreadsheets are decidedly not databases.
+07:38:28 So, what our databases.
+07:38:43 Well, databases are, in fact, their own tear in a web stack sandwich. Right.
+07:38:40 the three tier architecture, client and server and databases. The client is of course the browser. Right.
+07:38:50 The browser is making connections to a web server
+07:38:57 where these are usually different computers and that the entire internet sits between them.
+07:39:09 And so the web server response to a request from the client and has all of the logic all the business logic, does this person have access to such and such data, you know maybe they're a manager maybe they're an end user.
+07:39:18 Maybe they're a new end user maybe they're an end user that has done x y and Zed depends entirely on what that what the business logic of that particular app you're writing has to do notice we're calling it a web server.
+07:39:35 There is a similar relationship in terms of client and server that's going to go on between this layer between the web server.
+07:39:46 And the database server.
+07:39:49 The database server is a separate program that can run on the same machine that your web servers running on, but often it's running on a different machine entirely in a production setting, there'll be a separate computer.
+07:40:07 Still, the database servers running on.
+07:40:13 And as far as client server pairs go.
+07:40:17 The web server is the client to the database server. So again, we're doing a client server pair relationship, but the web server is a server to the web browser.
+07:40:33 But it's a client to the database.
+07:40:36 It can be both,
+07:40:40 which is kind of cool. So that's how that whole thing holds together.
+07:40:47 Yeah.
+07:40:54 These are.
+07:40:57 Um, let's see. So in the logic tier, we've got the web framework workflow system. And you know, these are any bits of software that have to be run within the context of the web server in order to return think maybe this would be things like react or Node.
+07:41:21 The main the main point is that there's this now three tiers, to our architecture.
+07:41:27 So, for the database system.
+07:41:30 We've got software that provides an efficient storage mechanism that allows organization manipulation and protection of highly structured data.
+07:41:41 Efficient storage and retrieval is a big part of a database management system.
+07:41:49 These things are fast.
+07:41:52 They're much much faster, especially when you start dealing with hundreds of thousands or millions or 10s of millions of rows in your tables.
+07:42:04 These things are optimized for that kind of problem.
+07:42:10 If you were to write your own database and you can, you could write out files for example you can say in Node. js context you could take the FS package the balance system package, and from time to time, you could write out your user objects and write
+07:42:29 out your blog content to a file.
+07:42:34 And then, when you needed it, read it back in from the file and repopulate your data structures within your server.
+07:42:40 you could do that.
+07:42:41 It would be very slow compared to a standard relational database management system like Postgres or my sequel or Maria DB or any of these things.
+07:42:52 They are optimized for a ton of data.
+07:42:58 And, you know, they've been around since the 70s doing their thing.
+07:43:04 And they've been getting better and better and better all that time had doing precisely this kind of stuff.
+07:43:11 Plus the fact that it's a separate program, means that you can clean it off of the web server and optimize the computer that it's running on separately from the optimizing the computer that the web server is running, that's a bit of a DevOps perspective
+07:43:26 on what we're doing here. So, relational databases are the most popular type of database in the last few decades.
+07:43:35 Data is broken down into tables with associations between the tables.
+07:43:41 That's the relationship part of the relational database, each table is like a spreadsheet with columns and rows.
+07:43:53 And then ultimately, we can query data with sequel language, which we'll get into today.
+07:44:06 So imagine, you know, we could do the same the whole matrix thing.
+07:44:10 This is a nice slide now that another matrix movies out but just plug in the little thing into the back of your head and be like, okay, now I know sequel right well that's part of what today is about, is to try to download as much.
+07:44:21 Knowing sequel as we can get you today.
+07:44:25 Sequel Structured Query Language that's what it stands for developed by IBM in the early 70s.
+07:44:35 It is a declarative language, versus an imperative,
+07:44:45 which I'm not going to get into the details of
+07:44:52 it says you're grouped into DDLNDM elder in fact four different groupings grouping names don't matter so much as what these are about DDL data Definition Language
+07:45:07 versus data manipulation language.
+07:45:13 Definition Language is how you set up your tables
+07:45:20 DMS dmo commands are how you get data out of those tables.
+07:45:26 For example, data Definition Language. So, this is some sequel.
+07:45:34 On the right hand side, and we're going to get to the point where you would see something like that and you would just recognize it straightaway see. Right.
+07:45:43 There's some clues in here that it's equal one is that the that the tokens are capitalized.
+07:45:50 Like, create table, drop table if exists, that those things are capital letters, that's going to be a bit of a dead giveaway.
+07:46:01 But you know create tables kind of also a dead giveaway hey we're dealing with databases here.
+07:46:05 Excuse me.
+07:46:11 Um, yeah. Data Definition Language, this is the bits of SQL, that you use to establish your data structures, your tables, the kinds of columns that exists in those tables, and that kind of thing.
+07:46:30 DML dmo data manipulation language, also a part of sequel.
+07:46:36 It's a different set of commands that you would execute in sequel, where you are doing things like populating your tables putting rose into those tables.
+07:46:50 So for example, insert into platforms, that's an example of a sequel statement where you're taking data and inserting it into your table.
+07:47:03 In this case, we've got a table called platforms that has columns, name developer and release date.
+07:47:13 And so this insert into command is going to put one new row into that table.
+07:47:25 And that new row
+07:47:28 is going to have the values of Xbox One for the name column.
+07:47:37 Microsoft for the developer column, and this date for the release date right you can see how they line up with their with the brackets.
+07:47:46 And just as a reminder, we're using the Slack channel for chat today and I'm focusing on the particular thread for this class today, and not the one that's in zoom, not the wider zoom channel but just in within the threat.
+07:48:03 Cool. Alright state of inflation language.
+07:48:08 Okay, so next up we want to start looking at a better sequel, and how it all comes together
+07:48:20 into this end, I'm going to open up a directory inside.
+07:48:31 And let's see here.
+07:48:40 into week five.
+07:48:42 This is the shared repository that you guys like we have deployed.
+07:48:54 And
+07:48:54 yet we are one, one commit ahead.
+07:48:58 So I'm going to push that so that you too can have the code if you feel like you want to have it even during the lecture.
+07:49:06 Okay. And next up, I'm going to fire up my VS code. That's a nice trick by the way that you can set up, such that it will bring up your code editor.
+07:49:20 In, like just right straight from the command line.
+07:49:26 Launched in the directory that you needed to be in.
+07:49:32 And so
+07:49:36 we have our read me
+07:49:43 with a bit of the stuff that will be doing.
+07:49:50 So, I would like to introduce to you the database that I'm using for my learning objectives app that I'm sort of writing bit by bit as sample code throughout the lectures.
+07:50:09 And so by way of introduction to that database. Let's connect to it.
+07:50:16 This is an example of the database that I have running here
+07:50:25 that the app that I'm talking about is the one here.
+07:50:32 These questions and answers that each row is an objective. Right.
+07:50:39 For the bootcamp.
+07:50:42 This is dynamic data that's stored in a database.
+07:50:51 So, the link to that get repo, is something that I can send out. Let's just see here, you should have it deployed somewhere in your data structures, but I do see a few people asking about it so I'll address that now.
+07:51:08 We've got GitHub.
+07:51:11 And it's the November.
+07:51:16 22.
+07:51:18 This one.
+07:51:19 And so I'm going to grab the
+07:51:23 link. Actually, I'll just give you the URL like this and paste it back in slack.
+07:51:33 Yeah, probably. We're definitely going to be talking about joints today. that's gonna be a big part of today so.
+07:51:41 Good on ya.
+07:51:50 Okay.
+07:51:55 Yeah and yeah thank you for the reminder that we are using this slack thread today so hopefully people have just found that thread and are using it for the questions that gives me a chance to see the reactions to people's comments, in real time, which
+07:52:09 is super useful.
+07:52:12 OK, so the web app that we're working with is this one.
+07:52:16 Right. And we've got data that's stored in a database.
+07:52:21 Like when I, when I reload this page it's rendering that page, by making a connection to a database and pulling in the learning objectives from the database.
+07:52:33 And I'd like to just show you a little bit about how that holds together.
+07:52:37 So, one thing I'd like to introduce to you is this directory, this is not code that is yet in your repository, but I will drop it in later
+07:52:53 spot.
+07:52:55 It stands for searchable performance objectives tables. Right. I wanted it to fit with lighthouse in general to have an acronym for that.
+07:53:10 In here, we've got a web app.
+07:53:14 It's got its database subdirectory which contains a bunch of information about how the database works.
+07:53:22 That's integration about how the database is going to actually be connected to your Node. js applications. We don't actually learn that stuff until a little bit later in the week for now we're just going to focus on sequel itself.
+07:53:38 There is a tool in your command line tool kit, called p SQL.
+07:53:47 Because we are using Postgres Postgres is going to be our, our DMS rd BMS of choice for the boot camp.
+07:54:00 And to interact with a Postgres database.
+07:54:03 One very solid way of doing it is to use a command line tool to do that.
+07:54:10 So the command line tool for Postgres is PSQL.
+07:54:16 And this is an example of a command that you could use to connect to a database once you've got it up and running locally.
+07:54:37 PSUL, minus capital use the username that you're using to connect to it with.
+07:54:33 Now, One of the major roles for an RD BMS systems like Postgres is to provide security, with regard to access to the data.
+07:54:48 And so you'll have a username and password, that's associated with
+07:54:57 restricting access to the data
+07:55:02 from a DevOps point of view, that is under the hood.
+07:55:06 Right. These are not the usernames and passwords of your end users.
+07:55:10 This is a username and password for your web server to know about.
+07:55:18 And so
+07:55:22 I'm going to have that username here as part of my connection string in connecting to it.
+07:55:28 You may see instructions encompass that don't include that in it, and in such the case it's going to be using a default username, but it's good to be aware that there is a username in play.
+07:55:42 You can connect to a database server on any given host, so long as it's been configured to allow you to do that.
+07:55:52 In this case, we're actually running the web server itself on our local development environment computer.
+07:56:02 Right, it's running the web server it's also running the database server.
+07:56:06 And so I'm specifying minus x local host as part of this command booting things up. In this case, minus p this is a port number.
+07:56:15 So you'll remember our conversations about how a web server needs to be listening on any given port. Right. The same is true of the database server, it means to listen to any given port.
+07:56:30 The default port number for for Postgres is 5432.
+07:56:38 And I'm using a slightly different port number for this particular web server. Sorry, database server.
+07:56:47 And so I need to include it as part of the command line in order to connect to this port. I think for the majority of what you'll be doing encompass, you'll be working with the default port number and so you don't need to include that option in your connection.
+07:57:01 And then finally, you can put the name of the database that you want to connect to.
+07:57:08 As the last piece here.
+07:57:11 So because this is an introduction to sequel, we want to dive into sequel Next, I'm going to go ahead and make my connection to the database.
+07:57:20 Hopefully I can type my password correctly. Yes, indeed. Alright, so here I've successfully managed to run the P SQL command line tool.
+07:57:36 And
+07:57:39 this command line tool has changed what my command line looks like right now I've got a thing that has the name of the database equals add a hashtag right that's very different from what I was running before where I've got this sort of customized prompt,
+07:57:55 where I take my Unix commands into.
+07:57:58 Now I'm in a place where I'm going to be typing in either sequel commands directly, so I can just type sequel here, and run them.
+07:58:09 Or I can use backslash commands where I'm doing commands to interact with the database in other ways.
+07:58:20 I could type help straightaway.
+07:58:23 And it's going to give me a bit of that context about where I'm at right, you are using PST well the command line interface to Postgres type slash copyright for distributions slash age for help with sequel commands, slash, these are all backsplashes backslash
+07:58:41 question mark for help with P SQL commands. Those are these backslash commands that we're looking at.
+07:58:47 backs IQ to quit that's kind of a crucial one, right. So for example, backs IQ brings me back to my command line that I had from before. Up arrow by one brings me back my way to connect to scraps.
+07:59:03 Like so.
+07:59:09 So I see a question from Cassie she has just for clarification and drill it rains, minus you Postgres is a username, we can automatically use without creating a new user, not necessarily.
+07:59:23 I think that, for those of you that are using vagrant there will have been something set up in vagrant.
+07:59:29 In fact, the username may in fact be vagrant in that context, and then you can even not include minus you because it's going to be what you use by default.
+07:59:39 Over there.
+07:59:41 I'm going to defer to campus.
+07:59:45 In this regard, for your for how it is exactly going to unfold for you today.
+07:59:51 Cool.
+07:59:53 Now, this is a command line right I can hit enter a bunch of times. For those of you that came to my command line breakout command line tools, tips and tricks, you will feel very comfortable in this environment.
+08:00:06 For example, control, l.
+08:00:08 Does the screen, clearing trick.
+08:00:10 Right.
+08:00:12 And there's even a form, as we'll see, of command line completion, which we'll get to in a minute, but yeah this is a command line.
+08:00:22 So as hinted by Prabhu, I can actually do backslash dt.
+08:00:29 Because these, these are Postgres specific commands with the backslash on the front. What backslash DT does is it lists the tables in the database that I've connected to.
+08:00:40 So I'll go ahead and hit enter on that.
+08:00:43 And here we go we got a table of tables.
+08:00:49 By the way, relations is a Postgres word for table.
+08:00:54 So if you see that word floating around in the Postgres documentation or in the things that are coming back from Postgres itself, tried to do that conversion but that a relation is like a it is a table in a, in an RD BMS sense.
+08:01:10 And so we have a days table we have it objectives table, we have an understanding stable in a user's table.
+08:01:16 And so let's, let's have a look at each of these tables.
+08:01:26 For example,
+08:01:32 I would like hunger how many of my old commands I can go backwards through.
+08:01:37 Yeah, I'm just going through the history of things
+08:01:43 the same way that I could with other command line stuff this is actually a secret SQL from different applications that I've been working on.
+08:01:59 That's not going to do it, ID. Okay, so here's another command of interest.
+08:02:05 backslash D. If I do backslash the days, and hit enter.
+08:02:10 This is a command that you can use to describe any given table that you have.
+08:02:17 So here's the description of the days table. It tells me about the columns that are in it tells me about what type of value you can put into any particular column.
+08:02:29 And it also tells me about any restrictions that I might put on each of my columns, whether or not it can be no, and so on. We'll get into some of those details a bit more later.
+08:02:45 I can do a backslash command called con info.
+08:02:50 This one's interesting because it tells me the connection information that I'm using.
+08:02:58 between this database client this command line, and the actual server program that it's connecting to. So it says I'm connecting to the database called spot as the user Postgres on the host local host at this port right so that's all the information that
+08:03:15 I need in order to make my connection.
+08:03:19 Now, think of it, about client and server.
+08:03:24 This command line tool that I'm running that itself is a client to the database server.
+08:03:34 Just the same way that your web server is going to be a client to the database server, the database server is a separate program that we're, we're interacting with but we're interacting with it through a client.
+08:03:49 Yeah. And so all these backslash commands, those are commands that are associated with Postgres.
+08:03:58 But now, let's take the leap and start actually typing in some sequel.
+08:04:04 Yeah.
+08:04:07 For example, select asterisk from objectives.
+08:04:15 Let's see, we're going to do this. Let's go from users to start with.
+08:04:23 Okay, so this is what my users table looks like so far.
+08:04:29 These are not necessarily valid email addresses as you seen.
+08:04:45 I will invite you to register onto the system and you can put in whatever email address you want fake or not. Now, That was the line of sequel, that we did, that's, that's the Select query.
+08:04:54 The select query is the kind of sequel query that you do to pull information out of the database, and to display it
+08:05:06 right away from the stuff that came back.
+08:05:10 You can see that cables are very much the way that SQL works.
+08:05:19 The response to this particular query came back as a table.
+08:05:25 This is a table of rows, this is a table of results that came back from the table that I was querying.
+08:05:33 So you can see that it comes back with columns right we've got an ID column and email column a password column and whether or not they're an administrator, as another part of the response.
+08:05:46 For any given row that represents an individual entity.
+08:05:53 So here we're talking about the users table. anyone row is a single user. Right.
+08:06:01 We've got an ID for that user, we've got their email address, we've got their hash password and we've got their admin status.
+08:06:14 Okay, so that's the your first line is equal to have a look at.
+08:06:20 And we're investigating the tables that we have at our disposal.
+08:06:25 With this particular database.
+08:06:28 Next up I want to do a select statement for the objectives table. so let's do select asterisk from objectives and here's the command line completion that I was referring to earlier if I do ob and hit the Tab key.
+08:06:44 It finishes the typing of the table name. For me, this time.
+08:06:50 So it's not completing a file name so much as it is that the Postgres client knows. Oh, they want to have a table name in here, let me automatically check into what all tables I have available and then just finish the typing for them.
+08:07:06 That's pretty cool.
+08:07:09 Now if I do select star from objectives and hit enter on this, there's about 100 objectives in here.
+08:07:16 and the page get squirrely straight away.
+08:07:20 This is normal.
+08:07:22 It is pageant rated at least. So you can see the colon at the bottom bottom left of the screen here, it as I hit the spacebar it's pageant eating my way through 100, lines of results, which is, you know, telling us something there's, you know, a fair
+08:07:41 bit of data in this table.
+08:07:45 Yeah, 96 Rows.
+08:07:47 Okay.
+08:07:48 That's not always what you want to get this particular query, just said, Give me all the rows.
+08:07:57 One thing I could, by the way, I just hit the up arrow to bring my previous sequel query back right.
+08:08:05 And I'm just going to modify this a little bit by saying limit.
+08:08:11 Three control l to clear the screen.
+08:08:16 Now I have select asterisk from objectives limit three, and there now I only get three rows back, much more digestible. As a return. Besides, we're just making some small investigations into what this data looks like.
+08:08:31 On average, these are three sample rose now.
+08:08:36 And so, select star from objectives limits three, that's a kind of sequel statement that you can make to do precisely that.
+08:08:45 I hit the spacebar to get out of it.
+08:08:48 Right, the spacebar to get out of it. Valentine asks, would you say that XL is a table, and not as not a database. I suppose so.
+08:08:56 On any given spreadsheet, you can have several tables. So, right for any given sheet. You could have a table up in the upper left hand corner and then another table over to the right.
+08:09:07 Yeah, the notion of a table is is very, very much.
+08:09:18 database specific.
+08:09:18 Yeah.
+08:09:21 Yeah, Donny asks, Will that default. Other first three or randomly select, there's no, it's certainly not random. It's going to pull out the first three rows that it finds, not necessarily in order of ID or anything like that will see further how you
+08:09:37 can actually change the order of things come back with particular conditions to the sequel that we're using.
+08:09:46 Yeah.
+08:09:48 Thank you for those questions.
+08:09:52 So, yeah, more sequel, let's, let's learn sports modifier SELECT statements, even more so that we get even more specific.
+08:10:02 By the way, this asterisk is a wild card that's sitting in the place of the columns that I want to get back.
+08:10:11 So let's do this again, but this time instead of doing asterisk. Let's go for
+08:10:19 ID, comma, question.
+08:10:23 So now I'm saying yeah I want the first three rows.
+08:10:29 But I don't want all those columns.
+08:10:30 I just want to have in my results that I only want to have the ID for any given learning objective. and the question.
+08:10:40 They're much more digestible.
+08:10:44 By the way, this is a best practice.
+08:10:47 When it comes to production level code using asterisk is lazy and involves result in too much data coming back in a bunch of different contexts, you want to make this light.
+08:11:01 You want the data that's going to come back over an internet connection from the database server to your web server to be as little as it needs to be right because you're going to scale this up to millions of rows and many many users and lots of traffic
+08:11:15 and so limiting that traffic is a good thing.
+08:11:17 But have a look at this table, very much more readable. Right. It's just got the information that you're interested in.
+08:11:28 The IDs, and then the questions associated with each of the objectives, how do I establish a relationship between tables, what are the features required of a primary key and so on.
+08:11:37 Some of the learning objectives that you'll be running into for the rest of the week.
+08:12:01 I'm
+08:11:47 good.
+08:11:51 Let's see. Oh, one more point about this presentation in the tables.
+08:11:57 When I did the original one with lots of rows in it.
+08:12:03 This is a bit ridiculous right look at all these columns we've got ID day ID type of learning objective we've got the question we've got the answer which is a multi line affair now.
+08:12:16 And then sort.
+08:12:19 So, some values for sort we've got 567 but I'm, it's kind of hard for me to piece out where those values are given that it's spread out all over the place, because it's a very multi lined thing, right.
+08:12:33 There's a command in Postgres where you can go like that.
+08:12:40 And it will toggle what's called an expanded display backslash x.
+08:12:46 And so now if I redo this command.
+08:12:52 It displays the results that come back in a slightly different way.
+08:12:57 Right now I've got this name equal value pair result, where I see that I have an ID column A day ID a type question answering the sort, can I can see record one and record to record three and so on.
+08:13:11 And so these are very much more readable, as a way of getting data back from within the command line right if I do x backslash again it toggles that type of display on and off so you can move between that mode of seeing things, which is easier if you
+08:13:27 have like it's better to have that mode.
+08:13:32 Right, it's, it's, when you only got a couple of columns that you're looking at.
+08:13:38 But if you are going after something like this, then it's better to have
+08:13:46 backslash X on first say like that.
+08:13:53 So there you go.
+08:13:57 Good.
+08:13:59 Thank you for the question so far. Let's press on let's add more and more to our slide SELECT statements that we can do.
+08:14:12 So some queries
+08:14:22 and relationships.
+08:14:23 Let's have a look at that order that we had a hint of earlier.
+08:14:31 For example, if I do this, I'm getting the first three objectives in the table, there's no guarantee that in the order that they're coming back, the order that they typically come back, is
+08:14:43 the order that they were inserted into the database, but that often has absolutely nothing to do with the order that you want them to come back out it right.
+08:14:53 So let's have a quick look at
+08:14:58 what you would typically do.
+08:15:06 So for example, select star from objectives limit three.
+08:15:15 Let's try
+08:15:19 order by ID.
+08:15:32 This actually may not be quite correct because it may want to order by to come before limit three, but let's just try this. Right. We need to switch this around this way.
+08:15:40 Three.
+08:15:40 Okay.
+08:15:43 Now, notice what's happened here. Now I have an ID of 123. Right. And I'm actually getting different learning objectives out.
+08:15:55 So, what's going on here is that out of all of the 96 rows that are in this table, it's first ordering them all by the ID, and then taking the top three.
+08:16:15 Just a quick introduction I don't know if she can see
+08:16:24 puppy. This will be my chance to introduce you to my dog. Just a sec.
+08:16:31 Where is.
+08:16:33 No. Can you see
+08:16:38 that Snoopy, the chocolate lab is just talking into his stick that he likes to chew on this morning so I don't know if you, if you can hear it but it's ringing in my ears.
+08:16:53 Because of the weird echo going on and in this microphone.
+08:17:06 Cassie asked, What would happen if we ordered it by question. Good question, why don't we do this.
+08:17:10 It's going to do an alphabetical ordering. In that case, so here's question order by question limit three.
+08:17:17 Now we're going to get all those 96 objectives and it's going to order them all alphabetically and take the top three. So, whoops.
+08:17:30 Boy, that first one.
+08:17:33 That one coffee or none.
+08:17:37 I've got that in is a learning objective. The second learning objective is evidently quite long.
+08:17:47 Because it's got a multi lines thing going on about it and then here's the third one finally here. So if we think about the question values, we've got, they're all starting with capital C, right, coffee or none.
+08:18:01 Compare and contrast. And then finally, oh here's one that starts with a capital D.
+08:18:06 And then finally, oh here's one that starts with capital D. So if all of my questions.
+08:18:09 Capital CDs at the top of the alphabetical sort.
+08:18:14 Yeah, so you can order by, by any one of your columns right ID question was, prioritizing by answer.
+08:18:23 and ser spelled as quickly as I can.
+08:18:30 And now, the answer, capital H seems to be the top one
+08:18:42 for answers, how and how. Yeah.
+08:18:47 Yeah, so you know, you can see that the order that things come back from these rd BMS is
+08:18:57 are going to be pretty important. Right, for how you're going to be displaying data to the end user.
+08:19:04 The RDVMS itself has got super efficient algorithms for sorting. Right. and so we can rely on the RDVMS himself itself to sort things through for us.
+08:19:18 Yeah.
+08:19:22 Why so still asks, Why not limit the number of columns to select thus it's easier to display. Yeah, we can do that.
+08:19:31 So, instead of using asterisk and again this is the best practice, we can go ID, comma, and question, like so. So here it is order by answer.
+08:19:44 Yeah, let's just try this.
+08:19:50 So this is interesting, we're ordering by the answer but we're only showing the questions. Maybe that was getting in the way of our understanding what was going on.
+08:20:00 Let's try this again, where we actually include the answers.
+08:20:04 So ordering by answer.
+08:20:09 Hi.
+08:20:12 In fact, that was a little bit of a weirdness that was going on, because, yes we were ordering by the answer, but we weren't actually showing the answer value
+08:20:24 by tricked by looking at the exact answer value now.
+08:20:28 We're seeing that the dollar sign was in fact, the first thing in the alphabetically sorted list of answers right so there's some answers that have dollar sign is the beginning character in the answer and so those are the ones that are percolating up
+08:20:43 to the top of the alphabetical sort.
+08:20:54 Yeah and yeah you can order by multiple columns to answer Danny's question.
+08:21:01 And you can do, knowing what is the ordering of the symbol alphabet straight away.
+08:21:10 And Snoopy just reminding me that it's about time that we take a break. So let's take that 10 minute break.
+08:21:17 And I will return to that inbox.
+08:21:21 So we'll see you all at about the bottom of the hour about that.
+08:21:26 How about that. All right.
+08:21:28 We'll pause the show for now.
+08:21:30 Cheers.
+08:33:15 Alright, good morning everybody, welcome back to class will get back into sequel.
+08:33:22 Yeah, please do turn your cameras back on it's going to help for me to be able to see your lovely faces.
+08:33:34 Any questions and what you've seen so far, will take now as a bit of a chance to review. Anything that you may have specific questions with.
+08:33:43 And then we'll move into some more interesting and advanced cool than what we've been looking at so far.
+08:33:53 So and I will check into the responsive design and SAS class to see where it was posted and if not make sure that it gets posted.
+08:34:06 Henry asks about auto increment, we'll get into that later. And if I don't follow up with that specific question and we make sure that you chase me down and I'll, I'll speak about auto increment stuff.
+08:34:18 In particular,
+08:34:24 I'm good. So,
+08:34:31 right, so we've been, I've been introducing you to the data behind the learning objectives app that I've been putting together and we've been doing a little bits of sequel to do SELECT statements to pull that data out.
+08:34:48 And we're going to move on to other types of sequel that we can do as well. And we're also going to talk about joins has, as has been hinted to earlier in an earlier question.
+08:35:01 And so for a lot of the remainder of the class we're just going to be piling on different extra clauses that you can attach to sequel SELECT statements, so that you can get fancier and fancier ways of pulling data out of a set of tables.
+08:35:20 So, just in order of the examples as they're appearing here in the notes.
+08:35:29 Here's an interesting one thing that we can do.
+08:35:32 We can actually use functions on the columns on the column values for any given row.
+08:35:42 These are called aggregation functions, because they compute some result that comes back as that comes back from the collection of values. Right. So think for example in terms of of the ID numbers that we've been looking at coming back in the tables that
+08:36:06 we've been looking at. Imagine the collection of all those ID numbers.
+08:36:12 Well, this is an example of being able to just count those numbers right and so that's a function that does that. So let's give it a shot.
+08:36:22 If I bring up the
+08:36:26 command line tool again. I can go. Select ID from. And let's say objectives from the objective stable.
+08:36:40 So, one thing to notice about this, if I do select ID, comma, question from objectives limit three, like so.
+08:36:57 Right.
+08:36:57 There is an underlying table that we are submitting these queries to.
+08:37:03 Right.
+08:37:03 It's the objective stable.
+08:37:07 In the select statement, I've got a set of columns
+08:37:26 It is returning to me.
+08:37:29 I table.
+08:37:31 It's returning to me a representation of the objectives table.
+08:37:35 But it is returning to me, a table nonetheless, this is not the same table as the table that we're talking about when we store all this data in the database right.
+08:37:45 That's the objectives table, and it's sitting there behind the scenes.
+08:37:52 Inside the database server program.
+08:37:55 And yet the select statement itself is returning to me another table.
+08:38:02 It's a limited version of the other table.
+08:38:06 But it's a table nonetheless it's a table like RDVMS is and relational databases like Postgres, they are dealing with tables all the time. It's tables everywhere.
+08:38:18 Right.
+08:38:19 Even, for example, when I do, select with an aggregation function, and then the name of a column inside it. Right. It's actually returning to me, a miniature little table in here, right, it's got a column called count, and a row that has the value that
+08:38:40 it computed came out of it.
+08:38:46 Yeah.
+08:38:46 I'm so that rope count of 96, that's a result of this function, having been run count.
+08:39:00 Let's try another one.
+08:39:03 Max.
+08:39:05 For maximum.
+08:39:09 Okay, this is interesting.
+08:39:11 We know that we have 96 rows, and yet the maximum ID is one of three.
+08:39:18 So right away we can know that some of those ID numbers have been deleted.
+08:39:24 Over time, because yeah I have 103 is the ID, it's the highest ID.
+08:39:30 That's what the max function, returned to us.
+08:39:36 We have minimum.
+08:39:42 One, so there's still a row that has an idea of one it I think we saw it this morning earlier when we were looking at sample data, right,
+08:39:50 we've got.
+08:39:55 Average age AVG I think it is.
+08:39:57 Right, so if you do, if you take all of the ID numbers.
+08:40:01 The average ID number, I mean who knows why you would want to compete such a thing but there it is.
+08:40:08 50.11 notice that it's a float value, that's fine, right see who can deal with floats.
+08:40:16 And so here you're seeing examples of functions that you can apply to the data.
+08:40:26 Jeffrey asks, average does not count the deleted numbers, certainly not all these functions are always dealing only with the data that exists inside the database.
+08:40:36 Right. In fact, the more typical use of the thing like average would be something like, I don't know, let's say you've got an e commerce web app.
+08:40:48 Right.
+08:40:50 And you've got a table of all of the purchases that have been made through that, e commerce app.
+08:40:58 You might have a select query that pulls out for analytics purposes.
+08:41:04 All of the purchases that were made from Florida.
+08:41:10 And so you can find out what the average revenue.
+08:41:16 On every one of the purchases from Florida was.
+08:41:18 And you might compare that to another query on your database, which says, show me all the purchases from California.
+08:41:28 And now you have analysis of your data, where you're saying okay I've got my average purchase price from Florida is x my average purchase price from California is this, that might be super valuable information for your marketing department.
+08:41:42 Right.
+08:41:44 And so now you're seeing, you know just how powerful this sort of data analysis stuff can be, and a more typical use of the average function day.
+08:41:56 Good.
+08:41:58 So,
+08:42:06 those are functions that you can run on values through a select query.
+08:42:14 Let's go back and learn a little bit more about select.
+08:42:20 Now, for the next phases of of improving our select clauses are select sequel queries. We're going to start adding clauses, to the select statement.
+08:42:34 So here, you've seen how we've had a select statement that had a from claws.
+08:42:41 And so from objectives that specifies the particular table.
+08:42:53 That is just a second clause in this single SELECT statement so select account ID from objectives.
+08:43:01 There, that's got to clauses in it.
+08:43:04 Here's another clause that I can attach to my select queries, a where clause.
+08:43:10 And so what a where clause does is it allows us to filter the rows that are going to come back from a given query.
+08:43:20 So let's try this. If I go back to my command line.
+08:43:25 And I go for, I don't know, select ID and question from objectives were type equals.
+08:43:40 So performance I've got two types of objectives in the database performance is one of the types let's put the limit three claws on this just to make sure that we only get three values back type people performance.
+08:43:54 So, in fact, let's show in the column, the type as well.
+08:44:01 Yeah. And so, indeed. This query is bringing back three objectives of the type performance.
+08:44:13 By the way, the difference between a performance objective versus a learning objective, those are the two names that I've used for these to distinguish between these two things.
+08:44:23 Learning Objectives are like theory and performance objectives are like the practical side. Right. And so often with the questions in the, in the performance objectives, you'll see how do you Cody JS templates.
+08:44:38 And so the answer is going to be a code snippet.
+08:44:42 How do we set a preferred box model for CSS, that's a CSS learning objective, obviously, and so they'll be like, for example, if we include the answer column as well.
+08:44:55 You'll see that these are all code snippets. Right. how do I set the bird box model.
+08:45:01 There's a CSS snippet for for doing precisely that.
+08:45:04 Right.
+08:45:07 Good. And so, you know, the whole point of that was to include a where clause to limit the kinds of things that are coming back here we've limited it to the type equal performance.
+08:45:18 Let's try limiting it to the type learning.
+08:45:23 There, now I have three learning objectives.
+08:45:28 What are the features required of a primary key, what are right and so these are like from a theory point of view instead.
+08:45:35 And so you can imagine building a web app that's going to target one type of learning objective or the other, it would be precisely these kinds of queries that you would be using to do that in other contexts.
+08:45:48 Remember before when I was giving the example of an e commerce system where you were saying, Okay, show me all the purchases from Florida. Right. Well, a query like that would look like something like, select ID value, total value from purchases, where
+08:46:06 location equals Florida
+08:46:13 would be the kind of query that you would put into a system like that.
+08:46:24 I'm
+08:46:24 good.
+08:46:29 Let's press on with more and more clauses.
+08:46:34 And this will be where we get into joins by the way I know that if you have you been excited about that part of things.
+08:46:42 But before we get to that, the where clause is you can actually have more than one filter restriction. You can use Boolean operators between your restrictions.
+08:46:56 For example, and. Right. So if I go back to my WHERE clause here.
+08:47:02 We've got select these columns from the objectives were type equals, learning, and source is less than three, let's say.
+08:47:20 And so now I'm going to get a slightly different set of objectives, and instead of including the answer. Let's just include the sort columns that you can see what it is that I'm triggering on here.
+08:47:35 There.
+08:47:36 So the sort column by the way is intended to make it so that the objectives come out in a certain order, where you learn one objective, and then given that you know that objective now you can move on to the next objective, which depends on knowing that
+08:47:54 one, so it's kind of it's a very inexpensive dependency management scheme, right.
+08:48:02 So, sorting things by order.
+08:48:07 Sorry ordering things by sort this by choosing sort less than three, what that saying is, pick out the very introductory learning objectives right so what is any rd.
+08:48:19 What is the difference between encryption and hashing. These are themselves learning objectives that appear early on in their respective days of their lectures right there like the, the easiest of learning objectives in a way.
+08:48:35 And so for this particular query, I've got two filters that are applying to select.
+08:48:42 And I'm separating you through this Boolean operator here.
+08:48:47 Now, who has recognized that these queries are starting to get a little bit long and complicated.
+08:48:55 Right. It's like as you're adding in more and more stuff onto a query.
+08:49:01 It's getting to the point where you start to, you'd prefer to see this stuff in like a multi line kind of a format. And so here I'd like to take a quick pause.
+08:49:12 To do so, show you something about this command line. That's a little bit funky.
+08:49:17 Yeah.
+08:49:21 Yeah. Here, semi colons right so notice that I'm finishing my sequel command with the semi colon at the end. Right, that's semi colon says the queries finished, and we're ready for it to be submitted.
+08:49:45 If you don't include a semi colon.
+08:49:49 watch what happens.
+08:49:53 First of all, it does nothing.
+08:49:55 Why, because the client doesn't think you're finished yet.
+08:50:00 You haven't finished your statement, there's no semi colon there it's not going to actually send anything to the client.
+08:50:06 The other thing that's happened is, notice this very subtle change on the command line itself. Instead of being an equal sign.
+08:50:15 Now it's got a minus sign. Instead, which is its way of telling you.
+08:50:22 I expect more lines, please.
+08:50:26 Right.
+08:50:28 And so, if I put my semi colon now the chameleon actually thinks of it as being part of the previous line.
+08:50:36 So I'll hit enter now with the semi colon, and then it's going to give me my result back.
+08:50:41 Right.
+08:50:42 So this is kind of a fancy trick where I can do the following. Select ID type sort question, like so.
+08:50:54 I'll hit enter now.
+08:50:56 Right. Still, the queries not been submitted yet from object and here's my file name completions trick with the thing I just hit tab, the typing for me.
+08:51:07 I'm a hit ENTER again.
+08:51:09 Right, see how these are all minus signs.
+08:51:12 This is all one SQL statement that I'm typing in.
+08:51:18 So that's from objectives, here comes the where clause, where type equals. Say performance.
+08:51:26 This time, I might choose to have my end sort, and this time let's go for greater than three.
+08:51:34 Again, I'm going to hit enter it. I haven't put a semi colon and it's not done.
+08:51:39 Sort greater than three and then finally limit.
+08:51:43 Five this time at a semi colon. Ah, here I have my semi colon, I'm going to go ahead and enter, and then I'm going to get five things back, right. How are you, Cody JS templates, how do we prevent a sequel injection attack.
+08:51:59 These are more complex learning objectives with sort values greater than three.
+08:52:08 Great. And so now you've seen how to do a multi line.
+08:52:12 Kind of a query.
+08:52:15 Right.
+08:52:14 Right. Now that's just a nice trick that you can do with the P SQL command line. I did see problem mention VS code.
+08:52:25 It is true that something like this might be more manageable. If you're going to be using VS code directly, right, So let's say we go back to VS code.
+08:52:38 So for example, Here's a three clause, select query.
+08:52:45 That's in a sequel file in VS code, you get all the, the niceties of, you know, being able to edit your stuff debug it right, whatever you need to do.
+08:53:00 I can use the mouse to copy that thing out go back over to the P SQL command.
+08:53:07 Enter on it.
+08:53:09 And they're now I have that particular query that I've run.
+08:53:13 Right. So that actually looked at it up to so I'm going to switch over to the other style of display rerun that same query and there. Now I get my query results that way.
+08:53:24 Right.
+08:53:27 Right. So sequel is often a multi line affair. And we're just now getting into the state where our queries are complex enough to want to put them onto multiple lines like this.
+08:53:42 Yeah.
+08:53:45 Very good.
+08:53:48 So let's move on.
+08:53:51 We've seen our where clauses we've seen them with multiple
+08:53:57 restrictions multiple filters.
+08:54:01 Alright, let's dive into joins at this point
+08:54:12 now joins right away, we're going to have to talk about multiple tables.
+08:54:20 And we're also going to talk about what it is to be a relational database that is to have relationships between one table. And another table.
+08:54:36 So in our case, we're going to be working with two tables.
+08:54:42 We've got, here's our list of tables again.
+08:54:52 I'm going to switch it to the other motive display. We've got the objectives table which we've been dealing with a lot in our examples so far.
+08:54:58 We've also got a days table Let's see some of the examples of what's going on in the days table if I go Select star from days limit five.
+08:55:10 Okay.
+08:55:11 Yeah, so you can see what's going on with the days table, we've got an ID column again simple industry numbers. We've got a day underscore mnemonic column, which has things like week eight day five week six day two, and so on.
+08:55:31 Right.
+08:55:32 We've also got a day underscore description column which holds the expanded out version of this thing, except now that it's in full text.
+08:55:46 Now, if you look at our objectives table, and let's grab ID. Let's grab questions, but let's also grab a column day ID from objectives limit, three.
+08:56:07 Okay.
+08:56:09 You can see that there's a column on the objectives table called de underscore ID
+08:56:20 that column is telling us something about this, this particular row.
+08:56:27 Right. So for example, how do I establish a relationship between tables.
+08:56:33 Well, that particular learning objective is associated with de underscore id 22.
+08:56:42 That's just the integer day identity of tomorrow. It turns out. Today is day one. Sorry, week five day one. That's day 21.
+08:56:57 We have a certain set of learning objectives for today and tomorrow. One of the learning objectives is, how do I establish a relationship between tables.
+08:57:06 Well, bit of a preview bit of a spoiler because it's up here in the example.
+08:57:10 The, the relationship between tables is established by these types of columns.
+08:57:16 And you're very much, we're going to do very much more with this topic, tomorrow. But here's a bit of a preview. Right. So this row with its idea of five, that's Learning Objective Number five.
+08:57:30 It says the question for that objective is how do I solve this relationship between tables and which day is this associated with, it's in day 22.
+08:57:41 So you can see here, from my day stable.
+08:57:55 That I could be doing a restriction. So here we are taking from days. Let's go. where ID equals 22.
+08:57:58 And we won't need the limit of five because there's only going to be the one. Right.
+08:58:02 So if it's identical 22. That day is week five day two. Right.
+08:58:08 And so now, it's pretty clear where we're headed with this.
+08:58:18 We would like to come up with a list of objectives for any given day.
+08:58:26 And furthermore, we would like to have things like this text description of the day or the mnemonic even or the title of that lecture or whatever.
+08:58:42 We would like to have that as part of the results set that comes back, even though that information is stored in two different places.
+08:58:55 So
+08:59:00 we're going to try to combine the table.
+08:59:04 And to do so with one query.
+08:59:09 That's what a join it.
+08:59:12 And this is something that you can do with your sequel statements.
+08:59:18 For example,
+08:59:22 Here's a query.
+08:59:25 Select day description question and answer from objectives. So you've got this first table called objectives.
+08:59:39 Join days. So we're going to make a relationship come to life, between the objectives table, and the days table.
+08:59:50 And we're going to say okay there's a relationship there. How does that relationship work well.
+08:59:55 We've got a join on, we're joining days on the following conditions where we want objectives.de ID to equal. days.id.
+09:00:16 Now let's puzzle this through a little bit. I see the question, which table has day ID objectives are days.
+09:00:24 Objectives has the day Id call, I can go back to the command line to see that. Here's our SELECT FROM objectives, and it has a column day ID. Right.
+09:00:35 These numbers are day IDs.
+09:00:42 Where else am I listing day IDs well of course in the days day except here that column is called ID.
+09:00:52 Right. Inside the days table, Id means it's today Id
+09:00:59 inside the objectives table though, the column there that's called ID, that means the objectives ID.
+09:01:09 So let's go back to
+09:01:17 our sample join. Have a look at this condition.
+09:01:22 What we're saying is that the objectives day it should be equal to the days.id.
+09:01:35 Right. These numbers, we want them to be the same number, the same value.
+09:01:41 Right. So for example, in the case of 22.
+09:01:46 Right. You've got a bunch of objectives that have a value of 22.
+09:01:53 Under day underscore ID.
+09:02:02 Whereas, in the days table there there's going to be only one row that has an ID of 22.
+09:02:15 But what we want is a table of results, where the mnemonic for the, for that particular day is repeated over and over in the set of results that comes back.
+09:02:30 Now, let me just show this by example because sometimes an example is worth 1000 words.
+09:02:36 I'm going to copy this example out. I'm going to paste this over here.
+09:02:43 Actually, you know what I'm going to be careful not to include the semi colon because I want to add one more claws to this example.
+09:02:50 So do the example like that, paste it over here in the thing.
+09:02:57 I'll hit enter. Notice it's not yet finished the statement. I'm going to add a where clause, where
+09:03:06 days.id equals 22. And I'll put the semi colon on it to finish the query off.
+09:03:15 Right.
+09:03:15 So now I hit Enter.
+09:03:18 And now I get questions and answers
+09:03:25 All on week five day to week five day to week five day to these are all of the learning objectives for tomorrow.
+09:03:38 Let me quit out of this. Let's back off the 22 to 21, and we should see today's learning objectives.
+09:03:46 Right.
+09:03:47 And so that was a pretty. That was pretty slick, I think you'll agree, right, all I needed to do is change this one number, like so. maybe I don't get any.
+09:04:11 Some days have them some things don't. There we go. There's some learning objectives for week four day for around responsive design stuff is eight learning objectives for that day.
+09:04:14 Evidently, right. All of this is being powered by the join claws.
+09:04:20 Right. If I do that, notice that, Yes, the query returns to me, a table.
+09:04:30 Right.
+09:04:31 This is a table that's coming back it's got columns and rows. But now, it's pretty clear this table that I'm getting back here. It doesn't exist as a single table in the database.
+09:04:45 This table that we're seeing is a product of the SQL command itself.
+09:04:52 The sequel commands forming a new table.
+09:04:58 Out of two tables that exists in the database.
+09:05:07 Yeah.
+09:05:04 It's a table that has a full complete text description of the particular day, that a given learning objective is on.
+09:05:20 Now, it just so happens that this value is the same for every one of my heroes may feel a little bit redundant. Right.
+09:05:29 But I can easily change this WHERE clause. Let's not trigger on the day ID and let's trigger instead on say something like, objectives, dot sort equals zero.
+09:05:50 Or maybe one, actually.
+09:05:55 Right. So remember how sort was kind of like the simplest progenitor starter objectives on any given day.
+09:06:08 And yet, the way that I'm joining the tables, is that I want to be able to have a column that tells me the text description of the day that that objective is on.
+09:06:18 So now let's just see what we get from this query. Right now, and you know what I'm going to drop the answers, out of this, so that it's a little bit less.
+09:06:35 There.
+09:06:37 Now you can see that I'm getting two columns out right, I've got day underscore description, nice simple text that's coming out of the days table.
+09:06:47 And I've also got the question. This is coming out of the objectives.
+09:06:51 Those two tables are being joined via this technique of relational database queries.
+09:07:00 And the joint is happening such that for any given objective, whatever its day ID is, then we should make this this extended row. That is kind of pulling data from two tables that extended row should take values from the objectives table and values from
+09:07:22 the days table and combine them into this result that comes back, and so now I can actually see I've got week three day to week five day one week three.
+09:07:32 OK, so the ordering is not all that great.
+09:07:36 Right, they're not in the order that you would see them in the boot camp because these were actually in some other order. Why don't we go back and modify our query, so that they come out a little bit better ordering.
+09:07:47 How are we going to do that order by days.id, that would order it in the order of the boot camp. Right now, again we're only looking at ones where the sort is one.
+09:08:06 So these are like beginner objectives for a variety of different lectures and interesting kind of quiz that you could form.
+09:08:19 Out of these learning objectives from this database right. Give me the easy quiz or give me the introductory concepts quiz. Here it is. What is mocha right what is bread stand for what is a web cookie right these are all very introductory things because
+09:08:34 they come early in their lectures.
+09:08:37 What is Ajax right. What is it table right.
+09:08:42 Um, we could do the same trick, give me the advanced quit.
+09:08:47 Where sort order is five, these are going to be higher order concepts, again for each of the dates sorted by the day. How do you prevent files from being stored in your get repository.
+09:09:02 What are the absolute length units available in CSS right you can see that these questions are a little bit more complex,
+09:09:10 which sort of hints at what what we can do with a database like this.
+09:09:16 All right, very good, so that's joins, I know that that's maybe going to blow the lid off of, of how complex this stuff can be,
+09:09:32 Um.
+09:09:33 any questions.
+09:09:36 I see for example, can you please go over the join clause syntax again. Absolutely. Well,
+09:09:45 I'm. Is that kiosks the.
+09:09:48 So day ID and ID and days tables should be declared as primary keys. So that's actually a learning objective for tomorrow but as a bit of a preview for your question.
+09:10:00 The ID column is a primary key in its own table.
+09:10:05 The day underscore ID column is called a foreign key.
+09:10:12 It sits in a table, and points to some other table.
+09:10:18 But again, don't worry if that's a little bit too complex we're going to spread the learning over a couple of days on this stuff. Yeah.
+09:10:34 Valid in question. You did it, objectives, sort equal five, but it lists 11 Rose, how come, but that's because there's 11 rows in the database that have a sort value of five.
+09:10:48 Maybe this will be clearer, the data structure will be clearer if I do this a little differently. Let's go back to sorting by the day ID or sorry, filtering by the day ID.
+09:11:00 And so we'll do this as for today's objectives.
+09:11:03 But I'm also going to include the sort value. So let's have ID and sort as well, like so.
+09:11:17 Let's see what we get. Whoops.
+09:11:19 Oh, this is interesting.
+09:11:21 Here's a this is a sequel specific error message.
+09:11:27 And so this is great, right, I mean I know everybody loves bugs right everybody sees bugs as an opportunity to fix something everybody sees error messages.
+09:11:37 Now, I mean we're halfway through the boot camp almost error messages are gold, right, and you're going to dig into the details of any given error message, because that's going to be your clue about how to fix the problem today, right, So here's a sequel
+09:11:50 specific error message that says column reference ID is ambiguous. Okay.
+09:12:01 So the syntax here is that when you have a column name.
+09:12:04 When I said ID.
+09:12:07 It's ambiguous because there's an ID and objectives. There's also an ID in the days table.
+09:12:15 And it can't tell which one I want. So you've seen me use your the syntax with table name dot column name.
+09:12:23 That's what it wants me to do in my list of columns that I want. I want the objectives ID, so I go objectives.id. That means table name.com.
+09:12:36 So do that.
+09:12:39 OK, so now we have the ID, we have the day description, we have the question.
+09:12:45 Here I'm selecting for objectives dot source equal five.
+09:12:50 Let me include also the objectives.
+09:12:57 Sort value.
+09:12:58 There's only one sort column between these two tables and so it knows which one I'm trying to get at.
+09:13:05 And then instead of
+09:13:09 going on.
+09:13:12 Sort. let's go back today ID
+09:13:16 equals 21. That's today.
+09:13:20 Okay, now you're seeing what the sort value is the sort. In fact, we should be ordering by source here. So instead of ordering by days ID.
+09:13:32 Since we only have one day in this result now. Let's order by
+09:13:39 objectives dot sort.
+09:13:43 There, that's better. That's what the sort value is for. And now you can see that there's kind of a logic here, there's a bit of a dependency tree going on within the objectives.
+09:13:52 What is a table.
+09:13:56 Pretty straightforward learning objectives, a far better thing to be learning first, then
+09:14:03 how do I insert rows into a table, what are the queries that correspond to the credit actions, you know, these are more complex learning objectives that come later in the lecture.
+09:14:12 And so, when before when we were doing this.
+09:14:21 Were objectives dot sort equals five. This filter didn't care which day it came up right can be date week three day one, there might be an objective with a sort order of five.
+09:14:32 Right, so I was just picking the more complex learning objectives with this, that answered the question maybe I could belabor the point.
+09:14:40 So Russell asks the on command is that if logic.
+09:14:47 Right.
+09:14:50 So I would say yes, there is a certain amount of if going on there.
+09:14:58 Put it away there's also some if logic going on in the where clause itself, even right it's like a where clause is a filter on the rows that you're pulling back into your result set, right, it's like if objectives day ID equals 21, then included in the
+09:15:20 set
+09:15:23 the logic of a joint is slightly different. What it's saying is, for my combined row. That's going to pull data from both tables.
+09:15:37 Make a combination row.
+09:15:42 Make a new combination row.
+09:15:45 If you can find a combination where the objectives day ID value in one table is equal to the days.id value in the other table. So wherever you find that combination that can work together and make a new row.
+09:16:01 In this result set.
+09:16:03 Yeah.
+09:16:04 Yeah, joins or complex right. And yet super powerful.
+09:16:16 They're precisely the way that I can make a objectives, I can make a list of objectives for a given day.
+09:16:23 There, I just pulled out all the objectives and the answers for today.
+09:16:29 Right. So, like today's quiz for example
+09:16:35 would be could be something like this.
+09:16:41 Right, description, we five day one we find they want,
+09:16:46 turns out they're not quite in order. So let's put order by claws on it, order by
+09:16:55 objective stock sort.
+09:16:57 Notice that I can order by columns that are not showing up in the table.
+09:17:04 There, now I've ordered my questions about the sort value, but I'm not even showing it in the results that.
+09:17:12 Yeah,
+09:17:15 pretty tricky clever super efficient awesome stuff you can do with sequel.
+09:17:20 So
+09:17:24 to that and I do believe we've got one more
+09:17:29 type of learning objective, sorry, one more.
+09:17:34 Sample query that I wanted to show you by to shoot to show you about sorry.
+09:17:41 And it's the group by and having clauses. So this again is going to, you know, blow the lid off your understanding about how things are all holding together and working.
+09:17:52 Let me just pull this up as an example and I want to say a few words about it.
+09:17:58 So, first off, let's look at the group by without having a having closet. So,
+09:18:11 select, and you've seen the count function in action before, Right. This is like counting rose that come out of a table.
+09:18:22 But now we're going to have this aggregation function work, not on the entire table in one go.
+09:18:34 But instead for this function to act on groups of rows that each within the group, share a certain common characteristic.
+09:18:50 So for example, If we do group by day ID.
+09:18:56 Then this count function is going to count the number of objectives rose from our table that share the day ID value in that group. so
+09:19:13 check that out.
+09:19:14 In fact, let's show de underscore ID. While we're at it.
+09:19:25 And so, In fact, we could even sort these
+09:19:32 order.
+09:19:36 By day ID.
+09:19:39 Okay.
+09:19:40 So, these are the day IDs that are in the system.
+09:19:46 And this is how many learning objectives.
+09:19:51 There are for that day. Right, so for today for example we've got 10, the highest number of learning objectives entered into the system so far.
+09:20:01 Other days have different numbers of learning objectives.
+09:20:06 Remember our e commerce example, you could be doing a select from all of the purchases.
+09:20:14 And you could go group by State of the Union, from which the purchase was made, or province, if you're from Canada group by province. Right.
+09:20:25 And so you would get how many purchases were made in each of the provinces.
+09:20:31 Right super useful data that you can send to the marketing department or the precision analytics department from how you're running your business. right.
+09:20:41 So that's what group by does, it takes all the rows that would come back. And it starts them into groups, and then you can do further analysis with each of those groups.
+09:20:54 Now, let's say at this point that I wanted to start filtering.
+09:21:02 This set
+09:21:06 based on the value that was in the camp.
+09:21:11 For example, I might like to, you know, only go for the number, where the number of learning objectives is high.
+09:21:19 So, in such a case, what you're going to want to do is include another clause, called having.
+09:21:31 And the reason that we need another clause for this is because if you were going to use a where clause, where clauses are actually only about the original column values this call this count column is a product of the aggregation function.
+09:21:53 Right. you can see here, we're having count day ID greater than three.
+09:21:58 We're going after a specific
+09:22:03 result.
+09:22:05 We're going after the, the count value that count value is a result of some functions that we've applied.
+09:22:15 So it won't be available to a where clause.
+09:22:31 We have we need to use, having as the clause.
+09:22:22 That's going to filter and limit the result set. So for example here.
+09:22:30 Let's try where we've got a count of greater than five, say, right, so we're here we had quite a few days that had like four objectives or five objectives, right.
+09:22:46 If I do this version of it.
+09:22:49 Then now I'm only getting the ones, for which there are a fair number of objectives.
+09:22:58 Right. A 10 866, and so on. What if it would need to be greater than six, it's going to be even more restrictive.
+09:23:08 Only these days have more than 60 objectives.
+09:23:10 Okay. So there you go, that's another type of cause it's going to be a way of filtering rose in your product set to do with the results of aggregation functions.
+09:23:27 Okay.
+09:23:31 Um.
+09:23:31 Alright so that's it for expansions on how select works.
+09:23:37 At this stage, what I would like to do is let you have at
+09:23:45 the app that I've been building for these learning objectives, I'm going to start up a tunnel here to my very computer sitting here on my desktop it and Brock gives me a URL that I can share with everybody here.
+09:24:03 Here's the app that's running in the background.
+09:24:08 What I would encourage you to do. And I'll paste the link into the slack chat is, there's the link.
+09:24:19 If you go ahead and click on that link and I can see the number of you have.
+09:24:26 You should go. You should end up at a page that looks like in fact I can click on it myself,
+09:24:39 you'll probably end up on a page that looks something like this.
+09:24:42 So I would encourage you to, you know, type in an absolutely valid email address, like so, and an absolutely valid password. Okay, you can be anonymous doesn't bother me.
+09:24:56 You're helping me out by beta testing the system. Register.
+09:25:00 Right.
+09:25:01 And having registered now you need to login so you type in your very valid email address and the associated password, and you should end up on today's page of learning objectives.
+09:25:17 Yeah.
+09:25:18 And so from here. It's kind of like a little quiz about stuff that went on for today for learning objectives. What is it table, you can click on this box to get the answer.
+09:25:27 Right. I table is instead of collect is a sorry, a table is a set of data collected as rows and columns.
+09:25:35 Okay.
+09:25:36 Do you understand that you can say, Yeah, my understanding of that is fair, and so on.
+09:25:42 And so if you just go through these learning objectives for the day.
+09:25:49 Let me know how we did today for the lecture.
+09:25:54 That's the primary reason that this database system is being built, so that we can do this kind of stuff. Plus, it's going to let you build your own quizzes from the learning objectives.
+09:26:06 Plus, it's going to be a nice tool to do preparations for interviews. Right. Plus it's going to be a way that you could build cheat sheets from your code because you can do filtering on the performance objectives as opposed to the learning objectives
+09:26:23 because the performance objectives are all about code snippets. Right. So this is going to end up being as a you know useful tool. I will put the code that I have for this tool into the code repository, the one that you guys were looking at earlier that
+09:26:34 has all of the notes from today and all the previous classes as well. And it'll be a thing that you can play around with yourself. It's very much beta code.
+09:26:42 I'm building it as part of the sample code for each of my lectures. Yep.
+09:26:49 Cool, and so on my end.
+09:26:53 Now I get to refresh this page, and I can see that
+09:26:59 people have a certain level of understanding this court, this corresponds to confused. My understanding is fair or my understanding is excellent. Yeah.
+09:27:09 And so if you just take a little bit of time and help me out by giving me a bit of feedback on how things have gone. That's going to help me a lot.
+09:27:20 And that'll be it for today's lecture. So we'll leave this up for a little bit of time.
+09:27:26 If people have any questions that they would prefer to ask in audio.
+09:27:32 Go right ahead. Or I'm still following the Slack channel chat, and we'll leave it at that.
+09:27:38 Beyond that, if, if you want to bail and head out to the rest of your company, and then that is also totally fine for the day. In which case, sign or.
+09:27:51 See you tomorrow.
+09:27:55 I'm sorry, I have a question, if you don't mind.
+09:27:58 Yeah, Cassie and then Donnie.
+09:28:01 Um, so if you delete a value from a table.
+09:28:06 And you deleted it by accident, how would you like. Is it possible to get that data back or is it like gone forever You have to restart it.
+09:28:17 That's a really good question.
+09:28:20 Let's do it. An example of that.
+09:28:27 So here is the spot database that we've been interacting with all day. Yeah. And so for example if I do select star from objectives, where ID equals 55.
+09:28:43 Let's just see what we get back. Okay, so learning objective 55 is, when is it okay to store plain text values in cookies.
+09:28:55 Who knows right
+09:28:59 now.
+09:29:02 First things first, We need to have a backup of this data.
+09:29:08 And so there's a variety of ways that I can do this. Let me just show you one way.
+09:29:14 I'm going to quit out of the P SQL command line tool for a moment.
+09:29:21 And I'm going to use another command called PG underscore dump.
+09:29:26 Like this.
+09:29:28 And so PG dump is a command, and it takes parameters that look very much like the P SQL command. So here's Postgres host local host port. 5433 database called spot.
+09:29:46 Yeah.
+09:29:48 I'm going to pipe this to more.
+09:29:53 Do I need to do that. Not really. Let's just see what happens.
+09:29:56 So here's PG underscore dump.
+09:29:59 Hit Enter Type in my very super secret password.
+09:30:06 Okay. What just came out there was a flood of sequel commands.
+09:30:14 That would be used to reproduce the database exactly as it exists.
+09:30:21 Currently, right. So that's quite a lot of stuff, obviously, it's got all my objectives, including objective 55 is going to be in this list somewhere here.
+09:30:32 Right.
+09:30:33 And so what I'm going to do is take the output of this command and redirect it into a backup file.
+09:30:44 Let's call it Kathy's backup dot SQL.
+09:30:50 Yeah.
+09:30:52 And so I do that, I hit my password in.
+09:30:58 And so it made a file called Kathy's backup thought sequel, and now if I more that file. This shows me all the sequel, that I would need to execute in order to reproduce the database from scratch.
+09:31:15 Yeah.
+09:31:24 I've noticed that I've neglected to include an option which would drop the tables.
+09:31:29 first if they exist so I'm going to have to drop the tables by hand when I reuse this but let me just show you what I'm getting on here about.
+09:31:37 So now I have my backup file.
+09:31:40 Right.
+09:31:42 So I can go back to the database say, and I can log into it on the command line.
+09:31:49 And I can do bring back my select like this.
+09:31:54 So here's a query, delete from objectives, where ID equals 55.
+09:32:05 Right, so that's the sequel that I would execute in order to delete a specific row, like that.
+09:32:14 And so now if I redo my SELECT FROM objectives where it for 55. It says, There's no such rows.
+09:32:22 Right. I've just deleted that roll out of my database, and your question is, can I get that data back.
+09:32:34 Well, only if you have a backup of that database.
+09:32:38 So let's do that.
+09:32:40 Here we have the backup. Here's how I could use that backup.
+09:32:46 I could go. There's a few ways to do this.
+09:32:51 Have you seen the cat command command it just spits the whole file out right it just sends the whole file output.
+09:33:02 I could go cat pipe to pee SQL. So let's do it this way, I'll bring back the PSQL and I was going to work, right, and then I'll go cat cats he's back up pipe to that command like this.
+09:33:17 And so I hit Enter.
+09:33:18 This command is asking for my password. So I type it in, like so.
+09:33:26 And there's going to be some complaints because there's already existing tables that it's trying to override this was the business that I said I neglected to include an option which was going to add the drop tables.
+09:33:41 So to really make this work. I'm going to need to go back to my command line here.
+09:33:48 Look at my list of tables
+09:33:52 DROP TABLE users. Oh, do I want to do this right now.
+09:34:01 I don't think I do, because all of your very lovely feedback that you're just giving me. I'm doing this in real time.
+09:34:08 Right. As you guys are giving me feedback and I want to keep that feedback for now. So, what I would have to do is drop all these tables, so that I could do my important
+09:34:21 import again. In fact, I hope I haven't doubled my feedback values, let me go back here and look I
+09:34:28 Don't think I did.
+09:34:30 I think this is all still legit results will go with that for now.
+09:34:38 Okay, now. Does that answer your question, Cassie about how I would go about retrieving data that had been lost.
+09:34:46 For the most part I just still kind of confused as to how to get rid of the, the error message I keep my head up.
+09:34:56 Sure, so that error message is coming because it's trying to recreate a table that already exists.
+09:35:04 And so for this one, this backup to have worked.
+09:35:07 I would have needed to have done things slightly differently so that it would delete the tables automatically first.
+09:35:14 But as you've seen, you know, this should be done with caution because you know we have a live running app right now that's taking in data, as we speak.
+09:35:23 Right, so I don't want to actually go through that step until I've collected this feedback data from you guys. Yeah. Thank you.
+09:35:29 Yeah. Sure, no problem. Don't you got a question. Go ahead.
+09:35:33 Yeah, so, just trying to clarify difference between was it's having and was in the where it seems like I'm reading into apply only to aggregate functions or something like that.
+09:35:47 That's correct.
+09:35:50 That's exactly correct Donnie. So for example, notice here where it says having.
+09:35:56 We've got having having what. Well, having the result of an aggregate function satisfy certain condition.
+09:36:09 Yeah.
+09:36:10 And so you can't use a where clause on the result of an aggregate function.
+09:36:16 Okay.
+09:36:17 That's the point.
+09:36:19 Yeah. Okay.
+09:36:21 Hopefully that helps yeah it'll become more clear I think as you go through compass today there's going to be an example of a having a clause that you'll have to implement.
+09:36:35 Yeah, I will try and play around with that.
+09:36:55 That's Valentyn asks, in which case would we use redirect versus the pipe.
+09:36:46 To me it's the same end result.
+09:36:55 Yeah, I don't see I don't know if there's a significant difference between using either of them.
+09:37:03 Certainly, the redirect is about files. Right, so you must redirect from a file that already existed.
+09:37:11 To use a pipe.
+09:37:13 There isn't necessarily a file. Now I was using cat file name pipe to such and such.
+09:37:21 You could have done.
+09:37:24 The.
+09:37:26 We could have done the redirect the other way this is a command line question by the way right but so for example, we could have done that, this way.
+09:37:35 So here's my P SQL command I could have done that kind of redirect where I took the file name directly. Notice I didn't have to execute cat as a command, it's just going and getting the file and taking that file directly putting it into the input of the
+09:37:51 thing. There's no additional process that's running. So that's a subtle difference that may matter like do you want to be running a separate process.
+09:38:03 Yeah, about it I'm happy to talk in more detail about command line and redirect and piping.
+09:38:10 At any point so just, you know, flag me down on Slack, or in person sometime to talk about the details of that.
+09:38:17 Curtis. When you create a database from inside p SQL.
+09:38:22 Where is the database file stored. Very good question, so that it varies with the RTB ms, and it varies with how you're, you're already BMS was installed,
+09:38:34 those files, like for example you'll often find that you're installing programs under user local.
+09:38:41 So like user local share slash Postgres such and such and such, right, it might be there. Right.
+09:38:50 This can vary, depending on your exact working development environment.
+09:38:56 Yeah.
+09:39:03 The.
+09:39:05 Yeah, so that's that's the answer, it varies.
+09:39:08 I don't even know where my data is being stored myself I haven't looked bothered to look into the exact path that it's stored on. That's how abstracted it's like it's in the cloud in the way, if you will, it's like often some Neverland area.
+09:39:21 Yeah.
+09:39:23 Very different from directories that you're actually working it you know where you start your backups where you store your sequel files that you might be piping into your P SQL command or whatever.
+09:39:37 Okay.
+09:39:42 Good. So that's the dwindling number of questions.
+09:39:45 Oh sorry, wrong Russell, I saw your hand go up, is there a particular reason that rose on the test site, our reorder bowl.
+09:39:54 You know, all rows are always reorder rubble.
+09:40:00 And that's one of the main functions of sequel, and storing things in the database is because the particular sort order that you want your results to come back.
+09:40:09 It's actually a business logic question.
+09:40:12 Right. Do I want them to be alphabetical. Do I want them to be my purchases to be sorted from low to high or from high to low on a given quantity right like you'll, you'll learn how to do those things with your clauses.
+09:40:30 Yeah.
+09:40:31 Interesting question for sure.
+09:40:34 And I think with that we're, we're about coming in for a landing on this.
+09:40:42 Oh, people have found that you can reorder the columns by clicking and dragging on the database. Yeah, that's just kind of a fun thing.
+09:40:53 I think that means that if I go back to the app itself. If I reload this, that these are likely now all in different orders.
+09:41:07 I may need to undo that by restoring a backup, but will take your feedback first anyway.
+09:41:17 Good. All right, well, I'm Going once, going twice. Let's wrap it up.
+09:41:25 America has a question that Cassie wants a little bit further discussion on to really ask the guys question is this in me just want to jump on audio and make it efficient.
+09:41:41 Just about the day it is. Yeah, go ahead. Yeah, I just want to know so if you have like the day ID and IPS and the days people should they be like declare his primary keys.
+09:41:55 I'm also just further, like, go into that, if you merge two tables, which primary key states.
+09:42:06 Okay, so this this question of merging tables, the merge, if you will, let's call it a joint.
+09:42:15 Enjoying two tables that join only lives for as long as the fact that you get a result. It's not joining the original tables in the database itself.
+09:42:30 Instead, just for the result that's coming back for this query, you get these to join tables, right.
+09:42:37 So, in terms of ID.
+09:42:42 I mean, we can do it, we can do a sample of this right, we can go.
+09:42:49 If I log into my command line, like so.
+09:42:56 And I go back to a query that has a joint in it, like this one, say,
+09:43:03 Here I'm asking for de underscore description and question, they come from different tables.
+09:43:09 If I just say ID here we're going to trigger that error that says that it's redundant, because there's an ID in both tables right. There's that error message column reference ID is ambiguous.
+09:43:22 And so, let's make it not ambiguous, let's say that I want the objectives ID.
+09:43:31 OK, now I'm getting the objectives it here.
+09:43:35 But there's nothing stopping me from saying that I also want today's ID.
+09:43:41 So let's go days ID as well.
+09:43:48 And so, which one survive, could be both if I want both and here's how I specify it.
+09:43:54 Okay, that makes sense. Thank you.
+09:43:57 Yep.
+09:43:58 No problem. Yeah, no, you had asked further about things like primary keys and stuff.
+09:44:04 Again, that's the topic for tomorrow.
+09:44:08 But just real quick. Both of these ideas are primary keys
+09:44:15 in the objectives table.
+09:44:18 When we bring in the day ID.
+09:44:23 That's actually foreign key, not a primary key.
+09:44:28 So here you see de ID. This is coming out of the objectives table.
+09:44:35 And so that column is not a primary key.
+09:44:38 But these two are primary keys.
+09:44:55 Stay tuned, right, you know, stay tuned to this channel tomorrow, a lot more about primary keys and foreign keys and how they interact and how these joins or are holding together. Yeah, sounds good. Thank you so much.
+09:44:57 You're very welcome.
+09:45:00 Okay, I think we're gonna wrap it up, folks.
+09:45:02 Let's call it a day. Have fun composing click like and subscribe. Hold my beer and watch this, and enjoy the rest of your afternoon.
+09:45:10 Thank you, very welcome. Cheers.
+09:45:24 Thank you.
+09:45:25 You're welcome. Have a good day.
