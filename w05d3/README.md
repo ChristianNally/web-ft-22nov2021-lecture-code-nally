@@ -2,10 +2,10 @@
 
 ### To Do
 - [x] Connect a database
-- [ ] Perform `BREAD` actions on database via command line app
+- [/] Perform `BREAD` actions on database via command line app
 - [x] Demonstrate an SQL Injection attack
 - [x] Serve database content to the browser
-- [ ] Protecting secrets with Environment Variables
+- [x] Protecting secrets with Environment Variables
 
 ### node-postgres
 

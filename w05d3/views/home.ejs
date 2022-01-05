@@ -9,7 +9,7 @@
 <body>
   <ul>
     <% for (obj of objectives) { %>
-      <li><a href="/read/<%= obj.id %>"><%= obj.question %></a></li>
+      <li><a href="/read/<%= obj.id %>"><%= obj.question %></a><a href="/delete/<%= obj.id %>">[X]</a><a href="/edit/<%= obj.id %>">[!!]</a></li>
     <% } %>
   </ul>
 </body>
