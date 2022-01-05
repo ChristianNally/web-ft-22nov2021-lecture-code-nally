@@ -1,0 +1,54 @@
+00:25:17	Lorenço (they/he):	dont you need curly brackets after the colon for each case?
+01:02:23	Haris Rizwan:	could you explain again why you are dropping tables in the backup?
+01:04:37	Haris Rizwan:	oh ok, so its dropping from the current db, before adding ewvrything back in, not the backup then?
+01:05:21	Brenon Parry:	What a tease
+01:05:23	Ray F:	the suspence
+01:05:25	Josue:	lol
+01:05:27	Ray F:	suspense
+01:05:36	Brenon Parry:	Naan
+01:05:37	Lucy Shen:	naan
+01:05:39	Josue:	naan
+01:05:39	Ratul Hefzul Bari:	naan
+01:05:40	Kevin Yulo:	naan
+01:17:15	Sameer M.:	Well that was anti-climatic
+01:17:38	Karen (she/her):	Lol sameer
+01:17:44	Diana Kuang:	when it was better built by accident 😂
+01:17:52	Julia Gatina:	))))
+01:18:15	Karen (she/her):	Can’t you have user input say DROP FROM objectives CASCADE? To by pass the dependencies?
+01:18:59	Brenon Parry:	I was hoping for some sparks and fire
+01:19:19	Julia Gatina:	expectation vs reality
+01:19:48	Josue:	burn it all 🔥
+01:19:58	Ray F:	😱 the horror
+01:20:47	Lorenço (they/he):	our database lives to die another day
+01:20:59	Ratul Hefzul Bari:	ha ha ha
+01:26:33	Karen (she/her):	Sorry can you explain the $ sign again?
+01:28:14	Ratul Hefzul Bari:	If the dynamic value needs to be string?
+01:29:00	Kevin Yulo:	$(num) replaces the $ with the num element in the array after the string?
+01:29:21	Karen (she/her):	Can we see what the poor version was again, side by side with this line and how it wasn’t defensive?
+01:30:45	Lorenço (they/he):	is there extra curly brackets the two bad versions?
+01:30:58	Lorenço (they/he):	near the end of the lines
+01:31:19	Mohamed Ali:	is there any scenerio where it wouldnt be '$1'
+01:32:17	Diana Kuang:	can u do an example with TEXT token?
+01:40:35	Erick:	A little fast
+01:41:45	Brenon Parry:	Pjs view engine?
+01:41:53	Brenon Parry:	*ejs
+01:42:37	Jp Kalambay:	do we still want the to end the client in this example?
+01:49:37	Allen Zhao:	let b4 obj
+01:50:17	Lucy Shen:	or const
+01:52:42	Lorenço (they/he):	dont do it
+01:52:47	Lorenço (they/he):	hackers
+01:52:50	Brenon Parry:	Do it so we can see it burn
+02:00:32	Jp Kalambay:	if im remembering it right we used .serialize to prevent users from adding harmful code to tweeter, would that work in this case?
+02:01:01	Emily Waters:	Log4J was an injectiom vulnerability yeah?
+02:01:52	Tristan Cole:	so LHL hired them?
+02:09:54	Vladimir Eremenko:	it is a different port
+02:24:07	Haris Rizwan:	ssemi colon
+02:24:09	Vladimir Eremenko:	;
+02:27:35	Allen Zhao:	const bodyParser = require("body-parser");app.use(bodyParser.urlencoded({  extended: true}));
+02:29:00	Erick:	Thanks Christian. I’d love to stay and finish as this is actually awesome. But I need to go to pick up my son. Thanks for today’s good information.
+02:30:48	Haris Rizwan:	don't you need a ssemi-colon in the query string?
+02:36:11	Julia Gatina:	acition
+02:38:16	Emily Waters:	How do we make sure text is safe?
+02:39:08	collinmacleod:	Thanks!
+02:39:09	Brenon Parry:	Thank you!
+02:39:09	Lucy Shen:	thanks Christian!
