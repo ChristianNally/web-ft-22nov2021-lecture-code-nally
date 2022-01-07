@@ -1,0 +1,23 @@
+
+
+
+BREAD (CRUD) actions for Products
+
+Browse    GET   /products
+Read      GET   /products/:id
+Edit Form GET   /products/:id/edit      
+Edit      POST  /products/:id/edit   
+Add       GET   /products/new
+Add       POST  /products/new
+Delete    POST  /products/:id/delete
+
+
+BREAD (CRUD) actions for Users
+
+Browse    GET   /users
+Read      GET   /users/:id
+Edit Form GET   /users/:id/edit      
+Edit      POST  /users/:id/edit   
+Add       POST  /users
+Delete    POST  /users/:id/delete
+
