@@ -152,6 +152,7 @@ h1 {
   color: magenta;
   text-decoration: underline;
 }
+
 .container div {
   border: 1px solid black;
 }
@@ -246,6 +247,12 @@ header {
   @include box-sizes(15px);
   border: 1px solid green;
 }
+
+.crate {
+  @include box-sizes(25px);
+  border: 2px solid red;
+}
+
 ```
 
 ### Useful Links

@@ -70,7 +70,7 @@ app.get('/login/:id', (req, res) => {
 - Use the provided `node-skeleton` as a template for your project
 - This will get you up and running quickly
 
-### SPA vs Multi-page App
+### Single Page App vs Multi-page App
 - These concepts are not mutually exclusive
 - You can choose one or the other or both
 

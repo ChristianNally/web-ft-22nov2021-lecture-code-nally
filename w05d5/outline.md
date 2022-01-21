@@ -1,14 +1,24 @@
+## Pick a Project
+- Wiki Map
+- Quiz App
+- Story Creator
+- Decision Maker
+- PasswordKeepR
+- Smart TODO List
+- Resource Wall
+- Buy/Sell Listing Website
+- Schoodle
+- Food Pick-up Ordering
+
 ## User Stories
 * As a _______, I shall be able to _________, because __________.
 * OR
 * As a _______, I shall NOT be able to _________, because __________.
 * e.g.
 
-
 ## Nouns are Resources. They are the Entities for your ERD
 * every entity needs its own table
 * make an ERD
-
 
 ## Make a planning directory in the git repo
 * user-stories.md

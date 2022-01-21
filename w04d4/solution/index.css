@@ -7,7 +7,7 @@ body {
 }
 
 nav {
- min-width: 230px;
+ min-width: 160px;
 }
 
 #main {
@@ -16,8 +16,8 @@ nav {
 }
 
 #main > article {
-  flex: 1;
-  min-width: 440px;
+  /* flex: 1;
+  min-width: 440px; */
 }
 
 #main > nav,
@@ -39,51 +39,53 @@ aside {
   padding: 1em;
 }
 
-header,
+/* header,
 footer {
   background: yellowgreen;
   height: 20vh;
-}
+} */
 
 /* p.another {
   background-color:red;
-}
+} */
 
-p {
+/* p {
   background-color: green !important; 
 } */
 
 /* units - percent is relative to its parent container (for all properties, including font-size) */
-/* p {
-  width: 50%;
-} */
+
+p {
+  width: 80%;
+}
+
+article {
+  font-size: 14pt;
+}
 
 #main .first {
   font-size: 1rem;
 }
 
-/* .second {
+/* #main .second {
+  font-size: 1rem;
+} */
+
+/* #main {
   font-size: 2em;
 } */
 
-#main {
-  font-size: 2em;
-}
-
-#main .second {
+/* #main .second {
   font-size: 0.3em;
-}
+} */
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 500px) {
   body {
-    background-color: blue;
+    background-color: rgb(106, 106, 186);
   }
-}
-
-@media only screen and (max-width: 850px) {
-  /* these styles will be applied if the screen width is less than 500px */
-  #main > aside {
-    /* background-color: green; */
+  aside {
     display: none;
   }
 }
+
+

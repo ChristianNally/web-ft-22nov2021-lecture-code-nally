@@ -1,0 +1,8 @@
+/* @media only screen and (max-width: 850px) {
+  /* these styles will be applied if the screen width is less than 500px */
+  #main > aside {
+    /* background-color: green; */
+    /* display: none; */
+  }
+} */
+
